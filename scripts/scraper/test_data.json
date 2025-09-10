@@ -1,0 +1,125 @@
+[
+    {
+        "id": "math160",
+        "title": "Calculus I",
+        "code": "MATH 160",
+        "credits": 4,
+        "description": "Limits, continuity, differentiation and integration...",
+        "prerequisites": {
+            "type": "or",
+            "courses": [
+                "math131",
+                "math135"
+            ]
+        },
+        "semesters_offered": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ]
+    },
+    {
+        "id": "math161",
+        "title": "Calculus II",
+        "code": "MATH 161",
+        "credits": 4,
+        "description": "Applications of integration, techniques of integration...",
+        "prerequisites": {
+            "type": "or",
+            "courses": [
+                "math160",
+                "math160b"
+            ]
+        },
+        "semesters_offered": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ]
+    },
+    {
+        "id": "csci120",
+        "title": "Introduction to Web Interface Development",
+        "code": "CSCI 120",
+        "credits": 3,
+        "description": "An introduction to the design and development of interactive Web 2.0 user interfaces using client-side programming languages. Topics include layout and design for multiple screen sizes, form creation and validation, client-side DOM manipulation, coding frameworks, and interaction design best practices.",
+        "prerequisites": {},
+        "semesters_offered": [
+            "Fall",
+            "Spring",
+            "Summer"
+        ]
+    },
+    {
+        "id": "csci135",
+        "title": "Introduction to Programming",
+        "code": "CSCI 135",
+        "credits": 3,
+        "description": "This course provides an introduction to computer programming using a dynamically typed language. Topics include algorithm development, input/output, conditional statements, loops, functions, and use of basic data structures.",
+        "prerequisites": {
+            "type": "or",
+            "courses": [
+                "math130",
+                "math130b",
+                "math130i"
+            ]
+        },
+        "semesters_offered": [
+            "Fall",
+            "Spring"
+        ]
+    },
+    {
+        "id": "csci145",
+        "title": "Intermediate Programming",
+        "code": "CSCI 145",
+        "credits": 3,
+        "description": "This course continues the study of programming in a dynamically typed language. Topics include object-oriented development, user-defined data types, debugging, testing, and elementary distributed computing.",
+        "prerequisites": {
+            "type": "or",
+            "courses": [
+                "csci135",
+                {
+                    "type": "and",
+                    "courses": [
+                        "csci140",
+                        "csci140l"
+                    ]
+                }
+            ]
+        },
+        "semesters_offered": [
+            "Fall",
+            "Spring"
+        ]
+    },
+    {
+        "id": "csci210",
+        "title": "Computer Organization and Programming",
+        "code": "CSCI 210",
+        "credits": 3,
+        "description": "Logical basis of computer structure, machine representation of information, flow of control, instruction codes, arithmetic and logical operations, indexing, indirect addressing, input-output, sub-routines, linkages, macros. Interpretive and assembly systems, and pushdown stacks.",
+        "prerequisites": {
+            "type": "and",
+            "courses": [
+                "math174",
+                {
+                    "type": "or",
+                    "courses": [
+                        "csci145",
+                        {
+                            "type": "and",
+                            "courses": [
+                                "csci150",
+                                "csci150l"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "semesters_offered": [
+            "Fall"
+        ]
+    }
+]

@@ -1,0 +1,904 @@
+{
+  "program_name": "Computer Science, B.S.",
+  "url": "https://catalog.coastal.edu/preview_program.php?catoid=33&poid=5939",
+  "requirement_sections": [
+    {
+      "title": "Core Curriculum Requirements",
+      "rules": []
+    },
+    {
+      "title": "Graduation Requirements",
+      "rules": []
+    },
+    {
+      "title": "Foundation Requirements (19-30 Credits) *",
+      "rules": []
+    },
+    {
+      "title": "Complete the following courses:",
+      "rules": [
+        {
+          "type": "take",
+          "amount": 4,
+          "courses": [
+            "MATH 160",
+            "MATH 160A+MATH 160B",
+            "MATH 174",
+            "STAT 201"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Choose two courses from the following:",
+      "rules": [
+        {
+          "type": "take",
+          "amount": 2,
+          "courses": [
+            "MATH 161",
+            "MATH 161A+MATH 161B",
+            "MATH 242+MATH 220",
+            "MATH 260",
+            "MATH 307",
+            "MATH 308",
+            "MATH 320",
+            "MATH 344",
+            "MATH 407",
+            "MATH 408"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Choose two courses from the following:",
+      "rules": [
+        {
+          "type": "take",
+          "amount": 2,
+          "courses": [
+            "BIOL 121+BIOL 122+CHEM 111+CHEM 112+MSCI 111+MSCI 112+PHYS 137+PHYS 211+PHYS 212+PHYS 235"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Choose one course from the following:",
+      "rules": [
+        {
+          "type": "take",
+          "amount": 1,
+          "courses": [
+            "COMM 140",
+            "ENGL 211",
+            "ENGL 290",
+            "ENGL 390"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Major Requirements (57-60 Credits)",
+      "rules": []
+    },
+    {
+      "title": "Complete the following courses:",
+      "rules": [
+        {
+          "type": "take",
+          "amount": 15,
+          "courses": [
+            "CSCI 120",
+            "CSCI 135",
+            "CSCI 145",
+            "CSCI 210",
+            "CSCI 220",
+            "CSCI 225",
+            "CSCI 270",
+            "CSCI 330",
+            "CSCI 350",
+            "CSCI 356",
+            "CSCI 380",
+            "CSCI 385",
+            "CSCI 390",
+            "CSCI 401",
+            "CSCI 473"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Choose one course from the following:",
+      "rules": [
+        {
+          "type": "take",
+          "amount": 1,
+          "courses": [
+            "CSCI 207",
+            "CSCI 208",
+            "CSCI 209",
+            "CSCI 204"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Choose three courses from the following:",
+      "rules": [
+        {
+          "type": "take",
+          "amount": 3,
+          "courses": [
+            "CSCI 310",
+            "CSCI 425",
+            "CSCI 440",
+            "CSCI 445",
+            "CSCI 480",
+            "CSCI 484",
+            "CSCI 485",
+            "CSCI 490"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Note:",
+      "rules": []
+    }
+  ],
+  "all_courses": {
+    "MATH 160": {
+      "title": "Calculus I",
+      "credits": 4,
+      "prerequisites": [
+        "MATH 131",
+        "MATH 135"
+      ],
+      "description": "Limits, continuity, differentiation and integration of algebraic and transcendental functions, applications of the derivative to curve sketching, optimization and related rates.",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "MATH 160A": {
+      "title": "Calculus I A",
+      "credits": 2,
+      "prerequisites": [
+        "MATH 131",
+        "MATH 135"
+      ],
+      "description": "This course develops the basic tools of differential calculus, which are limits, continuity, and differentiation. Real world applications using differentiation include rates of change problems in the Natural and Social Sciences.",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "MATH 160B": {
+      "title": "Calculus I B",
+      "credits": 2,
+      "prerequisites": [
+        "MATH 160A"
+      ],
+      "description": "This course covers further applications of differentiation. This includes the behavior of a function and curve sketching, optimization, related rates, and linear approximations. In addition, the basic tools of integral calculus are introduced along with the Fundamental Theorem of Calculus.",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "MATH 174": {
+      "title": "Introduction to Discrete Mathematics",
+      "credits": 3,
+      "prerequisites": [
+        "MATH 130",
+        "MATH 130B",
+        "MATH 130I",
+        "MATH 135"
+      ],
+      "description": "Set theory, logic divisibility, induction, combinatorics, relations, functions, graphs, digraphs, and Boolean algebra.",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "STAT 201": {
+      "title": "Elementary Statistics",
+      "credits": 3,
+      "prerequisites": [
+        "MATH 130A",
+        "STAT 201L"
+      ],
+      "description": "",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "MATH 161": {
+      "title": "Calculus II",
+      "credits": 4,
+      "prerequisites": [
+        "MATH 160",
+        "MATH 160B"
+      ],
+      "description": "Applications of integration, techniques of integration, sequences and series, Taylor polynomials, and elementary differential equations.",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "MATH 161A": {
+      "title": "Calculus II A",
+      "credits": 2,
+      "prerequisites": [
+        "MATH 160",
+        "MATH 160B"
+      ],
+      "description": "Techniques and applications of integration are studied.",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "MATH 161B": {
+      "title": "Calculus II B",
+      "credits": 2,
+      "prerequisites": [
+        "MATH 161A"
+      ],
+      "description": "Improper integrals, Sequences and Series, and Taylor Polynomials are studied.",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "MATH 242": {
+      "title": "Modeling for Scientists I",
+      "credits": 3,
+      "prerequisites": [
+        "MATH 160",
+        "MATH 160B",
+        "CSCI 135",
+        "MATH 242L"
+      ],
+      "description": "",
+      "semesters_offered": [
+        "Fall"
+      ]
+    },
+    "MATH 220": {
+      "title": "Mathematical Proofs and Problem Solving",
+      "credits": 3,
+      "prerequisites": [
+        "MATH 160",
+        "MATH 160B",
+        "MATH 161",
+        "MATH 161B"
+      ],
+      "description": "",
+      "semesters_offered": [
+        "Spring"
+      ]
+    },
+    "MATH 260": {
+      "title": "Calculus III",
+      "credits": 4,
+      "prerequisites": [
+        "MATH 161",
+        "MATH 161B"
+      ],
+      "description": "Lines, planes and surfaces in space; spherical and cylindrical coordinate systems; vector valued functions; differentiation of functions of several variables; multiple integration and applications; topics in vector analysis.",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "MATH 307": {
+      "title": "Combinatorics",
+      "credits": 3,
+      "prerequisites": [
+        "MATH 220",
+        "MATH 174"
+      ],
+      "description": "This course covers the basics of combinatorics: enumeration, recurrence, generating functions, as well as some applications to probability.",
+      "semesters_offered": [
+        "Spring",
+        "odd years"
+      ]
+    },
+    "MATH 308": {
+      "title": "Graph Theory",
+      "credits": 3,
+      "prerequisites": [
+        "MATH 220",
+        "MATH 174"
+      ],
+      "description": "This course will introduce students to the basic concepts and applications of graph theory. This will be achieved via examples, algorithms and proofs.",
+      "semesters_offered": [
+        "Fall",
+        "odd years"
+      ]
+    },
+    "MATH 320": {
+      "title": "Elementary Differential Equations",
+      "credits": 3,
+      "prerequisites": [
+        "MATH 161",
+        "MATH 161B"
+      ],
+      "description": "This course represents a systematic introduction to ordinary differential equations. Topics may include first order equations, linear equations with constant coefficients, techniques for higher order equations, variation of parameter, systems of equations, and numerical solutions.",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "MATH 344": {
+      "title": "Linear Algebra",
+      "credits": 3,
+      "prerequisites": [
+        "MATH 161",
+        "MATH 161B",
+        "MATH 160",
+        "MATH 160B",
+        "CSCI 220"
+      ],
+      "description": "Vector spaces, linear transformations, matrices, systems of equations, determinants, eigenvectors and eigenvalues.",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "MATH 407": {
+      "title": "Coding Theory",
+      "credits": 3,
+      "prerequisites": [
+        "MATH 344"
+      ],
+      "description": "",
+      "semesters_offered": [
+        "Spring",
+        "even years"
+      ]
+    },
+    "MATH 408": {
+      "title": "Cryptography",
+      "credits": 3,
+      "prerequisites": [
+        "MATH 220",
+        "MATH 174"
+      ],
+      "description": "",
+      "semesters_offered": [
+        "Fall",
+        "even years"
+      ]
+    },
+    "BIOL 121": {
+      "title": "Biological Science I",
+      "credits": 3,
+      "prerequisites": [
+        "MATH 131",
+        "MATH 130B",
+        "BIOL 121L"
+      ],
+      "description": "",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "BIOL 122": {
+      "title": "Biological Science II",
+      "credits": 3,
+      "prerequisites": [
+        "BIOL 121",
+        "BIOL 121L",
+        "BIOL 122L"
+      ],
+      "description": "",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "CHEM 111": {
+      "title": "General Chemistry I",
+      "credits": 3,
+      "prerequisites": [],
+      "description": "A survey of chemical structure, reactivity and physical properties. Topics include dimensional analysis, atomic theory, chemical nomenclature, gas laws, and thermodynamics.",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "CHEM 112": {
+      "title": "General Chemistry II",
+      "credits": 3,
+      "prerequisites": [
+        "CHEM 111",
+        "CHEM 111L",
+        "CHEM 112L"
+      ],
+      "description": "",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "MSCI 111": {
+      "title": "Introduction to Marine Science",
+      "credits": 3,
+      "prerequisites": [],
+      "description": "",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "MSCI 112": {
+      "title": "Introduction to Earth and Marine Geology",
+      "credits": 3,
+      "prerequisites": [],
+      "description": "",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "PHYS 137": {
+      "title": "Models in Physics",
+      "credits": 3,
+      "prerequisites": [],
+      "description": "This course is an introduction to the development, testing, analysis, and interpretation of models of physical systems. Through hands-on laboratory activities, students use scientific reasoning and the process of science to discover for themselves physical models that predict behavior for common, everyday applications, such as electric circuits, light, magnets, motion, and energy. The focus of the course is on how science is used as a tool towards understanding our physical world, and specifically serves as an introduction to how science is done within the context of physics.",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "PHYS 211": {
+      "title": "Essentials of Physics I",
+      "credits": 3,
+      "prerequisites": [],
+      "description": "An introductory course for scientists and engineers. Topics covered include kinematics, dynamics, energy, and rotational mechanics.",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "PHYS 212": {
+      "title": "Essentials of Physics II",
+      "credits": 3,
+      "prerequisites": [
+        "MATH 160",
+        "PHYS 211",
+        "PHYS 211L",
+        "PHYS 212L",
+        "PHYS 211"
+      ],
+      "description": "",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "PHYS 235": {
+      "title": "Electric Circuits",
+      "credits": 3,
+      "prerequisites": [
+        "PHYS 137",
+        "MATH 160",
+        "MATH 160B",
+        "PHYS 212"
+      ],
+      "description": "",
+      "semesters_offered": [
+        "Fall"
+      ]
+    },
+    "COMM 140": {
+      "title": "Fundamentals of Public Speaking & Presentation",
+      "credits": 3,
+      "prerequisites": [],
+      "description": "",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "ENGL 211": {
+      "title": "Introduction to Technical and Professional Writing",
+      "credits": 3,
+      "prerequisites": [],
+      "description": "",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "ENGL 290": {
+      "title": "Introduction to Business Communication",
+      "credits": 3,
+      "prerequisites": [],
+      "description": "Students will gain valuable experience with some of the most important types of written and oral communication required in a business and professional context.",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "ENGL 390": {
+      "title": "Business and Professional Communication",
+      "credits": 3,
+      "prerequisites": [
+        "ENGL 101",
+        "ENGL 102"
+      ],
+      "description": "Designed to improve practical communication, both written and oral. Students learn business style and formats (the letter, memo, resume, and report), as well as strategies for presenting neutral, negative, and persuasive messages. Students will speak on business or professional topics.",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "CSCI 120": {
+      "title": "Introduction to Web Interface Development",
+      "credits": 3,
+      "prerequisites": [],
+      "description": "",
+      "semesters_offered": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ]
+    },
+    "CSCI 135": {
+      "title": "Introduction to Programming",
+      "credits": 3,
+      "prerequisites": [
+        "MATH 130",
+        "MATH 130B",
+        "MATH 130I"
+      ],
+      "description": "",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "CSCI 145": {
+      "title": "Intermediate Programming",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 135",
+        "CSCI 140",
+        "CSCI 140L"
+      ],
+      "description": "(Students are required to have a personal notebook computer for this course) This course continues the study of programming in a dynamically typed language. Topics include object-oriented development, user-defined data types, debugging, testing, and elementary distributed computing. F, S.",
+      "semesters_offered": []
+    },
+    "CSCI 210": {
+      "title": "Computer Organization and Programming",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 145",
+        "CSCI 150",
+        "CSCI 150L",
+        "MATH 174"
+      ],
+      "description": "Logical basis of computer structure, machine representation of information, flow of control, instruction codes, arithmetic and logical operations, indexing, indirect addressing, input-output, sub-routines, linkages, macros. Interpretive and assembly systems, and pushdown stacks.",
+      "semesters_offered": [
+        "Fall"
+      ]
+    },
+    "CSCI 220": {
+      "title": "Data Structures",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 145",
+        "CSCI 150",
+        "CSCI 150L",
+        "MATH 174"
+      ],
+      "description": "Topics include analysis of algorithms, with emphasis on computational complexity and advanced algorithms including self-adjusting trees, hashing, graphs, sorting, searching,\u00a0and greedy algorithms.",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "CSCI 225": {
+      "title": "Introduction to Relational Database and SQL",
+      "credits": 3,
+      "prerequisites": [
+        "MATH 174",
+        "CSCI 135",
+        "CSCI 140",
+        "CSCI 140L"
+      ],
+      "description": "This course will provide an introduction to relational database concepts and the design of relational databases. It will also provide a thorough introduction to SQL.",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "CSCI 270": {
+      "title": "Data Communication Systems and Networks",
+      "credits": 3,
+      "prerequisites": [],
+      "description": "",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "CSCI 330": {
+      "title": "Systems Analysis & Software Engineering",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 220",
+        "CSCI 204",
+        "CSCI 207",
+        "CSCI 208",
+        "CSCI 209"
+      ],
+      "description": "An introduction to modern systems analysis and software engineering practices. Major topics include software development methodologies, the software development life cycle, and software architectures.",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "CSCI 350": {
+      "title": "Organization of Programming Languages",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 204",
+        "CSCI 207",
+        "CSCI 208",
+        "CSCI 209",
+        "CSCI 220"
+      ],
+      "description": "Exploration of programming languages, programming paradigms, and advanced programming language concepts.",
+      "semesters_offered": [
+        "Fall"
+      ]
+    },
+    "CSCI 356": {
+      "title": "Operating Systems",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 220"
+      ],
+      "description": "Basic concepts and terminology of operating systems, I/0 and interrupt structures, system structures, processor scheduling, processes and process synchronization, deadlocks, memory management, and other concepts.",
+      "semesters_offered": [
+        "Fall"
+      ]
+    },
+    "CSCI 380": {
+      "title": "Introduction to the Analysis of Algorithms",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 220",
+        "MATH 160",
+        "MATH 160B"
+      ],
+      "description": "An introductory course in the analysis of algorithms, with emphasis on computational complexity including practical applications and the analysis of specific problems and algorithms, course investigates most commonly used algorithm design techniques and also introduces the notion of \u201chard\u201d problems and approximate solutions.",
+      "semesters_offered": [
+        "Fall"
+      ]
+    },
+    "CSCI 385": {
+      "title": "Introduction to Information Systems Security",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 270"
+      ],
+      "description": "Comprehensive survey of security policies, models and mechanisms for confidentiality, integrity, management and legal and ethical issues.",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "CSCI 390": {
+      "title": "Theory of Computation",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 220"
+      ],
+      "description": "General models of computation, formal languages and automa theory and algorithmic unsolvability.",
+      "semesters_offered": [
+        "Spring"
+      ]
+    },
+    "CSCI 401": {
+      "title": "Ethics and Professional Issues in Computing",
+      "credits": 3,
+      "prerequisites": [],
+      "description": "This course examines ethical and professional issues in the computing disciplines. Topics include the ACM Code of Ethics, general moral responsibilities, privacy, security, intellectual property, career preparation, job search strategies, and methods of evaluating salary and benefit offers. Students complete all necessary curriculum assessments required to maintain the currency and quality of academic programs offered by the Department of Computing Sciences.",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "CSCI 473": {
+      "title": "Introduction to Parallel Systems",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 210",
+        "CSCI 270",
+        "CSCI 330",
+        "CSCI 356",
+        "MATH 160",
+        "MATH 160B"
+      ],
+      "description": "This course introduces parallel computer architectures and their programming. It includes an introduction to MPI and OpenMP and a number of engineering problems, including numerical simulations. It also provides an Introduction to performance evaluation and modeling as well as scalability analysis.",
+      "semesters_offered": [
+        "Fall",
+        "Spring"
+      ]
+    },
+    "CSCI 207": {
+      "title": "Programming in C++",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 145",
+        "CSCI 150",
+        "CSCI 150L"
+      ],
+      "description": "Computer programming in the C ++ language.",
+      "semesters_offered": [
+        "Offered as needed"
+      ]
+    },
+    "CSCI 208": {
+      "title": "Programming in Visual Basic",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 145",
+        "CSCI 150",
+        "CSCI 150L"
+      ],
+      "description": "An introduction to programming with Visual Basic including Windows interface controls, Active X controls, and database access using Active X objects.",
+      "semesters_offered": [
+        "Offered as needed"
+      ]
+    },
+    "CSCI 209": {
+      "title": "Programming in Java",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 145",
+        "CSCI 150",
+        "CSCI 150L"
+      ],
+      "description": "Students will learn to program in the Java programming language. Topics include inheritance, threads, graphics, network programming, and Web-programming.",
+      "semesters_offered": [
+        "Offered as needed."
+      ]
+    },
+    "CSCI 204": {
+      "title": "Programming in Javascript",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 145"
+      ],
+      "description": "Students\u00a0learn to program in the Javascript programming language. Topics include basic syntax and structures, the DOM (Document Object Model), event-driven architecture, asynchronous programming, APIs, client and server side programming, the HTTP, and frameworks.",
+      "semesters_offered": [
+        "Offered as needed"
+      ]
+    },
+    "CSCI 310": {
+      "title": "Introduction to Computer Architecture",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 145",
+        "CSCI 150",
+        "CSCI 150L",
+        "CSCI 210",
+        "MATH 174"
+      ],
+      "description": "An introduction to the fundamental aspects of a computer system\u2019s structure and behavior; binary arithmetic, combinational logic, circuit design, instruction sets, register operations and flip-flops, control system functions, memories, interrupt structures, processors, and performance measures will be covered.",
+      "semesters_offered": [
+        "Spring"
+      ]
+    },
+    "CSCI 425": {
+      "title": "Database Systems Design",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 225"
+      ],
+      "description": "An exploration of advanced database topics will be covered. Topics may include the efficiency of advanced queries, indexing structures, database and SQL optimizations, backup and recovery, NoSQL and big data concepts.",
+      "semesters_offered": [
+        "Fall"
+      ]
+    },
+    "CSCI 440": {
+      "title": "Introduction to Computer Graphics",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 220"
+      ],
+      "description": "An overview of the elements of 2D and 3D graphics, includes topics on raster graphics, geometrical transformations, parallel and perspective projections for 3D viewing, interaction techniques, representation of curves and surfaces, solid modeling and topics on visual realism.",
+      "semesters_offered": [
+        "F or S as needed."
+      ]
+    },
+    "CSCI 445": {
+      "title": "Image Processing and Analysis",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 145",
+        "CSCI 150",
+        "CSCI 150L",
+        "MATH 160",
+        "MATH 160B",
+        "MATH 242",
+        "MATH 242L"
+      ],
+      "description": "This course introduces the theoretical foundations and methodologies of digital image processing and analysis. Topics include intensity transformations, contrast enhancement, filtering in the spatial and frequency domains, restoration and reconstruction, edge detection, feature extraction, morphological operations, image segmentation, object recognition, and color image processing.",
+      "semesters_offered": [
+        "Offered as needed"
+      ]
+    },
+    "CSCI 480": {
+      "title": "Introduction to Artificial Intelligence",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 220"
+      ],
+      "description": "Covers the fundamentals of Artificial Intelligence (AI); topics and techniques for analyzing and developing intelligent systems; programming in an AI language. Coverage may include applications in areas such as expert systems, neural networks, fuzzy logic, robotics, etc.",
+      "semesters_offered": [
+        "Offered as needed"
+      ]
+    },
+    "CSCI 484": {
+      "title": "Machine Learning",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 220",
+        "MATH 160",
+        "MATH 160B",
+        "MATH 242",
+        "MATH 242L"
+      ],
+      "description": "This course provides an introduction to pattern recognition and machine learning. Topics may include probabilistic learning, linear discriminants, neural networks, unsupervised learning, decision trees, Bayesian networks, support vector machines, and reinforcement learning.",
+      "semesters_offered": [
+        "Offered as needed"
+      ]
+    },
+    "CSCI 485": {
+      "title": "Introduction to Robotics",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 220"
+      ],
+      "description": "An introduction to the fundamentals of mobile robotics including robot hardware, sensors, obstacle avoidance, navigation, mapping, path planning and robot architectures.",
+      "semesters_offered": [
+        "Offered as needed"
+      ]
+    },
+    "CSCI 490": {
+      "title": "Software Engineering II",
+      "credits": 3,
+      "prerequisites": [
+        "CSCI 330",
+        "CSCI 330"
+      ],
+      "description": "This course is a continuation of the software engineering design principles introduced in",
+      "semesters_offered": [
+        "Fall"
+      ]
+    }
+  }
+}
