@@ -6,6 +6,8 @@ import { X, BookOpen, Star, ChevronsRight } from 'lucide-react';
 import type { Course, PrerequisiteGroup, Prerequisites } from '@/lib/mock-data';
 import { cn } from '@/lib/utils';
 
+
+
 interface CourseDetailSidebarProps {
   course: Course | null;
   allCourses: Course[];
@@ -71,17 +73,19 @@ export function CourseDetailSidebar({ course, allCourses, onClose }: CourseDetai
   return (
     <div className="flex flex-col h-full bg-card">
        <CardHeader className="relative p-6 border-b">
+          <div>
+           <CardTitle className="text-2xl font-bold text-primary pr-10 font-headline">{course.title}</CardTitle> 
+           <CardDescription>{course.code}</CardDescription>
+          </div>
         <Button
           variant="ghost"
           size="icon"
-          className="absolute top-3 right-3 h-8 w-8 md:hidden"
+          className="absolute top-3 right-3 md:hidden h-8 w-8"
           onClick={onClose}
           aria-label="Close course details"
         >
           <X className="h-4 w-4" />
         </Button>
-        <CardTitle className="text-2xl font-bold text-primary pr-10 font-headline">{course.title}</CardTitle>
-        <CardDescription>{course.code}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow p-6 pt-4 overflow-y-auto">
         <div className="space-y-6">
