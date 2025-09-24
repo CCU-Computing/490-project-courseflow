@@ -13,7 +13,7 @@ export type SemesterFilterSelection = {
 type Props = {
   /** Called whenever the selection changes */
   onFilterChange: (selection: SemesterFilterSelection) => void;
-  /** Optional controlled value (you can ignore for now) */
+  /** Optional controlled value */
   value?: SemesterFilterSelection;
   className?: string;
 };
@@ -26,7 +26,7 @@ export default function SemesterFilter({ onFilterChange, value, className }: Pro
     value ?? { all: true, semesters: [...ALL_SEMESTERS] }
   );
 
-  // If parent ever controls value, keep in sync (safe even if unused now)
+  
   React.useEffect(() => {
     if (value) setSel(value);
   }, [value]);
@@ -65,7 +65,7 @@ export default function SemesterFilter({ onFilterChange, value, className }: Pro
             id={`semester-${sem}`}
             checked={sel.semesters.includes(sem)}
             onCheckedChange={(c) => handleOneChange(sem, Boolean(c))}
-            disabled={sel.all} // All overrides individuals
+            disabled={sel.all} 
           />
           <Label htmlFor={`semester-${sem}`}>{sem}</Label>
         </div>
