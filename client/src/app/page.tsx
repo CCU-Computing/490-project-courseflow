@@ -10,6 +10,8 @@ import { Button } from '@/components/ui/button';
 import { PanelLeft, PanelRight } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
+import ThemeToggle from "@/components/ThemeToggle";
+
 
 export default function Home() {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
@@ -53,9 +55,13 @@ export default function Home() {
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-background text-foreground">
       <header className="absolute top-0 left-0 z-20 p-4 w-full flex justify-between items-center pointer-events-none">
-        <div className="bg-background/80 backdrop-blur-sm p-2 px-4 rounded-lg pointer-events-auto shadow-sm border">
+        <div className="bg-background/80 backdrop-blur-sm p-2 px-4 rounded-lg pointer-events-auto shadow-sm border flex items-center gap-4">
+        <div>
             <h1 className="text-xl font-bold text-primary font-headline">CourseFlow</h1>
             <p className="text-sm text-muted-foreground">{computerScienceProgram.name}</p>
+        </div>
+
+            <ThemeToggle />
         </div>
       </header>
       <main className="flex-1 relative h-full">
