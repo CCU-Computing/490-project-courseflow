@@ -12,6 +12,7 @@ import { PanelLeft, PanelRight, Search, BookOpen } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
 
+// Define the possible states for the sidebar
 type SidebarMode = 'details' | 'search' | 'closed';
 
 export default function Home() {
@@ -19,21 +20,22 @@ export default function Home() {
   const [sidebarMode, setSidebarMode] = useState<SidebarMode>('details');
   const isMobile = useIsMobile();
 
+  // state to check if sidebar is currently visible
   const isSidebarVisible = sidebarMode !== 'closed';
 
   useEffect(() => {
     if (isMobile) {
-      setSidebarMode('closed');
+      setSidebarMode('closed'); // Hide sidebar on mobile by default
     } else {
-      setSidebarMode('details');
+      setSidebarMode('details'); // Show details sidebar on desktop
     }
   }, [isMobile]);
 
   const handleNodeClick = (course: Course) => {
     setSelectedCourse(course);
-    setSidebarMode('details');
+    setSidebarMode('details'); // Switch to details view
     if (!isSidebarVisible && isMobile) {
-      setSidebarMode('details');
+      setSidebarMode('details'); // Auto-open sidebar on mobile when selecting a course
     }
   };
 
@@ -44,19 +46,23 @@ export default function Home() {
     setSelectedCourse(null);
   };
 
+  // Toggle sidebar open/closed
   const handleToggleSidebar = () => {
-    setSidebarMode(!isSidebarVisible ? 'closed' : 'details');
+    setSidebarMode(isSidebarVisible ? 'closed' : 'details');
   };
 
+  // Switch to course details mode
   const handleDetailsMode = () => {
     setSidebarMode('details');
   };
 
+  // Switch to search mode and clear any selected course
   const handleSearchMode = () => {
     setSidebarMode('search');
     setSelectedCourse(null);
   };
 
+  // Render sidebar content based on current mode
   const sidebarContent = (
     <>
       {sidebarMode === 'details' && (
