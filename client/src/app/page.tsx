@@ -1,46 +1,41 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { CourseDiagram } from '@/components/course-diagram';
-import { CourseDetailSidebar } from '@/components/course-detail-sidebar';
-import type { Course } from '@/lib/mock-data';
-import { computerScienceProgram } from '@/lib/mock-data';
-import { Sheet, SheetContent } from '@/components/ui/sheet';
-import { Button } from '@/components/ui/button';
-import { PanelLeft, PanelRight } from 'lucide-react';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { cn } from '@/lib/utils';
+import React, { useState, useEffect } from "react";
+import { CourseDiagram } from "@/components/course-diagram";
+import { CourseDetailSidebar } from "@/components/course-detail-sidebar";
+import type { Course } from "@/lib/mock-data";
+import { computerScienceProgram } from "@/lib/mock-data";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { PanelLeft, PanelRight } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
+import SemesterFilter, { Semester } from "@/components/SemesterFilter";
 
 export default function Home() {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
   const isMobile = useIsMobile();
 
+  // simple string state the ticket asked for
+  const [semesterFilter, setSemesterFilter] = useState<"All" | Semester>("All");
+
   useEffect(() => {
-    if (isMobile) {
-      setIsSidebarVisible(false);
-    } else {
-      setIsSidebarVisible(true);
-    }
+    if (isMobile) setIsSidebarVisible(false);
+    else setIsSidebarVisible(true);
   }, [isMobile]);
 
   const handleNodeClick = (course: Course) => {
     setSelectedCourse(course);
-    if (!isSidebarVisible) {
-      setIsSidebarVisible(true);
-    }
+    if (!isSidebarVisible) setIsSidebarVisible(true);
   };
 
   const handleCloseSidebar = () => {
-    if(isMobile) {
-      setIsSidebarVisible(false);
-    }
+    if (isMobile) setIsSidebarVisible(false);
     setSelectedCourse(null);
   };
 
-  const handleToggleSidebar = () => {
-    setIsSidebarVisible(!isSidebarVisible);
-  }
+  const handleToggleSidebar = () => setIsSidebarVisible(!isSidebarVisible);
 
   const sidebarContent = (
     <CourseDetailSidebar
@@ -54,12 +49,15 @@ export default function Home() {
     <div className="flex h-screen w-screen overflow-hidden bg-background text-foreground">
       <header className="absolute top-0 left-0 z-20 p-4 w-full flex justify-between items-center pointer-events-none">
         <div className="bg-background/80 backdrop-blur-sm p-2 px-4 rounded-lg pointer-events-auto shadow-sm border">
-            <h1 className="text-xl font-bold text-primary font-headline">CourseFlow</h1>
-            <p className="text-sm text-muted-foreground">{computerScienceProgram.name}</p>
+          <h1 className="text-xl font-bold text-primary font-headline">CourseFlow</h1>
+          <p className="text-sm text-muted-foreground">{computerScienceProgram.name}</p>
         </div>
       </header>
+
       <main className="flex-1 relative h-full">
-        <CourseDiagram onNodeClick={handleNodeClick} />
+        {/* Pass the filter down to the diagram */}
+        <CourseDiagram onNodeClick={handleNodeClick} semesterFilter={semesterFilter} />
+
         {!isSidebarVisible && !isMobile && (
           <Button
             variant="outline"
@@ -76,6 +74,23 @@ export default function Home() {
       {isMobile ? (
         <Sheet open={isSidebarVisible} onOpenChange={setIsSidebarVisible}>
           <SheetContent className="w-[85vw] p-0 border-l" side="right">
+            {/* Filter panel in sidebar (mobile) */}
+            <div className="p-3 border-b">
+              <h3 className="text-sm font-medium mb-2">Filter by semester</h3>
+              <SemesterFilter
+                value={
+                  semesterFilter === "All"
+                    ? { all: true, semesters: ["Fall", "Spring", "Summer"] }
+                    : { all: false, semesters: [semesterFilter] }
+                }
+                onFilterChange={(sel) => {
+                  if (sel.all) setSemesterFilter("All");
+                  else if (sel.semesters.length === 1) setSemesterFilter(sel.semesters[0]);
+                  else setSemesterFilter("All");
+                }}
+              />
+            </div>
+
             {sidebarContent}
           </SheetContent>
         </Sheet>
@@ -98,7 +113,24 @@ export default function Home() {
             </Button>
           )}
           <div className="w-96 h-full overflow-hidden">
-             {sidebarContent}
+            {/* Filter panel in sidebar (desktop) */}
+            <div className="p-3 border-b">
+              <h3 className="text-sm font-medium mb-2">Filter by semester</h3>
+              <SemesterFilter
+                value={
+                  semesterFilter === "All"
+                    ? { all: true, semesters: ["Fall", "Spring", "Summer"] }
+                    : { all: false, semesters: [semesterFilter] }
+                }
+                onFilterChange={(sel) => {
+                  if (sel.all) setSemesterFilter("All");
+                  else if (sel.semesters.length === 1) setSemesterFilter(sel.semesters[0]);
+                  else setSemesterFilter("All");
+                }}
+              />
+            </div>
+
+            {sidebarContent}
           </div>
         </aside>
       )}
