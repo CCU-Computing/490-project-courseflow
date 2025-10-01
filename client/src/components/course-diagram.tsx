@@ -29,15 +29,26 @@ interface CourseDiagramProps {
 }
 
 const getPrereqIds = (prereqs: Course['prerequisites']): string[] => {
-  if (!('type' in prereqs)) {
+  // This safer check ensures 'prereqs' is a valid object with a 'courses' array.
+  if (
+    !prereqs ||
+    typeof prereqs !== 'object' ||
+    !('type' in prereqs) ||
+    !('courses' in prereqs) ||
+    !Array.isArray((prereqs as PrerequisiteGroup).courses)
+  ) {
     return [];
   }
+ 
   const group = prereqs as PrerequisiteGroup;
   let ids: string[] = [];
+ 
+  // Now it's safe to iterate over group.courses
   for (const p of group.courses) {
     if (typeof p === 'string') {
       ids.push(p);
-    } else {
+    } else if (p && typeof p === 'object') { // Check for valid object before recursion
+      // Recursively call for nested prerequisite groups
       ids = ids.concat(getPrereqIds(p));
     }
   }
