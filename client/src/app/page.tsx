@@ -86,7 +86,7 @@ export default function Home() {
       </main>
 
 
-// help
+// help hehehe
       {isMobile ? (
         <Sheet open={isSidebarVisible} onOpenChange={setIsSidebarVisible}>
           <SheetContent className="w-[85vw] p-0 border-l" side="right">
