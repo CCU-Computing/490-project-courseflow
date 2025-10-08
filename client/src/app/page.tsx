@@ -19,6 +19,7 @@ export default function Home() {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [sidebarMode, setSidebarMode] = useState<SidebarMode>('details');
   const isMobile = useIsMobile();
+  const { courses, isLoading } = useCourses();
 
   // state to check if sidebar is currently visible
   const isSidebarVisible = sidebarMode !== 'closed';
@@ -77,6 +78,17 @@ export default function Home() {
       )}
     </>
   );
+
+  if (isLoading) {
+    return (
+      <div className="flex h-screen w-screen items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary"></div>
+          <p className="text-lg font-semibold">Loading Courses...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-background text-foreground">
