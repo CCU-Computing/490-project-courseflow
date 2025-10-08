@@ -12,7 +12,6 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import type { Course, PrerequisiteGroup } from '@/lib/mock-data';
-import { computerScienceProgram } from '@/lib/mock-data';
 import CustomNode from './custom-node';
 
 const nodeTypes = {
@@ -26,27 +25,41 @@ const VERTICAL_SPACING = 100;
 
 interface CourseDiagramProps {
   onNodeClick: (course: Course) => void;
+  courses: Course[];
 }
 
 const getPrereqIds = (prereqs: Course['prerequisites']): string[] => {
-  if (!('type' in prereqs)) {
+  // This safer check ensures 'prereqs' is a valid object with a 'courses' array.
+  if (
+    !prereqs ||
+    typeof prereqs !== 'object' ||
+    !('type' in prereqs) ||
+    !('courses' in prereqs) ||
+    !Array.isArray((prereqs as PrerequisiteGroup).courses)
+  ) {
     return [];
   }
+ 
   const group = prereqs as PrerequisiteGroup;
   let ids: string[] = [];
+ 
+  // Now it's safe to iterate over group.courses
   for (const p of group.courses) {
     if (typeof p === 'string') {
       ids.push(p);
-    } else {
+    } else if (p && typeof p === 'object') { // Check for valid object before recursion
+      // Recursively call for nested prerequisite groups
       ids = ids.concat(getPrereqIds(p));
     }
   }
   return ids;
 };
 
-export function CourseDiagram({ onNodeClick }: CourseDiagramProps) {
+export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
   const { nodes, edges } = useMemo(() => {
-    const courses = computerScienceProgram.courses;
+    if (!courses || courses.length === 0) {
+      return { nodes: [], edges: [] };
+    }
     const courseMap = new Map(courses.map(c => [c.id, c]));
 
     // Graph representation
@@ -137,7 +150,7 @@ export function CourseDiagram({ onNodeClick }: CourseDiagramProps) {
     });
 
     return { nodes: initialNodes, edges: initialEdges };
-  }, []);
+  }, [courses]);
 
   const handleNodeClick = (_: React.MouseEvent, node: Node<Course>) => {
     onNodeClick(node.data);

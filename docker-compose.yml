@@ -33,6 +33,14 @@ services:
       - "3000:3000"
     depends_on:
       - backend
+    environment:
+      - MONGO_URI=mongodb://admin:admin@mongodb:27017
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./client:/usr/src/app:cached
+      - node_modules:/usr/src/app/node_modules
+    command: sh -c "npm install && npm run dev -- -H 0.0.0.0 -p 3000"
 
 volumes:
   mongo-data:
+  node_modules:
