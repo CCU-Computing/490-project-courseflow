@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Course Scraper",
+  "version": "1.1",
+  "description": "Automatically scrapes course data from a webpage.",
+  "permissions": [
+    "storage",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://sservice.coastal.edu/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://sservice.coastal.edu/Student/Student/Courses/SearchResult*"],
+      "js": ["content_script.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["interceptor.js"],
+      "matches": ["https://sservice.coastal.edu/*"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
