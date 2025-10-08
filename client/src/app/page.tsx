@@ -5,7 +5,7 @@ import { CourseDiagram } from '@/components/course-diagram';
 import { CourseDetailSidebar } from '@/components/course-detail-sidebar';
 import { CourseSearchSidebar } from '@/components/course-search-sidebar';
 import type { Course } from '@/lib/mock-data';
-import { computerScienceProgram } from '@/lib/mock-data';
+import { useCourses } from '@/hooks/use-courses';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { PanelLeft, PanelRight, Search, BookOpen } from 'lucide-react';
@@ -68,7 +68,7 @@ export default function Home() {
       {sidebarMode === 'details' && (
         <CourseDetailSidebar
           course={selectedCourse}
-          allCourses={computerScienceProgram.courses}
+          allCourses={courses}
           onClose={handleCloseSidebar}
         />
       )}
@@ -83,11 +83,11 @@ export default function Home() {
       <header className="absolute top-0 left-0 z-20 p-4 w-full flex justify-between items-center pointer-events-none">
         <div className="bg-background/80 backdrop-blur-sm p-2 px-4 rounded-lg pointer-events-auto shadow-sm border">
             <h1 className="text-xl font-bold text-primary font-headline">CourseFlow</h1>
-            <p className="text-sm text-muted-foreground">{computerScienceProgram.name}</p>
+            <p className="text-sm text-muted-foreground">Bachelor of Science in Computer Science</p>
         </div>
       </header>
       <main className="flex-1 relative h-full">
-        <CourseDiagram onNodeClick={handleNodeClick} />
+        <CourseDiagram onNodeClick={handleNodeClick} courses={courses}/>
       </main>
 
       {/* Sidebar toggle buttons- position relative to main container*/}
