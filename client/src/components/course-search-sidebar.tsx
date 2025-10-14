@@ -1,14 +1,40 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { X, Search} from 'lucide-react';
 import { CourseSearchbar } from '@/components/course-searchbar';
+import type { Course } from '@/lib/mock-data';
 
 interface CourseSearchSidebarProps {
     onClose: () => void;
+    onCourseSelect?: (course: Course) => void;
+    courses: Course[];
+
 }
 
-export function CourseSearchSidebar({ onClose }: CourseSearchSidebarProps) {
+export function CourseSearchSidebar({ onClose, onCourseSelect, courses }: CourseSearchSidebarProps) {
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const filteredCourses = useMemo(() => {
+        if (!searchQuery.trim()) {
+            return [];
+        }
+
+        const query = searchQuery.toLowerCase().trim();
+        return courses.filter(course => 
+            course.code.toLowerCase().includes(query) ||
+            course.title.toLowerCase().includes(query) 
+        );
+    }, [searchQuery, courses]);
+
+    const handleCourseClick = (course: Course) => {
+        onCourseSelect?.(course);
+    };
+
+    const handleCloseClick = () => {
+        onClose(); //should call handleclosesidebar from page.tsx
+    };
+
     return (
         <div className="flex flex-col h-full bg-card">
             <CardHeader className="relative p-6 border-b">
@@ -29,15 +55,58 @@ export function CourseSearchSidebar({ onClose }: CourseSearchSidebarProps) {
                 </div>
             </CardHeader>
 
-            <CardContent className="flex-grow p-6">
+            <CardContent className="flex-grow p-6 overflow-hidden flex flex-col">
                 <div className="space-y-6">
-                    <CourseSearchbar placeholder="Search by course code or name..." />
+                    <CourseSearchbar 
+                        placeholder="Search by course code or name..."
+                        value={searchQuery}
+                        onChange={setSearchQuery}
+                    />
+                </div>
 
-                    {/* placeholder for search results- functionality later*/}
-                    <div className="text-center text-muted-foreground py-8">
-                        <Search className="h-12 w-12 mx-auto mb-4 opacity-50"/>
-                        <p>Enter a course code or name to search</p>
-                    </div>
+                {/* Search Results */}
+                <div className="flex-1 overflow-y-auto mt-6">
+                    {searchQuery.trim() && filteredCourses.length === 0 ? (
+                        <div className="text-center text-muted-foreground py-8">
+                            <Search className="h-12 w-12 mx-auto mb-4 opacity-50"/>
+                            <p>No courses found for "{searchQuery}"</p>
+                        </div>
+                    ) : filteredCourses.length > 0 ? (
+                        <div className="space-y-3">
+                            <h3 className="font-semibold text-sm text-muted-foreground">
+                                Found {filteredCourses.length} course{filteredCourses.length !== 1 ? 's' : ''}
+                            </h3>
+                            {filteredCourses.map((course) => (
+                                <Card 
+                                    key={course.id} 
+                                    className="cursor-pointer hover:bg-accent/50 transition-colors"
+                                    onClick={() => handleCourseClick(course)}
+                                >
+                                    <CardContent className="p-4">
+                                        <div className="flex justify-between items-start">
+                                            <div>
+                                                <h4 className="font-semibold text-primary">{course.code}</h4>
+                                                <p className="text-sm font-medium">{course.title}</p>
+                                                {course.description && (
+                                                    <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
+                                                        {course.description}
+                                                    </p>
+                                                )}
+                                            </div>
+                                            <div className="flex flex-col items-end text-xs text-muted-foreground">
+                                                <span>{course.credits} credit{course.credits !== 1 ? 's' : ''}</span>
+                                            </div>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center text-muted-foreground py-8">
+                            <Search className="h-12 w-12 mx-auto mb-4 opacity-50"/>
+                            <p>Enter a course code or name to search</p>
+                        </div>
+                    )}
                 </div>
             </CardContent>
         </div>
