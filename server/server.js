@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
+
 // Import routes
 const courseRoutes = require('./routes/courseRoutes');
 
