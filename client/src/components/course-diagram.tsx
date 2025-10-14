@@ -12,72 +12,58 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import CustomNode from './custom-node';
+import GroupNode from './group-node';
 // Use the pre-built course JSON dataset
 import rawCourseData from '../../data/course_data_full.json';
 
-// Minimal local course shape (mapped from JSON). We don't import the project's Course type
-// because the JSON has a different shape. We keep node.data lightweight and consistent.
 type JSONCourse = {
-    id: string; // like 'ACCT*330'
-    subject: string; // 'ACCT'
-    number: string; // '330' or '101L'
-    code?: string; // same as id but convenient for node data
+    id: string;
+    subject: string;
+    number: string;
+    code?: string;
     title?: string;
     fullTitle?: string;
-    requisitesDisplay?: string; // concatenation of CourseRequisites DisplayText
+    requisitesDisplay?: string;
 };
 
 const nodeTypes = {
     custom: CustomNode,
+    group: GroupNode,
 };
 
-const NODE_WIDTH = 180;
-const NODE_HEIGHT = 72;
-const HORIZONTAL_SPACING = 60;
-const VERTICAL_SPACING = 100;
+const NODE_WIDTH = 220;
+const NODE_HEIGHT = 84;
+const HORIZONTAL_SPACING = 64;
+const VERTICAL_SPACING = 120;
 
 interface CourseDiagramProps {
-    onNodeClick: (course: JSONCourse) => void;
-    // If 'courses' prop is provided, use it; otherwise the component will use the imported JSON data.
+    onNodeClick: (course: JSONCourse | { id: string; label: string; members: string[] }) => void;
     courses?: JSONCourse[];
 }
 
-// Parse prerequisite course ids from a free-form DisplayText string.
-// Example DisplayText: "Student must have completed ACCT*330 and FIN*301."
 const getPrereqIds = (displayText?: string): string[] => {
     if (!displayText || typeof displayText !== 'string') return [];
-    // Normalize common connectors and separators to make parsing easier
-    let txt = displayText
-        // unify separators
-        .replace(/[,;()]/g, ' ')
-        // convert slashes to 'or'
-        .replace(/\//g, ' or ')
-        // normalize common words (case-insensitive after uppercasing)
-        .replace(/\bAND\b/gi, ' OR ')
-        .replace(/\bOR\b/gi, ' OR ')
-        // remove extra punctuation
-        .replace(/[\.\:\-\u2013\u2014]/g, ' ')
-        .toUpperCase();
-
-    // Common patterns we want to capture: SUBJECT*123, SUBJECT 123, SUBJECT123, SUBJECT*123L
-    const regex = /([A-Z]{2,6})\s?\*?\s?(\d{2,3}[A-Z]?)/g;
+    let txt = displayText.replace(/[,;()]/g, ' ').replace(/\//g, ' or ').replace(/[\.\:\-\u2013\u2014]/g, ' ').toUpperCase();
+    // match SUBJ*123, SUBJ 123, SUBJ123, allow suffix letters (L, A, B)
+    const regex = /([A-Z]{2,6})\s?\*?\s?(\d{2,4}[A-Z]?)/g;
     const ids: string[] = [];
     let m: RegExpExecArray | null;
     while ((m = regex.exec(txt)) !== null) {
-        const subject = m[1].trim();
-        const number = m[2].trim();
-        // Normalize to the course id key format used in the JSON (e.g. ACCT*330)
-        ids.push(`${subject}*${number}`);
+        ids.push(`${m[1].trim()}*${m[2].trim()}`);
     }
-
-    // Deduplicate while preserving order
     return Array.from(new Set(ids));
+};
+
+const splitNumber = (num?: string) => {
+    if (!num) return { numeric: 0, suffix: '' };
+    const m = num.toUpperCase().match(/(\d{2,4})([A-Z]*)/);
+    if (!m) return { numeric: 0, suffix: '' };
+    return { numeric: parseInt(m[1], 10), suffix: m[2] || '' };
 };
 
 export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
     const [selectedSubject, setSelectedSubject] = useState('');
 
-    // Build a list of JSONCourse from either the provided prop or from the imported data
     const allCourses: JSONCourse[] = useMemo(() => {
         if (courses && courses.length > 0) return courses;
         const entries = Object.entries(rawCourseData) as [string, any][];
@@ -90,245 +76,248 @@ export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
             fullTitle: val.FullTitleDisplay,
             requisitesDisplay: Array.isArray(val.CourseRequisites)
                 ? val.CourseRequisites.map((r: any) => r.DisplayText).join(' ; ')
-                : undefined,
+                : val.CourseRequisites?.DisplayText || undefined,
         }));
     }, [courses]);
 
-    // All courses map for quick lookup
     const allCoursesMap = useMemo(() => new Map(allCourses.map(c => [c.id, c])), [allCourses]);
 
-    // Unique subjects for dropdown
-    const uniqueSubjects = useMemo(() => {
-        const s = Array.from(new Set(allCourses.map(c => c.subject))).filter(Boolean) as string[];
-        return s.sort((a, b) => a.localeCompare(b));
-    }, [allCourses]);
+    const uniqueSubjects = useMemo(() => Array.from(new Set(allCourses.map(c => c.subject))).filter(Boolean).sort(), [allCourses]);
 
-    // When a subject is selected, include its courses and recursively include any prerequisites
     const filteredCourses = useMemo(() => {
         const subj = selectedSubject.trim().toUpperCase();
         if (!subj) return [];
+        // only include courses up to 400 level
+        const initial = allCourses.filter(c => {
+            if ((c.subject || '').toUpperCase() !== subj) return false;
+            const n = splitNumber(c.number).numeric || 0;
+            return n <= 500;
+        });
+        const expanded = new Map<string, JSONCourse>();
 
-        const initial = allCourses.filter(c => (c.subject || '').toUpperCase() === subj);
-        const expandedMap = new Map<string, JSONCourse>();
-
-        // add a course and recursively its prereqs
         const addWithPrereqs = (course: JSONCourse) => {
-            if (expandedMap.has(course.id)) return;
-            expandedMap.set(course.id, course);
+            if (expanded.has(course.id)) return;
+            // skip adding courses above 400 (prereqs may point to grad-level)
+            const num = splitNumber(course.number).numeric || 0;
+            if (num > 500) return;
+            expanded.set(course.id, course);
             const prereqIds = getPrereqIds(course.requisitesDisplay);
             prereqIds.forEach(pid => {
                 const p = allCoursesMap.get(pid);
-                if (p) addWithPrereqs(p);
+                if (p) {
+                    const pn = splitNumber(p.number).numeric || 0;
+                    if (pn <= 500) addWithPrereqs(p);
+                }
             });
         };
 
         initial.forEach(c => addWithPrereqs(c));
-
-        return Array.from(expandedMap.values());
+        return Array.from(expanded.values());
     }, [allCourses, allCoursesMap, selectedSubject]);
 
     const { nodes, edges } = useMemo(() => {
-        if (!filteredCourses || filteredCourses.length === 0) {
-            return { nodes: [], edges: [] };
-        }
-        const courseMap = new Map(filteredCourses.map(c => [c.id, c]));
+        if (!filteredCourses || filteredCourses.length === 0) return { nodes: [], edges: [] };
 
-        // Exclude 500 and 600 level courses
-        const filtered = filteredCourses.filter(c => {
-            const numMatch = (c.number || '').match(/(\d{2,3})/);
-            const n = numMatch ? parseInt(numMatch[1], 10) : 0;
-            return !(n >= 500 && n < 700);
+        // Step 1: Preprocessing groups
+        // sequential groups: detect same subject with same numeric + suffix A/B or A->B pattern
+        const idToCourse = new Map(filteredCourses.map(c => [c.id, c]));
+
+        const grouped: Map<string, { id: string; label: string; members: string[]; type: 'sequential' | 'combined' | 'single' }>
+            = new Map();
+
+        const visited = new Set<string>();
+
+        // Helper to create a group id
+        const mkGroupId = (base: string) => `group-${base}`;
+
+        // 1a: find lecture/lab pairs (suffix L or numbers matching)
+        filteredCourses.forEach(c => {
+            if (visited.has(c.id)) return;
+            const { numeric, suffix } = splitNumber(c.number);
+            // look for companion lab with same numeric and suffix 'L' or course code ending with L
+            if (suffix === '' || suffix === undefined) {
+                const labId = `${c.subject}*${numeric}L`;
+                if (idToCourse.has(labId)) {
+                    const gid = mkGroupId(`${c.subject}-${numeric}-combined`);
+                    grouped.set(gid, { id: gid, label: `${c.subject} ${numeric}`, members: [c.id, labId], type: 'combined' });
+                    visited.add(c.id);
+                    visited.add(labId);
+                }
+            }
         });
 
-        // Build adjacency and in-degree for topological ordering (on the filtered set)
-        const adj: Record<string, string[]> = {};
-        const inDegree: Record<string, number> = {};
-        filtered.forEach(c => {
-            adj[c.id] = [];
-            inDegree[c.id] = 0;
+        // 1b: find sequential like 160A -> 160B
+        filteredCourses.forEach(c => {
+            if (visited.has(c.id)) return;
+            const { numeric, suffix } = splitNumber(c.number);
+            if (!suffix) return;
+            // look for companion with same numeric and suffix next letter (A->B)
+            const nextSuffix = String.fromCharCode(suffix.charCodeAt(0) + 1);
+            const nextId = `${c.subject}*${numeric}${nextSuffix}`;
+            if (idToCourse.has(nextId)) {
+                const gid = mkGroupId(`${c.subject}-${numeric}-seq`);
+                grouped.set(gid, { id: gid, label: `${c.subject} ${numeric}`, members: [c.id, nextId], type: 'sequential' });
+                visited.add(c.id);
+                visited.add(nextId);
+            }
         });
 
-        filtered.forEach(course => {
-            const prereqs = getPrereqIds(course.requisitesDisplay);
-            prereqs.forEach(prereqId => {
-                if (adj[prereqId] !== undefined) {
-                    // prereq -> course
-                    adj[prereqId].push(course.id);
-                    inDegree[course.id]++;
+        // Everything else becomes single-member groups (for simpler layout handling)
+        filteredCourses.forEach(c => {
+            if (visited.has(c.id)) return;
+            const gid = mkGroupId(c.id.replace(/\*/, '-'));
+            grouped.set(gid, { id: gid, label: c.id, members: [c.id], type: 'single' });
+            visited.add(c.id);
+        });
+
+        // Build mapping from course id -> group id
+        const courseToGroup = new Map<string, string>();
+        grouped.forEach((g, gid) => g.members.forEach(m => courseToGroup.set(m, gid)));
+
+        // Build adjacency between groups based on course prereqs
+        const groupAdj = new Map<string, Set<string>>();
+        const groupInDegree: Record<string, number> = {};
+        Array.from(grouped.keys()).forEach(gid => { groupAdj.set(gid, new Set()); groupInDegree[gid] = 0; });
+
+        grouped.forEach((g, gid) => {
+            // group's prereqs defined as prereqs of the first member (for sequential groups)
+            const first = g.members[0];
+            const course = idToCourse.get(first);
+            const prereqs = course ? getPrereqIds(course.requisitesDisplay) : [];
+            prereqs.forEach(pcid => {
+                const pg = courseToGroup.get(pcid);
+                if (pg && pg !== gid) {
+                    if (!groupAdj.get(pg)!.has(gid)) {
+                        groupAdj.get(pg)!.add(gid);
+                        groupInDegree[gid] = (groupInDegree[gid] || 0) + 1;
+                    }
                 }
             });
         });
 
-        // Kahn's algorithm to compute topological levels (prereqs above dependents)
-        const queue: string[] = [];
-        Object.keys(inDegree).forEach(k => {
-            if (inDegree[k] === 0) queue.push(k);
-        });
-
-        const levels: Record<number, string[]> = {};
-        let levelIdx = 0;
-        while (queue.length > 0) {
-            const size = queue.length;
-            levels[levelIdx] = [];
+        // Topological Kahn on groups
+        const q: string[] = [];
+        Object.keys(groupInDegree).forEach(k => { if (groupInDegree[k] === 0) q.push(k); });
+        const topoLevels: Record<string, number> = {};
+        let lvl = 0;
+        while (q.length > 0) {
+            const size = q.length;
             for (let i = 0; i < size; i++) {
-                const u = queue.shift()!;
-                levels[levelIdx].push(u);
-                adj[u].forEach(v => {
-                    inDegree[v]--;
-                    if (inDegree[v] === 0) queue.push(v);
+                const u = q.shift()!;
+                topoLevels[u] = lvl;
+                groupAdj.get(u)!.forEach(v => {
+                    groupInDegree[v]--;
+                    if (groupInDegree[v] === 0) q.push(v);
                 });
             }
-            levelIdx++;
+            lvl++;
         }
 
-        // Any remaining nodes (cycles) go to next level
-        const topoIncluded = new Set(Object.values(levels).flat());
-        const remaining = filtered.map(c => c.id).filter(k => !topoIncluded.has(k));
-        if (remaining.length > 0) {
-            levels[levelIdx] = remaining;
-        }
+        // any remaining groups (cycles) get appended levels
+        Array.from(grouped.keys()).forEach((gid, idx) => { if (topoLevels[gid] === undefined) topoLevels[gid] = lvl + idx; });
 
-        // Compute topoLevel map
-        const topoLevel: Record<string, number> = {};
-        Object.entries(levels).forEach(([k, arr]) => {
-            const idx = parseInt(k, 10);
-            arr.forEach(id => { topoLevel[id] = idx; });
+        // compute courseNumLevel for groups (based on lowest member course number)
+        const groupNumLevel: Record<string, number> = {};
+        grouped.forEach((g, gid) => {
+            const nums = g.members.map(m => splitNumber(idToCourse.get(m)?.number).numeric || 100);
+            const minNum = Math.min(...nums);
+            const bucket = Math.max(0, Math.floor(minNum / 100) - 1);
+            groupNumLevel[gid] = bucket;
         });
 
-        // Compute numeric bucket index (100->0,200->1...) and final level: max(topoLevel, bucketIndex)
-        const finalLevelMap: Record<string, number> = {};
-        filtered.forEach(c => {
-            const numMatch = (c.number || '').match(/(\d{2,3})/);
-            const n = numMatch ? parseInt(numMatch[1], 10) : 100;
-            const bucketIndex = Math.max(0, Math.floor(n / 100) - 1); // 100->0,200->1
-            const t = topoLevel[c.id] ?? 0;
-            finalLevelMap[c.id] = Math.max(t, bucketIndex);
-        });
+        // initial level = max(topo, num)
+        const groupLevel: Record<string, number> = {};
+        grouped.forEach((_, gid) => { groupLevel[gid] = Math.max(topoLevels[gid] ?? 0, groupNumLevel[gid] ?? 0); });
 
-        // Build levels by finalLevelMap
-        const finalLevels: Record<number, string[]> = {};
-        Object.keys(finalLevelMap).forEach(id => {
-            const lvl = finalLevelMap[id];
-            if (!finalLevels[lvl]) finalLevels[lvl] = [];
-            finalLevels[lvl].push(id);
-        });
-
-        // Sort within each final level by numeric then id
-        Object.keys(finalLevels).forEach(k => {
-            finalLevels[parseInt(k, 10)].sort((aId, bId) => {
-                const a = courseMap.get(aId);
-                const b = courseMap.get(bId);
-                const an = a?.number?.match(/(\d{2,3})/);
-                const bn = b?.number?.match(/(\d{2,3})/);
-                const ai = an ? parseInt(an[1], 10) : 0;
-                const bi = bn ? parseInt(bn[1], 10) : 0;
-                return ai - bi || aId.localeCompare(bId);
+        // enforcement pass: ensure every dependent is strictly below its prereqs
+        let changed = true;
+        while (changed) {
+            changed = false;
+            grouped.forEach((g, gid) => {
+                const preds = Array.from(groupAdj.entries()).filter(([, set]) => set.has(gid)).map(([k]) => k);
+                preds.forEach(pred => {
+                    if ((groupLevel[gid] ?? 0) <= (groupLevel[pred] ?? 0)) {
+                        groupLevel[gid] = (groupLevel[pred] ?? 0) + 1;
+                        changed = true;
+                    }
+                });
             });
-        });
+        }
 
-        const initialNodes: Node<JSONCourse>[] = [];
-        const initialEdges: Edge[] = [];
+        // Build level buckets
+        const levels: Record<number, string[]> = {};
+        Object.entries(groupLevel).forEach(([gid, lv]) => { if (!levels[lv]) levels[lv] = []; levels[lv].push(gid); });
 
-        // Position nodes based on finalLevels
-        Object.entries(finalLevels).forEach(([levelStr, courseIds]) => {
-            const y = parseInt(levelStr, 10) * (NODE_HEIGHT + VERTICAL_SPACING);
-            const totalWidth = courseIds.length * (NODE_WIDTH + HORIZONTAL_SPACING) - HORIZONTAL_SPACING;
+        // sort inside levels for determinism
+        Object.keys(levels).forEach(k => levels[parseInt(k, 10)].sort());
+
+        const nodes: Node<any>[] = [];
+        const edges: Edge[] = [];
+
+        // Position groups
+        Object.entries(levels).forEach(([lvlStr, gids]) => {
+            const y = parseInt(lvlStr, 10) * (NODE_HEIGHT + VERTICAL_SPACING);
+            const totalWidth = gids.length * (NODE_WIDTH + HORIZONTAL_SPACING) - HORIZONTAL_SPACING;
             const startX = -totalWidth / 2;
-
-            courseIds.forEach((courseId, index) => {
-                const course = courseMap.get(courseId);
-                if (course) {
-                    const position: XYPosition = {
-                        x: startX + index * (NODE_WIDTH + HORIZONTAL_SPACING),
-                        y,
-                    };
-
-                    initialNodes.push({
-                        id: course.id,
-                        type: 'custom',
-                        position,
-                        data: {
-                            ...course,
-                            code: course.code || course.id,
-                            title: course.title || course.fullTitle || course.id,
-                        },
+            gids.forEach((gid, idx) => {
+                const g = grouped.get(gid)!;
+                const x = startX + idx * (NODE_WIDTH + HORIZONTAL_SPACING);
+                // If group has multiple members, render as group node; otherwise custom node
+                if (g.members.length > 1) {
+                    nodes.push({ id: gid, type: 'group', position: { x, y }, data: { id: gid, label: g.label, members: g.members } });
+                    // also create internal child nodes for visual clarity (place inside group)
+                    const innerX = x - NODE_WIDTH / 2 + 16;
+                    g.members.forEach((mid, mi) => {
+                        const c = idToCourse.get(mid)!;
+                        nodes.push({ id: mid, type: 'custom', position: { x: innerX + mi * 110, y: y + 20 }, data: { ...c, code: c.code || c.id, title: c.title || c.fullTitle || c.id } });
+                        // internal edge for sequence/combined
+                        edges.push({ id: `inner-${mid}`, source: mid, target: g.members[mi + 1] ?? mid, type: 'bezier', style: { stroke: '#999' }, animated: false, markerEnd: undefined });
                     });
+                } else {
+                    const mid = g.members[0];
+                    const c = idToCourse.get(mid)!;
+                    nodes.push({ id: mid, type: 'custom', position: { x, y }, data: { ...c, code: c.code || c.id, title: c.title || c.fullTitle || c.id } });
                 }
             });
         });
 
-        // Create pruned edges: each prereq points only to immediate next-level dependents (nearest level > prereq level)
-        const idToLevel = finalLevelMap; // alias
-        filtered.forEach(course => {
-            const dependents = Object.keys(adj[course.id] ? { [course.id]: adj[course.id] } : {}).length ? adj[course.id] : [];
-            // also find dependents from the filtered set (some adj entries may be empty)
-            const directDependents = filtered.filter(c => {
-                const prereqs = getPrereqIds(c.requisitesDisplay);
-                return prereqs.includes(course.id);
-            }).map(c => c.id);
-
-            const allDependents = Array.from(new Set([...dependents, ...directDependents]));
-            if (allDependents.length === 0) return;
-
-            const sourceLevel = idToLevel[course.id] ?? 0;
-            // group dependents by level and pick the minimal level > sourceLevel
-            const higher = allDependents
-                .map(d => ({ id: d, l: idToLevel[d] ?? 0 }))
-                .filter(x => x.l > sourceLevel);
+        // Prune edges: only connect groups to groups that are on the immediate next level
+        const gidToLevel = Object.fromEntries(Object.entries(groupLevel).map(([k, v]) => [k, v]));
+        grouped.forEach((g, gid) => {
+            const deps = Array.from(groupAdj.get(gid) || []);
+            if (deps.length === 0) return;
+            const srcLevel = gidToLevel[gid] ?? 0;
+            const higher = deps.map(d => ({ id: d, l: gidToLevel[d] ?? 0 })).filter(x => x.l > srcLevel);
             if (higher.length === 0) return;
             const minLevel = Math.min(...higher.map(h => h.l));
-            const nextLevelDeps = higher.filter(h => h.l === minLevel).map(h => h.id);
-
-            nextLevelDeps.forEach(depId => {
-                initialEdges.push({
-                    id: `e-${course.id}-${depId}`,
-                    source: course.id,
-                    target: depId,
-                    type: 'smoothstep',
-                    animated: false,
-                    style: { stroke: 'hsl(var(--primary))', strokeWidth: 2 },
-                    markerEnd: { type: 'arrowclosed' as any, color: 'hsl(var(--primary))' },
-                });
+            const nextDeps = higher.filter(h => h.l === minLevel).map(h => h.id);
+            nextDeps.forEach(dgid => {
+                // connect group nodes (or member nodes) from gid -> dgid
+                const sourceNode = g.members[g.members.length - 1]; // last member acts as source
+                const targetGroup = grouped.get(dgid)!;
+                const targetNode = targetGroup.members[0];
+                edges.push({ id: `e-${sourceNode}-${targetNode}`, source: sourceNode, target: targetNode, type: 'bezier', animated: false, style: { stroke: 'hsl(var(--primary))', strokeWidth: 2 }, markerEnd: { type: 'arrowclosed' as any, color: 'hsl(var(--primary))' } });
             });
         });
 
-        return { nodes: initialNodes, edges: initialEdges };
+        return { nodes, edges };
     }, [filteredCourses]);
 
-    const handleNodeClick = (_: React.MouseEvent, node: Node<JSONCourse>) => {
+    const handleNodeClick = (_: React.MouseEvent, node: Node<any>) => {
         onNodeClick(node.data);
     };
-
 
     return (
         <div className="h-full w-full bg-background">
             <div className="p-2 flex items-center gap-2 justify-center">
                 <label className="text-sm text-muted-foreground">Subject:</label>
-                <select
-                    value={selectedSubject}
-                    onChange={e => setSelectedSubject(e.target.value)}
-                    className="select select-sm"
-                >
+                <select value={selectedSubject} onChange={e => setSelectedSubject(e.target.value)} className="select select-sm">
                     <option value="">Select subject</option>
-                    {uniqueSubjects.map(s => (
-                        <option key={s} value={s}>{s}</option>
-                    ))}
+                    {uniqueSubjects.map(s => <option key={s} value={s}>{s}</option>)}
                 </select>
                 <div className="text-sm text-muted-foreground">{filteredCourses.length} courses</div>
             </div>
-            <ReactFlow
-                nodes={nodes}
-                edges={edges}
-                onNodeClick={handleNodeClick}
-                nodeTypes={nodeTypes}
-                fitView
-                zoomOnScroll={true}
-                panOnDrag={true}
-                panOnScroll={false}
-                zoomOnDoubleClick={false}
-                className="react-flow-course-diagram"
-                proOptions={{ hideAttribution: true }}
-            >
+            <ReactFlow nodes={nodes} edges={edges} onNodeClick={handleNodeClick} nodeTypes={nodeTypes} fitView zoomOnScroll panOnDrag panOnScroll={false} zoomOnDoubleClick={false} className="react-flow-course-diagram" proOptions={{ hideAttribution: true }}>
                 <Controls />
                 <MiniMap nodeStrokeWidth={3} zoomable pannable />
                 <Background variant={BackgroundVariant.Dots} gap={24} size={1} />
@@ -336,3 +325,5 @@ export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
         </div>
     );
 }
+
+export default CourseDiagram;
