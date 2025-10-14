@@ -40,11 +40,10 @@ export default function Home() {
     }
   };
 
+  // Close sidebar 
   const handleCloseSidebar = () => {
-    if(isMobile) {
-      setSidebarMode('closed');
-    }
-    setSelectedCourse(null);
+    setSidebarMode('closed');
+    // setSelectedCourse(null);
   };
 
   // Toggle sidebar open/closed
@@ -63,6 +62,11 @@ export default function Home() {
     setSelectedCourse(null);
   };
 
+   const handleCourseSelectFromSearch = (course: Course) => {
+    setSelectedCourse(course);
+    setSidebarMode('details'); // Switch to details view when a course is selected from search
+  };
+
   // Render sidebar content based on current mode
   const sidebarContent = (
     <>
@@ -74,7 +78,11 @@ export default function Home() {
         />
       )}
       {sidebarMode === 'search' && (
-        <CourseSearchSidebar onClose={handleCloseSidebar} />
+        <CourseSearchSidebar 
+          onClose={handleCloseSidebar}
+          onCourseSelect={handleCourseSelectFromSearch}
+          courses={courses}
+        />
       )}
     </>
   );
@@ -155,7 +163,7 @@ export default function Home() {
       </div>
 
       {isMobile ? (
-        <Sheet open={isSidebarVisible} onOpenChange={(open) => setSidebarMode(open ? 'details' : 'closed')}>
+        <Sheet open={isSidebarVisible} onOpenChange={(open) => setSidebarMode(open ? sidebarMode : 'closed')}>
           <SheetContent className="w-[85vw] p-0 border-l" side="right">
             {sidebarContent}
           </SheetContent>
