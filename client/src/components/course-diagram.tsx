@@ -31,8 +31,8 @@ const nodeTypes = {
     group: GroupNode,
 };
 
-const NODE_WIDTH = 220;
-const NODE_HEIGHT = 84;
+const NODE_WIDTH = 150;
+const NODE_HEIGHT = 54;
 const HORIZONTAL_SPACING = 64;
 const VERTICAL_SPACING = 120;
 
@@ -93,6 +93,7 @@ export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
             const n = splitNumber(c.number).numeric || 0;
             return n <= 500;
         });
+
         const expanded = new Map<string, JSONCourse>();
 
         const addWithPrereqs = (course: JSONCourse) => {
@@ -248,6 +249,28 @@ export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
         const levels: Record<number, string[]> = {};
         Object.entries(groupLevel).forEach(([gid, lv]) => { if (!levels[lv]) levels[lv] = []; levels[lv].push(gid); });
 
+        // Compute incoming counts (fresh) and detect isolated groups (no in, no out)
+        const incomingCount: Record<string, number> = {};
+        Array.from(grouped.keys()).forEach(gid => incomingCount[gid] = 0);
+        groupAdj.forEach((set, from) => {
+            Array.from(set).forEach(to => { incomingCount[to] = (incomingCount[to] || 0) + 1; });
+        });
+
+        const isolatedGids: string[] = [];
+        Array.from(grouped.keys()).forEach(gid => {
+            const out = (groupAdj.get(gid) || new Set()).size;
+            const inc = incomingCount[gid] || 0;
+            if (inc === 0 && out === 0) isolatedGids.push(gid);
+        });
+
+        // Remove isolated groups from the central levels so they don't take up main space
+        isolatedGids.forEach(iso => {
+            Object.keys(levels).forEach(lk => {
+                levels[parseInt(lk, 10)] = levels[parseInt(lk, 10)].filter(g => g !== iso);
+                if (levels[parseInt(lk, 10)].length === 0) delete levels[parseInt(lk, 10)];
+            });
+        });
+
         // sort inside levels for determinism
         Object.keys(levels).forEach(k => levels[parseInt(k, 10)].sort());
 
@@ -271,7 +294,7 @@ export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
                         const c = idToCourse.get(mid)!;
                         nodes.push({ id: mid, type: 'custom', position: { x: innerX + mi * 110, y: y + 20 }, data: { ...c, code: c.code || c.id, title: c.title || c.fullTitle || c.id } });
                         // internal edge for sequence/combined
-                        edges.push({ id: `inner-${mid}`, source: mid, target: g.members[mi + 1] ?? mid, type: 'bezier', style: { stroke: '#999' }, animated: false, markerEnd: undefined });
+                        edges.push({ id: `inner-${mid}`, source: mid, target: g.members[mi + 1] ?? mid, style: { stroke: '#999' }, animated: false, markerEnd: undefined });
                     });
                 } else {
                     const mid = g.members[0];
@@ -280,6 +303,34 @@ export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
                 }
             });
         });
+
+        // After central placement, position isolated groups in a left column
+        if (isolatedGids.length > 0) {
+            const levelCount = Object.keys(levels).length || 1;
+            const centralWidth = levelCount * (NODE_WIDTH + HORIZONTAL_SPACING);
+            const leftX = -centralWidth / 2 - NODE_WIDTH - 250;
+            const colStartY = 0;
+            isolatedGids.forEach((gid, idx) => {
+                const g = grouped.get(gid)!;
+                const y = colStartY + idx * (NODE_HEIGHT + 24);
+                const x = leftX;
+                if (g.members.length > 1) {
+                    nodes.push({ id: gid, type: 'group', position: { x, y }, data: { id: gid, label: g.label, members: g.members } });
+                    const innerX = x - NODE_WIDTH / 2 + 16;
+                    g.members.forEach((mid, mi) => {
+                        const c = idToCourse.get(mid)!;
+                        nodes.push({ id: mid, type: 'custom', position: { x: innerX + mi * 110, y: y + 20 }, data: { ...c, code: c.code || c.id, title: c.title || c.fullTitle || c.id } });
+                        if (mi < g.members.length - 1) {
+                            edges.push({ id: `inner-${mid}`, source: mid, target: g.members[mi + 1], animated: false, style: { stroke: '#999' } });
+                        }
+                    });
+                } else {
+                    const mid = g.members[0];
+                    const c = idToCourse.get(mid)!;
+                    nodes.push({ id: mid, type: 'custom', position: { x, y }, data: { ...c, code: c.code || c.id, title: c.title || c.fullTitle || c.id } });
+                }
+            });
+        }
 
         // Prune edges: only connect groups to groups that are on the immediate next level
         const gidToLevel = Object.fromEntries(Object.entries(groupLevel).map(([k, v]) => [k, v]));
@@ -296,7 +347,7 @@ export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
                 const sourceNode = g.members[g.members.length - 1]; // last member acts as source
                 const targetGroup = grouped.get(dgid)!;
                 const targetNode = targetGroup.members[0];
-                edges.push({ id: `e-${sourceNode}-${targetNode}`, source: sourceNode, target: targetNode, type: 'bezier', animated: false, style: { stroke: 'hsl(var(--primary))', strokeWidth: 2 }, markerEnd: { type: 'arrowclosed' as any, color: 'hsl(var(--primary))' } });
+                edges.push({ id: `e-${sourceNode}-${targetNode}`, source: sourceNode, target: targetNode, animated: false, style: { stroke: 'hsl(var(--primary))', strokeWidth: 2 }, markerEnd: { type: 'arrowclosed' as any, color: 'hsl(var(--primary))' } });
             });
         });
 

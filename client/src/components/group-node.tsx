@@ -11,8 +11,8 @@ type NodeData = {
 // A simple container node for grouping sequential courses
 const GroupNode: FC<NodeProps<NodeData>> = ({ data }) => {
     return (
-        <div className="bg-muted/30 border-2 border-dashed border-border rounded-xl p-4 pt-8 w-full h-full">
-            <div className="absolute top-2 left-1/2 -translate-x-1/2 text-sm font-bold text-muted-foreground">
+        <div className="bg-muted/30 border-2 border-dashed border-border rounded-lg p-2 pt-6 w-full h-full">
+            <div className="absolute top-1 left-1/2 -translate-x-1/2 text-xs font-semibold text-muted-foreground">
                 {data.title}
             </div>
         </div>
