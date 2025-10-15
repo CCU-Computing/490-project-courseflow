@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { X, Search} from 'lucide-react';
+import { X, Search } from 'lucide-react';
 import { CourseSearchbar } from '@/components/course-searchbar';
 import type { Course } from '@/lib/mock-data';
 
@@ -9,7 +9,6 @@ interface CourseSearchSidebarProps {
     onClose: () => void;
     onCourseSelect?: (course: Course) => void;
     courses: Course[];
-
 }
 
 export function CourseSearchSidebar({ onClose, onCourseSelect, courses }: CourseSearchSidebarProps) {
@@ -21,18 +20,31 @@ export function CourseSearchSidebar({ onClose, onCourseSelect, courses }: Course
         }
 
         const query = searchQuery.toLowerCase().trim();
-        return courses.filter(course => 
-            course.code.toLowerCase().includes(query) ||
-            course.title.toLowerCase().includes(query) 
-        );
+        
+        return courses.filter(course => {
+            // Normalize the course code for searching
+            const normalizedCode = course.code.toLowerCase().replace('*', ' ').replace(/\s+/g, ' ').trim();
+            const normalizedTitle = course.title.toLowerCase();
+            
+            // Check if query matches code (with different formatting)
+            const codeMatch = normalizedCode.includes(query) || 
+                            course.code.toLowerCase().includes(query) ||
+                            // Handle "MATH 130A" vs "MATH*130A"
+                            course.code.toLowerCase().replace('*', '').includes(query.replace(/\s/g, '')) ||
+                            // Handle "math130a" without spaces
+                            course.code.toLowerCase().replace('*', '').includes(query.replace(/\s/g, '')) ||
+                            // Handle partial matches like "math130"
+                            course.code.toLowerCase().includes(query.replace(/\s/g, ''));
+
+            // Check if query matches title
+            const titleMatch = normalizedTitle.includes(query);
+            
+            return codeMatch || titleMatch;
+        });
     }, [searchQuery, courses]);
 
     const handleCourseClick = (course: Course) => {
         onCourseSelect?.(course);
-    };
-
-    const handleCloseClick = () => {
-        onClose(); //should call handleclosesidebar from page.tsx
     };
 
     return (
@@ -70,6 +82,7 @@ export function CourseSearchSidebar({ onClose, onCourseSelect, courses }: Course
                         <div className="text-center text-muted-foreground py-8">
                             <Search className="h-12 w-12 mx-auto mb-4 opacity-50"/>
                             <p>No courses found for "{searchQuery}"</p>
+                            <p className="text-sm mt-2">Try searching with just the subject or number</p>
                         </div>
                     ) : filteredCourses.length > 0 ? (
                         <div className="space-y-3">
