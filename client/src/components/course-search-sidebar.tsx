@@ -100,11 +100,6 @@ export function CourseSearchSidebar({ onClose, onCourseSelect, courses }: Course
                                             <div>
                                                 <h4 className="font-semibold text-primary">{course.code}</h4>
                                                 <p className="text-sm font-medium">{course.title}</p>
-                                                {course.description && (
-                                                    <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
-                                                        {course.description}
-                                                    </p>
-                                                )}
                                             </div>
                                             <div className="flex flex-col items-end text-xs text-muted-foreground">
                                                 <span>{course.credits} credit{course.credits !== 1 ? 's' : ''}</span>

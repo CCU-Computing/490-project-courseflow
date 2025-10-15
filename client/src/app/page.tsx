@@ -9,6 +9,7 @@ import { useCourses } from '@/hooks/use-courses';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { PanelLeft, PanelRight, Search, BookOpen } from 'lucide-react';
+import ThemeToggle from '@/components/ui/theme-toggle';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
 
@@ -158,7 +159,7 @@ export default function Home() {
                     </div>
                     <div className="flex items-center gap-2">
                         <label className="text-sm text-muted-foreground">Subject:</label>
-                        <select value={selectedSubject} onChange={e => setSelectedSubject(e.target.value)} className="select select-sm">
+                        <select value={selectedSubject} onChange={e => setSelectedSubject(e.target.value)} className="select select-sm bg-input text-foreground border-border">
                             <option value="">All subjects</option>
                             {/* build unique subject list from diagramCourses */}
                             {Array.from(new Set((diagramCourses || []).map(c => c.subject))).filter(Boolean).sort().map(s => (
@@ -174,9 +175,15 @@ export default function Home() {
 
             {/* Sidebar toggle buttons- position relative to main container*/}
             <div className={cn(
-                "absolute right-0 top-6 z-30 flex flex-col gap-2 transition-all duration-300",
+                "absolute right-0 top-6 z-30 flex items-start gap-2 transition-all duration-300",
                 isSidebarVisible ? "right-96" : "right-5"
             )}>
+                {/* Theme toggle sits left of the main details toggle and moves with the whole control group */}
+                <div className="flex items-center">
+                    <div className="mr-2">
+                        <ThemeToggle />
+                    </div>
+                </div>
                 {/* Main toggle button- always visible*/}
                 <Button
                     variant="outline"
