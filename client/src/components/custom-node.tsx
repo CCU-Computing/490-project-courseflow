@@ -13,7 +13,7 @@ type NodeData = {
 const CustomNode: FC<NodeProps<NodeData>> = ({ data, selected }) => {
     return (
         <>
-            <Handle type="target" position={Position.Top} className="!bg-primary/50" />
+            <Handle type="target" position={Position.Left} className="!bg-primary/50" />
             <Card className={`w-40 border-2 transition-all duration-150 hover:shadow-lg hover:border-primary/80 ${selected ? 'border-primary shadow-xl scale-105' : 'border-border shadow-md'}`}>
                 <CardContent className="p-1">
                     <div className="flex gap-1">
@@ -29,7 +29,7 @@ const CustomNode: FC<NodeProps<NodeData>> = ({ data, selected }) => {
                     </div>
                 </CardContent>
             </Card>
-            <Handle type="source" position={Position.Bottom} className="!bg-primary/50" />
+            <Handle type="source" position={Position.Right} className="!bg-primary/50" />
         </>
     );
 };

@@ -12,7 +12,6 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import CustomNode from './custom-node';
-import GroupNode from './group-node';
 // Use the pre-built course JSON dataset
 import rawCourseData from '../../data/course_data_full.json';
 
@@ -27,18 +26,20 @@ type JSONCourse = {
 };
 
 const nodeTypes = {
-    custom: CustomNode,
-    group: GroupNode,
+    custom: CustomNode
 };
 
 const NODE_WIDTH = 150;
 const NODE_HEIGHT = 54;
-const HORIZONTAL_SPACING = 64;
-const VERTICAL_SPACING = 120;
+const HORIZONTAL_SPACING = 160; // space between levels (was horizontal spacing between nodes in the same level)
+const VERTICAL_SPACING = 48; // reduced vertical spacing between nodes in the same level
+const INNER_MEMBER_GAP = -10; // vertical gap between members inside a grouped node (smaller -> closer)
+// Toggle detailed console debugging
+const DEBUG = true;
 
 interface CourseDiagramProps {
-    onNodeClick: (course: JSONCourse | { id: string; label: string; members: string[] }) => void;
-    courses?: JSONCourse[];
+    onNodeClick: (course: any) => void;
+    courses?: any[];
 }
 
 const getPrereqIds = (displayText?: string): string[] => {
@@ -118,6 +119,10 @@ export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
 
     const { nodes, edges } = useMemo(() => {
         if (!filteredCourses || filteredCourses.length === 0) return { nodes: [], edges: [] };
+
+        // debug capture arrays
+        const createdEdgesDebug: Array<any> = [];
+        const prunedEdgesDebug: Array<any> = [];
 
         // Step 1: Preprocessing groups
         // sequential groups: detect same subject with same numeric + suffix A/B or A->B pattern
@@ -277,24 +282,31 @@ export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
         const nodes: Node<any>[] = [];
         const edges: Edge[] = [];
 
-        // Position groups
-        Object.entries(levels).forEach(([lvlStr, gids]) => {
-            const y = parseInt(lvlStr, 10) * (NODE_HEIGHT + VERTICAL_SPACING);
-            const totalWidth = gids.length * (NODE_WIDTH + HORIZONTAL_SPACING) - HORIZONTAL_SPACING;
-            const startX = -totalWidth / 2;
+        // Position groups left-to-right by level (x = level), and stack nodes vertically within each level
+        const levelKeys = Object.keys(levels).map(k => parseInt(k, 10)).sort((a, b) => a - b);
+        levelKeys.forEach((lvl, lvlIdx) => {
+            const gids = levels[lvl];
+            const x = lvlIdx * (NODE_WIDTH + HORIZONTAL_SPACING);
+            // compute total height for this level to center vertically
+            const totalHeight = gids.length * (NODE_HEIGHT + VERTICAL_SPACING) - VERTICAL_SPACING;
+            const startY = -totalHeight / 2;
             gids.forEach((gid, idx) => {
                 const g = grouped.get(gid)!;
-                const x = startX + idx * (NODE_WIDTH + HORIZONTAL_SPACING);
+                const y = startY + idx * (NODE_HEIGHT + VERTICAL_SPACING);
                 // If group has multiple members, render as group node; otherwise custom node
                 if (g.members.length > 1) {
-                    nodes.push({ id: gid, type: 'group', position: { x, y }, data: { id: gid, label: g.label, members: g.members } });
-                    // also create internal child nodes for visual clarity (place inside group)
-                    const innerX = x - NODE_WIDTH / 2 + 16;
+                    // nodes.push({ id: gid, type: 'group', position: { x, y }, data: { id: gid, label: g.label, members: g.members } });
+                    // create internal child nodes vertically inside the group
+                    // center members vertically around the group's y and align x with the group
                     g.members.forEach((mid, mi) => {
                         const c = idToCourse.get(mid)!;
-                        nodes.push({ id: mid, type: 'custom', position: { x: innerX + mi * 110, y: y + 20 }, data: { ...c, code: c.code || c.id, title: c.title || c.fullTitle || c.id } });
+                        const n = g.members.length;
+                        const offset = (mi - (n - 1) / 2) * (NODE_HEIGHT + INNER_MEMBER_GAP);
+                        nodes.push({ id: mid, type: 'custom', position: { x: x, y: y + offset }, data: { ...c, code: c.code || c.id, title: c.title || c.fullTitle || c.id } });
                         // internal edge for sequence/combined
-                        edges.push({ id: `inner-${mid}`, source: mid, target: g.members[mi + 1] ?? mid, style: { stroke: '#999' }, animated: false, markerEnd: undefined });
+                        const innerTarget = g.members[mi + 1] ?? mid;
+                        edges.push({ id: `inner-${mid}`, source: mid, target: innerTarget, style: { stroke: '#999' }, animated: false, markerEnd: undefined });
+                        createdEdgesDebug.push({ id: `inner-${mid}`, source: mid, target: innerTarget, type: 'inner' });
                     });
                 } else {
                     const mid = g.members[0];
@@ -304,22 +316,21 @@ export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
             });
         });
 
-        // After central placement, position isolated groups in a left column
+        // After central placement, position isolated groups in a left column (stacked vertically)
         if (isolatedGids.length > 0) {
-            const levelCount = Object.keys(levels).length || 1;
-            const centralWidth = levelCount * (NODE_WIDTH + HORIZONTAL_SPACING);
-            const leftX = -centralWidth / 2 - NODE_WIDTH - 250;
-            const colStartY = 0;
+            const leftX = -NODE_WIDTH - 300; // keep isolated column to the left
+            const colStartY = 0 - (isolatedGids.length * (NODE_HEIGHT + 24) - 24) / 2;
             isolatedGids.forEach((gid, idx) => {
                 const g = grouped.get(gid)!;
                 const y = colStartY + idx * (NODE_HEIGHT + 24);
                 const x = leftX;
                 if (g.members.length > 1) {
                     nodes.push({ id: gid, type: 'group', position: { x, y }, data: { id: gid, label: g.label, members: g.members } });
-                    const innerX = x - NODE_WIDTH / 2 + 16;
                     g.members.forEach((mid, mi) => {
                         const c = idToCourse.get(mid)!;
-                        nodes.push({ id: mid, type: 'custom', position: { x: innerX + mi * 110, y: y + 20 }, data: { ...c, code: c.code || c.id, title: c.title || c.fullTitle || c.id } });
+                        const n = g.members.length;
+                        const offset = (mi - (n - 1) / 2) * (NODE_HEIGHT + INNER_MEMBER_GAP);
+                        nodes.push({ id: mid, type: 'custom', position: { x: x, y: y + offset }, data: { ...c, code: c.code || c.id, title: c.title || c.fullTitle || c.id } });
                         if (mi < g.members.length - 1) {
                             edges.push({ id: `inner-${mid}`, source: mid, target: g.members[mi + 1], animated: false, style: { stroke: '#999' } });
                         }
@@ -342,14 +353,44 @@ export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
             if (higher.length === 0) return;
             const minLevel = Math.min(...higher.map(h => h.l));
             const nextDeps = higher.filter(h => h.l === minLevel).map(h => h.id);
+            // log pruned (non-next-level) deps
+            const allDepIds = deps.slice();
+            const prunedList = allDepIds.filter(d => !nextDeps.includes(d));
+            prunedList.forEach(pd => prunedEdgesDebug.push({ source: gid, target: pd, reason: 'not immediate next level' }));
+
             nextDeps.forEach(dgid => {
                 // connect group nodes (or member nodes) from gid -> dgid
                 const sourceNode = g.members[g.members.length - 1]; // last member acts as source
                 const targetGroup = grouped.get(dgid)!;
                 const targetNode = targetGroup.members[0];
-                edges.push({ id: `e-${sourceNode}-${targetNode}`, source: sourceNode, target: targetNode, animated: false, style: { stroke: 'hsl(var(--primary))', strokeWidth: 2 }, markerEnd: { type: 'arrowclosed' as any, color: 'hsl(var(--primary))' } });
+                const edgeId = `e-${sourceNode}-${targetNode}`;
+                edges.push({ id: edgeId, source: sourceNode, target: targetNode, animated: false, style: { stroke: 'hsl(var(--primary))', strokeWidth: 2 }, markerEnd: { type: 'arrowclosed' as any, color: 'hsl(var(--primary))' } });
+                createdEdgesDebug.push({ id: edgeId, source: sourceNode, target: targetNode, type: 'group->group', fromGroup: gid, toGroup: dgid });
             });
         });
+
+        // Detailed debug output
+        if (DEBUG) {
+            try {
+                console.groupCollapsed('CourseDiagram debug');
+                console.log('subject', selectedSubject);
+                console.log('filteredCourses count', filteredCourses.length);
+                console.log('filteredCourses ids', filteredCourses.map(f => f.id));
+                console.log('grouped (id -> members):', Array.from(grouped.entries()).map(([k, v]) => ({ id: k, members: v.members, type: v.type })));
+                console.log('courseToGroup:', Object.fromEntries(Array.from(courseToGroup.entries())));
+                console.log('groupAdj:', Object.fromEntries(Array.from(groupAdj.entries()).map(([k, s]) => [k, Array.from(s)])));
+                console.log('topoLevels:', topoLevels);
+                console.log('groupNumLevel:', groupNumLevel);
+                console.log('groupLevel (after enforcement):', groupLevel);
+                console.log('levels (final buckets):', levels);
+                console.log('isolated groups:', isolatedGids);
+                console.log('createdEdgesDebug:', createdEdgesDebug);
+                console.log('prunedEdgesDebug:', prunedEdgesDebug);
+                console.groupEnd();
+            } catch (e) {
+                console.error('CourseDiagram debug error', e);
+            }
+        }
 
         return { nodes, edges };
     }, [filteredCourses]);
