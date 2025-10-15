@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { X, BookOpen, Star, ChevronsRight } from 'lucide-react';
-import { getRawCourse, buildPrereqTree, PrereqNode } from '@/lib/course-utils';
+import { getRawCourse, buildPrereqTree, PrereqNode, getPrereqIds, parsePrereqDisplay } from '@/lib/course-utils';
 import { cn } from '@/lib/utils';
 
 interface CourseDetailSidebarProps {
@@ -13,42 +13,47 @@ interface CourseDetailSidebarProps {
     onClose: () => void;
 }
 
-const PrerequisiteItem: React.FC<{ node: PrereqNode }> = ({ node }) => (
-    <div className="flex items-center gap-3 p-3 rounded-md border bg-muted/50">
-        <ChevronsRight className="h-4 w-4 text-primary flex-shrink-0" />
-        <div>
-            <p className="font-medium">{node.code}</p>
-            <p className="text-sm text-muted-foreground">{node.title}</p>
+const PrerequisiteChip: React.FC<{ id: string }> = ({ id }) => {
+    const raw = getRawCourse(id);
+    const title = raw ? (raw.Title || raw.FullTitleDisplay || raw.CourseTitleDisplay) : id;
+    return (
+        <div className="px-3 py-1 rounded-md border bg-background/60 text-sm flex items-center gap-2">
+            <div className="font-semibold">{id}</div>
+            <div className="text-xs text-muted-foreground">{title}</div>
         </div>
-    </div>
-);
+    );
+};
 
 // NEW: A more robust PrerequisiteGroupView component
-const PrerequisiteGroupView: React.FC<{ group: any; allCourses?: any[] }> = ({ group, allCourses }) => {
-    // This guard clause prevents crashes if the 'courses' array is missing.
-    if (!Array.isArray(group.courses)) {
-        return null; // Don't render anything if the data is malformed
+const PrerequisiteGroupView: React.FC<{ group: any; allCourses?: any[]; level?: number }> = ({ group, allCourses, level = 0 }) => {
+    // guard
+    if (!group) return null;
+
+    // If group is a string or has DisplayText, attempt to parse ids
+    if (typeof group === 'string') {
+        const ids = getPrereqIds(group);
+        const type = /\bAND\b/i.test(group) ? 'and' : (/\bOR\b/i.test(group) ? 'or' : 'and');
+        return (
+            <div className="rounded-md border bg-muted/20 p-3">
+                <div className="text-xs font-semibold mb-2">{type.toUpperCase()}</div>
+                <div className="flex flex-wrap gap-2">{ids.map(id => <PrerequisiteChip key={id} id={id} />)}</div>
+            </div>
+        );
     }
 
-    const description = group.type === 'or' ? 'One of the following is required:' : 'All of the following are required:';
+    // Expect object with type and courses (array)
+    const type = (group.type || 'and').toLowerCase();
+    const header = type === 'or' ? 'OR' : 'AND';
 
     return (
-        <div className="relative rounded-lg border bg-muted/20 p-4">
-            <p className="text-sm font-semibold text-muted-foreground mb-3">{description}</p>
-            <div className="space-y-3">
-                {group.courses.map((prereq: any, index: number) => (
-                    <React.Fragment key={index}>
-                        {typeof prereq === 'string' ? (
-                            (() => {
-                                const raw = getRawCourse(prereq);
-                                const node: PrereqNode | null = raw ? { id: prereq, code: prereq, title: raw.Title || raw.FullTitleDisplay || raw.CourseTitleDisplay, children: [] } : null;
-                                return node ? <PrerequisiteItem node={node} /> : null;
-                            })()
-                        ) : (
-                            <PrerequisiteGroupView group={prereq} allCourses={allCourses} />
-                        )}
-                    </React.Fragment>
-                ))}
+        <div className={`rounded-md border bg-muted/20 p-3 ${level > 0 ? 'ml-4' : ''}`}>
+            <div className="text-xs font-semibold mb-2">{header}</div>
+            <div className="flex flex-wrap gap-2">
+                {Array.isArray(group.courses) ? group.courses.map((p: any, i: number) => (
+                    <div key={i}>
+                        {typeof p === 'string' ? <PrerequisiteChip id={p} /> : <PrerequisiteGroupView group={p} allCourses={allCourses} level={level + 1} />}
+                    </div>
+                )) : null}
             </div>
         </div>
     );
@@ -56,21 +61,24 @@ const PrerequisiteGroupView: React.FC<{ group: any; allCourses?: any[] }> = ({ g
 
 // NEW: A more robust PrerequisiteView component
 const PrerequisiteView: React.FC<{ prerequisites: any; allCourses?: any[] }> = ({ prerequisites, allCourses }) => {
-    const isPrereqGroup = (p: any): p is any => {
-        return p != null && typeof p === 'object' && 'type' in p && 'courses' in p && Array.isArray((p as any).courses);
-    };
-
     if (!prerequisites) return <p className="text-muted-foreground italic p-3 rounded-md bg-muted/50 text-center">No prerequisites available.</p>;
-    if (!isPrereqGroup(prerequisites)) {
-        // If it's not structured, try to parse display text
-        const rawText = typeof prerequisites === 'string' ? prerequisites : '';
-        if (!rawText) return <p className="text-muted-foreground italic p-3 rounded-md bg-muted/50 text-center">No prerequisites for this course.</p>;
-        // render parsed ids
-        const ids = ([] as string[]); // nothing here without raw mapping
-        return <p className="text-muted-foreground italic p-3 rounded-md bg-muted/50 text-center">{rawText}</p>;
+
+    // If it's a structured group (object with type & courses) or an array
+    if (typeof prerequisites === 'object' && ('type' in prerequisites || Array.isArray(prerequisites))) {
+        // normalize to group object
+        const group = Array.isArray(prerequisites) ? { type: 'and', courses: prerequisites } : prerequisites;
+        return <PrerequisiteGroupView group={group} allCourses={allCourses} />;
     }
 
-    return <PrerequisiteGroupView group={prerequisites} allCourses={allCourses} />;
+    // Fallback: parse display text string into logical groups
+    if (typeof prerequisites === 'string') {
+        const parsed = parsePrereqDisplay(prerequisites);
+        if (parsed) return <PrerequisiteGroupView group={parsed} allCourses={allCourses} />;
+        // otherwise fall back to raw string parse
+        return <PrerequisiteGroupView group={prerequisites} allCourses={allCourses} />;
+    }
+
+    return <p className="text-muted-foreground italic p-3 rounded-md bg-muted/50 text-center">No prerequisites available.</p>;
 };
 
 
@@ -108,8 +116,12 @@ export function CourseDetailSidebar({ course, allCourses, onClose }: CourseDetai
         );
     }
 
-    // Build a readable prerequisite tree
-    const prereqTree = buildPrereqTree(raw.CourseTitleDisplay ? raw.CourseTitleDisplay : raw.CourseTitleDisplay || raw.CourseTitleDisplay || raw.CourseTitleDisplay);
+    // Prefer raw display text for prerequisites (so we can parse AND/OR correctly), otherwise build tree
+    const displayTexts: string[] = Array.isArray(raw.CourseRequisites)
+        ? raw.CourseRequisites.map((r: any) => r.DisplayText).filter(Boolean)
+        : raw.CourseRequisites && raw.CourseRequisites.DisplayText ? [raw.CourseRequisites.DisplayText] : [];
+    const combinedDisplay = displayTexts.join(' ; ');
+    const prereqTree = combinedDisplay ? combinedDisplay : (buildPrereqTree(raw.CourseTitleDisplay ? raw.CourseTitleDisplay : raw.CourseTitleDisplay || raw.CourseTitleDisplay || raw.CourseTitleDisplay));
 
     return (
         <div className="flex flex-col h-full bg-card">
@@ -145,15 +157,27 @@ export function CourseDetailSidebar({ course, allCourses, onClose }: CourseDetai
                         <div className="space-y-4">
                             {prereqTree ? (
                                 <div className="space-y-2">
-                                    <PrerequisiteItem node={prereqTree} />
-                                    {prereqTree.children.length > 0 && (
-                                        <div className="ml-6 border-l pl-4">
-                                            {prereqTree.children.map(child => (
-                                                <div key={child.id} className="mb-2">
-                                                    <PrerequisiteItem node={child} />
-                                                </div>
-                                            ))}
-                                        </div>
+                                    {typeof prereqTree === 'string' ? (
+                                        // raw display text — let the PrerequisiteView parse it into AND/OR groups
+                                        <PrerequisiteView prerequisites={prereqTree} allCourses={allCourses} />
+                                    ) : (
+                                        // built tree object
+                                        (() => {
+                                            const children = (prereqTree as PrereqNode).children || [];
+                                            if (children.length === 0) {
+                                                return <p className="text-muted-foreground italic p-3 rounded-md bg-muted/50 text-center">No prerequisites for this course.</p>;
+                                            }
+                                            if (children.length === 1) {
+                                                return (
+                                                    <div className="rounded-md border bg-muted/20 p-3">
+                                                        <div className="flex flex-wrap gap-2">
+                                                            <PrerequisiteChip id={children[0].code} />
+                                                        </div>
+                                                    </div>
+                                                );
+                                            }
+                                            return <PrerequisiteView prerequisites={children.map((c: PrereqNode) => c.code)} allCourses={allCourses} />;
+                                        })()
                                     )}
                                 </div>
                             ) : (

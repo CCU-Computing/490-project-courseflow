@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import ReactFlow, {
     Background,
     Controls,
@@ -40,6 +40,9 @@ const DEBUG = true;
 interface CourseDiagramProps {
     onNodeClick: (course: any) => void;
     courses?: any[];
+    // optional controlled subject selection coming from parent
+    selectedSubject?: string;
+    onSubjectChange?: (s: string) => void;
 }
 
 const getPrereqIds = (displayText?: string): string[] => {
@@ -62,8 +65,9 @@ const splitNumber = (num?: string) => {
     return { numeric: parseInt(m[1], 10), suffix: m[2] || '' };
 };
 
-export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
-    const [selectedSubject, setSelectedSubject] = useState('');
+export function CourseDiagram({ onNodeClick, courses, selectedSubject: propSelectedSubject, onSubjectChange }: CourseDiagramProps) {
+    // support controlled selection via props; fall back to empty string
+    const selectedSubject = propSelectedSubject ?? '';
 
     const allCourses: JSONCourse[] = useMemo(() => {
         if (courses && courses.length > 0) return courses;
@@ -318,7 +322,7 @@ export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
 
         // After central placement, position isolated groups in a left column (stacked vertically)
         if (isolatedGids.length > 0) {
-            const leftX = -NODE_WIDTH - 300; // keep isolated column to the left
+            const leftX = -NODE_WIDTH - 100; // keep isolated column to the left
             const colStartY = 0 - (isolatedGids.length * (NODE_HEIGHT + 24) - 24) / 2;
             isolatedGids.forEach((gid, idx) => {
                 const g = grouped.get(gid)!;
@@ -401,14 +405,6 @@ export function CourseDiagram({ onNodeClick, courses }: CourseDiagramProps) {
 
     return (
         <div className="h-full w-full bg-background">
-            <div className="p-2 flex items-center gap-2 justify-center">
-                <label className="text-sm text-muted-foreground">Subject:</label>
-                <select value={selectedSubject} onChange={e => setSelectedSubject(e.target.value)} className="select select-sm">
-                    <option value="">Select subject</option>
-                    {uniqueSubjects.map(s => <option key={s} value={s}>{s}</option>)}
-                </select>
-                <div className="text-sm text-muted-foreground">{filteredCourses.length} courses</div>
-            </div>
             <ReactFlow nodes={nodes} edges={edges} onNodeClick={handleNodeClick} nodeTypes={nodeTypes} fitView zoomOnScroll panOnDrag panOnScroll={false} zoomOnDoubleClick={false} className="react-flow-course-diagram" proOptions={{ hideAttribution: true }}>
                 <Controls />
                 <MiniMap nodeStrokeWidth={3} zoomable pannable />
