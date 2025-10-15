@@ -168,21 +168,27 @@ export default function Home() {
         {/* Main toggle button- always visible*/}
         <Button
           variant="outline"
-          size="icon"
+          size="sm"
           onClick={handleToggleSidebar}
-          className="h-10 w-10 rounded-full shadow-lg bg-background/80 backdrop-blur-sm border"
-          aria-label={isSidebarVisible ? "Hide sidebar" : "Show sidebar"}
+          className={cn("h-10 rounded-full shadow-lg bg-background/80 backdrop-blur-sm border flex items-center gap-2 transition-all", isSidebarVisible ? "px-3" : "px-4")}
+          aria-label={isSidebarVisible ? "Hide sidebar" : "Show details sidebar"}
         >
           {isSidebarVisible ? (
-            <PanelRight className="h-5 w-5" />
+            <>
+              <PanelRight className="h-4 w-4" />
+              <span>Hide</span>
+            </>
           ) : (
-            <PanelLeft className="h-5 w-5" />
+            <>
+              <BookOpen className="h-4 w-4" />
+              <span>Details</span>
+            </>
           )}
         </Button>
 
         {/* Mode buttons - only visible when sidebar open */}
         {isSidebarVisible && (
-          <>
+          <div className="flex flex-col items-end gap-2">
             <Button
               variant="outline"
               size="icon"
@@ -208,7 +214,7 @@ export default function Home() {
             >
               <Search className="h-5 w-5" />
             </Button>
-          </>
+          </div>
         )}
       </div>
 
