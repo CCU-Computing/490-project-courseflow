@@ -1,54 +1,140 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { CourseDiagram } from '@/components/course-diagram';
 import { CourseDetailSidebar } from '@/components/course-detail-sidebar';
+import { CourseSearchSidebar } from '@/components/course-search-sidebar';
 import type { Course } from '@/lib/mock-data';
 import { useCourses } from '@/hooks/use-courses';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
-import { PanelLeft, PanelRight } from 'lucide-react';
+import { PanelLeft, PanelRight, Search, BookOpen } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
 
+// Define the possible states for the sidebar
+type SidebarMode = 'details' | 'search' | 'closed';
+
+// Local type for the diagram to avoid type conflicts
+interface DiagramCourse {
+  id: string;
+  subject: string;
+  number: string;
+  code: string;
+  title: string;
+  fullTitle?: string;
+  requisitesDisplay?: string;
+}
+
 export default function Home() {
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
-  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+  const [selectedCourse, setSelectedCourse] = useState<any | null>(null);
+  const [sidebarMode, setSidebarMode] = useState<SidebarMode>('details');
   const isMobile = useIsMobile();
   const { courses, isLoading } = useCourses();
 
+  // state to check if sidebar is currently visible
+  const isSidebarVisible = sidebarMode !== 'closed';
+
+  // Convert courses to match the JSONCourse format expected by the diagram
+  const diagramCourses = useMemo(() => {
+    if (!courses || courses.length === 0) return undefined;
+    
+    return courses.map(course => {
+      const [subject = '', number = ''] = course.code.split('*');
+      
+      // Handle prerequisites - safely convert to string for diagram display
+      let requisitesDisplay = '';
+      if (Array.isArray(course.prerequisites)) {
+        // If it's a string array, join it
+        requisitesDisplay = course.prerequisites.join(' ; ');
+      } else if (course.prerequisites && typeof course.prerequisites === 'object' && 'type' in course.prerequisites) {
+        // If it's a PrerequisiteGroup, extract course codes
+        const extractCourseCodes = (prereq: any): string[] => {
+          if (typeof prereq === 'string') return [prereq];
+          if (prereq && typeof prereq === 'object' && 'courses' in prereq) {
+            return prereq.courses.flatMap(extractCourseCodes);
+          }
+          return [];
+        };
+        
+        const courseCodes = extractCourseCodes(course.prerequisites);
+        requisitesDisplay = courseCodes.join(' ; ');
+      }
+      // If it's an empty object {}, requisitesDisplay remains empty
+
+      return {
+        id: course.code || course.id,
+        subject,
+        number,
+        code: course.code,
+        title: course.title,
+        fullTitle: course.description,
+        requisitesDisplay
+      } as DiagramCourse;
+    });
+  }, [courses]);
+
   useEffect(() => {
     if (isMobile) {
-      setIsSidebarVisible(false);
+      setSidebarMode('closed');
     } else {
-      setIsSidebarVisible(true);
+      setSidebarMode('details');
     }
   }, [isMobile]);
 
-  const handleNodeClick = (course: Course) => {
+  const handleNodeClick = (course: any) => {
     setSelectedCourse(course);
-    if (!isSidebarVisible) {
-      setIsSidebarVisible(true);
+    setSidebarMode('details');
+    if (!isSidebarVisible && isMobile) {
+      setSidebarMode('details');
     }
   };
 
+  // Fixed: Always close the sidebar
   const handleCloseSidebar = () => {
-    if(isMobile) {
-      setIsSidebarVisible(false);
-    }
+    setSidebarMode('closed');
+  };
+
+  // Toggle sidebar open/closed
+  const handleToggleSidebar = () => {
+    setSidebarMode(isSidebarVisible ? 'closed' : 'details');
+  };
+
+  // Switch to course details mode
+  const handleDetailsMode = () => {
+    setSidebarMode('details');
+  };
+
+  // Switch to search mode and clear any selected course
+  const handleSearchMode = () => {
+    setSidebarMode('search');
     setSelectedCourse(null);
   };
 
-  const handleToggleSidebar = () => {
-    setIsSidebarVisible(!isSidebarVisible);
-  }
+  const handleCourseSelectFromSearch = (course: Course) => {
+    // Pass the course code as string ID to match course_data_full.json keys
+    setSelectedCourse(course.code || course.id);
+    setSidebarMode('details');
+  };
 
+  // Render sidebar content based on current mode
   const sidebarContent = (
-    <CourseDetailSidebar
-      course={selectedCourse}
-      allCourses={courses}
-      onClose={handleCloseSidebar}
-    />
+    <>
+      {sidebarMode === 'details' && (
+        <CourseDetailSidebar
+          course={selectedCourse}
+          allCourses={courses}
+          onClose={handleCloseSidebar}
+        />
+      )}
+      {sidebarMode === 'search' && (
+        <CourseSearchSidebar 
+          onClose={handleCloseSidebar}
+          onCourseSelect={handleCourseSelectFromSearch}
+          courses={courses}
+        />
+      )}
+    </>
   );
 
   if (isLoading) {
@@ -71,22 +157,69 @@ export default function Home() {
         </div>
       </header>
       <main className="flex-1 relative h-full">
-        <CourseDiagram onNodeClick={handleNodeClick} courses={courses} />
-        {!isSidebarVisible && !isMobile && (
-          <Button
-            variant="outline"
-            className="absolute top-6 right-6 z-10 shadow-lg pointer-events-auto"
-            onClick={handleToggleSidebar}
-            aria-label="Show details panel"
-          >
-            <PanelLeft className="h-5 w-5 mr-2" />
-            <span>Details</span>
-          </Button>
-        )}
+        <CourseDiagram onNodeClick={handleNodeClick} courses={diagramCourses}/>
       </main>
 
+      {/* Sidebar toggle buttons- position relative to main container*/}
+      <div className={cn(
+        "absolute right-0 top-6 z-30 flex flex-col gap-2 transition-all duration-300",
+        isSidebarVisible ? "right-96" : "right-0"
+      )}>
+        {/* Main toggle button- always visible*/}
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={handleToggleSidebar}
+          className={cn("h-10 rounded-full shadow-lg bg-background/80 backdrop-blur-sm border flex items-center gap-2 transition-all", isSidebarVisible ? "px-3" : "px-4")}
+          aria-label={isSidebarVisible ? "Hide sidebar" : "Show details sidebar"}
+        >
+          {isSidebarVisible ? (
+            <>
+              <PanelRight className="h-4 w-4" />
+              <span>Hide</span>
+            </>
+          ) : (
+            <>
+              <BookOpen className="h-4 w-4" />
+              <span>Details</span>
+            </>
+          )}
+        </Button>
+
+        {/* Mode buttons - only visible when sidebar open */}
+        {isSidebarVisible && (
+          <div className="flex flex-col items-end gap-2">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={handleDetailsMode}
+              className={cn(
+                "h-10 w-10 rounded-full shadow-lg bg-background/80 backdrop-blur-sm border transition-colors",
+                sidebarMode === 'details' && "bg-accent text-accent-foreground"
+              )}
+              aria-label="Show course details"
+            >
+              <BookOpen className="h-5 w-5" />
+            </Button>
+
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={handleSearchMode}
+              className={cn(
+                "h-10 w-10 rounded-full shadow-lg bg-background/80 backdrop-blur-sm border transition-colors",
+                sidebarMode === 'search' && "bg-accent text-accent-foreground"
+              )}
+              aria-label="Search courses"
+            >
+              <Search className="h-5 w-5" />
+            </Button>
+          </div>
+        )}
+      </div>
+
       {isMobile ? (
-        <Sheet open={isSidebarVisible} onOpenChange={setIsSidebarVisible}>
+        <Sheet open={isSidebarVisible} onOpenChange={(open) => setSidebarMode(open ? sidebarMode : 'closed')}>
           <SheetContent className="w-[85vw] p-0 border-l" side="right">
             {sidebarContent}
           </SheetContent>
@@ -98,19 +231,11 @@ export default function Home() {
             isSidebarVisible ? "w-96" : "w-0 border-l-0"
           )}
         >
-          {isSidebarVisible && (
-            <Button
-              variant="outline"
-              size="icon"
-              className="absolute top-6 -left-5 z-10 h-10 w-10 rounded-full shadow-lg"
-              onClick={handleToggleSidebar}
-              aria-label="Hide details panel"
-            >
-              <PanelRight className="h-5 w-5" />
-            </Button>
-          )}
-          <div className="w-96 h-full overflow-hidden">
-             {sidebarContent}
+          <div className={cn(
+            "h-full overflow-hidden transition-opacity duration-300",
+            isSidebarVisible ? "w-96 opacity-100" : "w-0 opacity-0"
+          )}>
+            {sidebarContent}
           </div>
         </aside>
       )}
