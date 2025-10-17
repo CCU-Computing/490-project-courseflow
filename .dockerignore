@@ -1,9 +1,0 @@
-# Ignore dependencies, logs, and local configs
-node_modules
-npm-debug.log
-.env
-.DS_Store
-
-# Ignore Docker files from context
-Dockerfile
-docker-compose.yml

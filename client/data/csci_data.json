@@ -1,0 +1,3261 @@
+{
+    "CSCI*100": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*100",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3) This course incorporates critical thinking as students learn about the Internet and the World Wide Web. Topics include introductory computing concepts, networking basics, the Internet, utilizing Web technologies responsibly, social networking, privacy, and digital security. F,S,Su",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*100 Intro Internet/World Wide Web",
+        "HasSections": false,
+        "Id": "10497",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "100",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FSS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring/Summer",
+        "Title": "Intro Internet/World Wide Web",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*101": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*101",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits) This course incorporates critical thinking as students learn about the Internet and the World Wide Web. Topics include introductory computing concepts, networking basics, the Internet, utilizing Web technologies responsibly, social networking, privacy, and digital security. F,S,Su",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*101 Intro Internet/World Wide Web",
+        "HasSections": true,
+        "Id": "CSCI_101",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246504",
+            "249278",
+            "249279",
+            "256158",
+            "249260",
+            "256606",
+            "250953",
+            "251522",
+            "251523",
+            "251524",
+            "251525",
+            "253371",
+            "254381",
+            "253746"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "101",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FSS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring/Summer",
+        "Title": "Intro Internet/World Wide Web",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*110": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*110",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: Business or Computer Science major, or permission of instructor) A survey course designed for Business or Computer Science majors. The course focuses on business applications involving beginning and intermediate spreadsheets and presentation software. F,S,Su",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*110 Business Applications",
+        "HasSections": true,
+        "Id": "1306",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246505",
+            "246506",
+            "246507",
+            "246508",
+            "246509",
+            "246510",
+            "246511",
+            "246512",
+            "246513",
+            "246514",
+            "246515",
+            "246516",
+            "246517",
+            "246519",
+            "246520",
+            "246521",
+            "246522",
+            "248954",
+            "249277",
+            "250929",
+            "256162",
+            "251526",
+            "251527",
+            "251528",
+            "251529",
+            "251530",
+            "253372",
+            "253373",
+            "253374",
+            "253375",
+            "253376",
+            "253377",
+            "253378",
+            "253379",
+            "253380",
+            "253381",
+            "253382",
+            "253383",
+            "253747"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "110",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FSS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring/Summer",
+        "Title": "Business Applications",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*120": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*120",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits) An introduction to the design and development of interactive Web 2.0 user interfaces using client-side programming languages. Topics include layout and design for multiple screen sizes, form creation and validation, client-side DOM manipulation, coding frameworks, and interaction design best practices. F,S,Su.",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*120 Intro Web Interface Developmnt",
+        "HasSections": true,
+        "Id": "4967",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246524",
+            "246525",
+            "246526",
+            "246531",
+            "248955",
+            "249259",
+            "250665",
+            "256160",
+            "251531",
+            "251532",
+            "251533",
+            "253384",
+            "253748"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "120",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FSS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring/Summer",
+        "Title": "Intro Web Interface Developmnt",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*130": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*130",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Computer Usage) Designed as an introduction to Computer Science; provides a comprehensive overview of the field of Computer Science in areas such as machine architecture, data storage, data manipulation, operating systems, algorithms, programming language, data structures, database structures, computational complexity, and artificial intelligence; includes a brief introduction to programming. Offered as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*130 Intro to Computer Science",
+        "HasSections": false,
+        "Id": "CSCI_130",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "130",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Intro to Computer Science",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*135": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Students must have completed MATH*130B or have been placed into MATH*135 or higher.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "8926"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*135",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Students are required to have a personal notebook computer for this course)(Prereq: A grade of 'C' or better in MATH*130B or placed into MATH*135 or higher) This course provides an introduction to computer programming using a dynamically typed language. Topics include algorithm development, input/output, conditional statements, loops, functions, and use of basic data structures. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*135 Introduction to Programming",
+        "HasSections": true,
+        "Id": "5048",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246533",
+            "246534",
+            "246535",
+            "246536",
+            "246537",
+            "246538",
+            "246539",
+            "246540",
+            "251534",
+            "253388",
+            "253389",
+            "253390",
+            "253391",
+            "253392"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "135",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "8926"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Introduction to Programming",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*140": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed MATH 130, MATH*130B MATH 130I, MATH 131, MATH 132, MATH 135, MATH 160, MATH*160B, MATH*161 or MATH 161B with a grade of C or better or a placement test score of MATH 132, MATH 135, MATH 160. Coreq is CSCI 140L.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "2971"
+            },
+            {
+                "DisplayText": "Take CSCI*140L",
+                "DisplayTextExtension": "- Must be taken either prior to or at the same time as this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "2972"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*140",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Computer Usage)(Prereq: MATH*130, MATH*130B, MATH*130i, MATH*131, MATH*132, MATH*135, MATH*160, MATH*160B, MATH*161, or MATH*161B; all with a grade of 'C' or better, or a placement score of MATH*132, MATH*135, MATH*160)(Coreq: CSCI*140L) An introduction to problem solving and algorithmic design methodology using a high-level programming language. Topics include problem solving techniques; subprograms and modularity; fundamental data types and structures; flow of control statements; and file input/output. Three lecture hours per week. Offered as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*140 Intro to Algorithmic Design I",
+        "HasSections": false,
+        "Id": "CSCI_140",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "140",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "2971"
+            },
+            {
+                "CompletionOrder": "PreviousOrConcurrent",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "2972"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Intro to Algorithmic Design I",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*140L": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed MATH 130, MATH*130B, MATH 130I, MATH 131, MATH 132, MATH 135, MATH 160, MATH*160B, MATH*161 or MATH 161B with a grade of C or better or a placement test score of MATH 132, MATH 135, MATH 160.  Coreq is CSCI 140.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3311"
+            },
+            {
+                "DisplayText": "Take CSCI*140",
+                "DisplayTextExtension": "- Must be taken either prior to or at the same time as this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3312"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*140L",
+        "CreditsCeusDisplay": "1",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(1 credit)(Prereq: MATH*130, MATH*130B, MATH*130i, MATH*131, MATH*132, MATH*135, MATH*160, MATH*160B, MATH*161, or MATH*161B; all with a grade of 'C' or better, or a placement test score of MATH*132, MATH*135, MATH*160)(Coreq: CSCI*140) Laboratory demonstrates the topics and principles presented in the lecture. Offered as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*140L Intro Algorithmic Design I Lab",
+        "HasSections": false,
+        "Id": "CSCI_140L",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [],
+        "MaximumCredits": null,
+        "MinimumCredits": 1,
+        "Number": "140L",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "3311"
+            },
+            {
+                "CompletionOrder": "PreviousOrConcurrent",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "3312"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Intro Algorithmic Design I Lab",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*145": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Students must have completed CSCI 135 or CSCI 140 and CSCI 140L with a minimum grade of C.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "7356"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*145",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Students are required to have a personal notebook computer for this course)(Prereq: CSCI*135 with a grade of 'C' or better, or CSCI*140/L with a grade 'C' or better) This course continues the study of programming in a dynamically typed language. Topics include object-oriented development, user-defined data types, debugging, testing, and elementary distributed computing. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*145 Intermediate Programming",
+        "HasSections": true,
+        "Id": "6625",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246542",
+            "246543",
+            "251535",
+            "253393",
+            "253394"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "145",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "7356"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Intermediate Programming",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*150": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI 140 and CSCI 140L both with grade of C or better and the choice of MATH 130, MATH*130B, MATH 130I, MATH 131, MATH 132, MATH 135, MATH 160, MATH*160B, MATH*161 or MATH 161B; all with a grade of C or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "2996"
+            },
+            {
+                "DisplayText": "Take CSCI*150L",
+                "DisplayTextExtension": "- Must be taken either prior to or at the same time as this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "2997"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*150",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Computer Usage)(Students are required to have a personal notebook computer for this course)(Prereq: CSCI*140/L and the choice of MATH*130, MATH*130B, MATH*130i, MATH*131, MATH*132, MATH*135, MATH*160, MATH*160B, MATH*161, or MATH*161B; all with a grade of 'C' or better)(Coreq: CSCI*150L) A contiuation of CSCI*140. Continued development of discipline in program design, style and expression, debugging and testing. Topics include object oriented programming and algorithm design; elementary data structures; user-defined data types, inheritance, and encapsulation. Offered as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*150 Intro Algorithmic Design II",
+        "HasSections": false,
+        "Id": "CSCI_150",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "150",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "2996"
+            },
+            {
+                "CompletionOrder": "PreviousOrConcurrent",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "2997"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Intro Algorithmic Design II",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*150L": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI 140/140L both with a grade of C or better and the choice of MATH 130, MATH*130B, MATH 130I, MATH 131, MATH 132, MATH 135, MATH 160, MATH*160B, MATH*161 or MATH*161B all with a minimum grade of C.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3781"
+            },
+            {
+                "DisplayText": "Take CSCI*150",
+                "DisplayTextExtension": "- Must be taken either prior to or at the same time as this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3782"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*150L",
+        "CreditsCeusDisplay": "1",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(1 credit)(Prereq: CSCI*140/L and the choice of MATH*130, MATH*130B, MATH*130i, MATH*131, MATH*132, MATH*135, MATH*160, MATH*160B, MATH*161, or MATH*161B; all with a grade of 'C' or better)(Coreq: CSCI*150) Laboratory demonstrates the topics and principles presented in the lecture. Offered as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*150L Intro Algorithmic Design II Lb",
+        "HasSections": false,
+        "Id": "CSCI_150L",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [],
+        "MaximumCredits": null,
+        "MinimumCredits": 1,
+        "Number": "150L",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "3781"
+            },
+            {
+                "CompletionOrder": "PreviousOrConcurrent",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "3782"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Intro Algorithmic Design II Lb",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*170": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*170",
+        "CreditsCeusDisplay": "1",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(1 credit) Provides real-world experiences that stimulate discussion of ethical issues in the technical work place. Topics include: ACM Code of Ethics, general moral responsibilities, privacy security, copyright and ownership agreements, computer crimes, and personal ethics. Class format presents case studies of current news events regarding computer ethics. Offered as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*170 Ethics in Computer Science",
+        "HasSections": false,
+        "Id": "3218",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [],
+        "MaximumCredits": null,
+        "MinimumCredits": 1,
+        "Number": "170",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Ethics in Computer Science",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*204": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Students must have completed CSCI*145 with a grade of 'C' or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "8972"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*204",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*145) Students learn to program in the Javascript programming language. Topics include basic syntax and structures, the DOM (Document Object Model), event-driven architecture, asynchronous programming, APIs, client and server side programming, the HTTP, and frameworks. Offered as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*204 Programming in Javascript",
+        "HasSections": true,
+        "Id": "10972",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:",
+        "MatchingSectionIds": [
+            "261128"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "204",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "8972"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Programming in Javascript",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*207": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have received a grade of 'C' or better in CSCI*145 or CSCI*150/L.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3209"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*207",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*145 or CSCI*150/L) Computer programming in the C++ language. Offered as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*207 Programming in C++",
+        "HasSections": true,
+        "Id": "CSCI_207",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "250653",
+            "251536",
+            "256731"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "207",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "3209"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Programming in C++",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*208": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Students must have received a 'C' or better in CSCI*145 or CSCI*150/L.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "8514"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*208",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*145 or CSCI*150/L) An introduction to programming with Visual Basic including Windows interface controls, Active X controls, and database access using Active X objects. Offered as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*208 Programming in Visual Basic",
+        "HasSections": false,
+        "Id": "10293",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:",
+        "MatchingSectionIds": [],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "208",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "8514"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Programming in Visual Basic",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*209": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI*145 or CSCI*150/L with a  minimum grade of C.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3216"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*209",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*145 or CSCI*150/L). Students learn to program in the Java programming language. Topics include inheritance, threads, graphics, network programming, and Web-programming. Offered as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*209 Programming in Java",
+        "HasSections": true,
+        "Id": "CSCI_209",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "249263"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "209",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "3216"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Programming in Java",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*210": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI*145 or CSCI*150/L, and MATH*174 all with a grade of C or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3225"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*210",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*145 or CSCI*150/L, and MATH*174) Logical basis of computer structure, machine representation of information, flow of control, instruction codes, arithmetic and logical operations, indexing, indirect addressing, input-output, sub-routines, linkages, macros. Interpretive and assembly systems, and pushdown stacks. F",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*210 Computer Organization",
+        "HasSections": true,
+        "Id": "CSCI_210",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246546",
+            "251537"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "210",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "3225"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FA",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall",
+        "Title": "Computer Organization",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*211": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*211",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits) This course covers core computer hardware, including the relationships between components of a computer system. Software components are also introduced, including the fundamentals of the computer operating system and an introduction to virtualization systems. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*211 Computer Infrastructure",
+        "HasSections": true,
+        "Id": "5378",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CSCC",
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal Science Center, Coastal - Main:",
+        "MatchingSectionIds": [
+            "250740",
+            "251539"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "211",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Computer Infrastructure",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*216": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*216",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)This course provides students with a  fundamental understanding of how to use a Linux  operating system. Topics include accessing the  command file, file manipulation, managing users  and groups, file system permissions, controlling  services, managing processes, configuring  networking, and using package managers. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*216 Linux Fundamentals I",
+        "HasSections": true,
+        "Id": "8291",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:",
+        "MatchingSectionIds": [
+            "246548",
+            "246549",
+            "251540",
+            "251541"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "216",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Linux Fundamentals I",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*220": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI*145 or CSCI*150/L, and MATH*174 all with a grade of 'C' or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "4195"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*220",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*145 or CSCI*150/L, and MATH*174) Topics include analysis of algorithms, with emphasis on computational complexity and advanced algorithms including self-adjusting trees, hashing, graphs, sorting, searching, and greedy algorithms. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*220 Data Structures",
+        "HasSections": true,
+        "Id": "490",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC",
+            "BCMW"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center, Burroughs & Chapin Mar Wet Ct",
+        "MatchingSectionIds": [
+            "246550",
+            "251542"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "220",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "4195"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Data Structures",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*225": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have taken MATH*174 and CSCI*135 or CSCI*140/L with a grade of 'C' or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "4594"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*225",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in MATH*174 and CSCI*135 or CSCI*140/L) This course will provide an introduction to relational database concepts and the design of relational databases. It will also provide a thorough introduction to SQL. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*225 Intro Relational Database/SQL",
+        "HasSections": true,
+        "Id": "4900",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CSCC",
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal Science Center, Coastal - Main:",
+        "MatchingSectionIds": [
+            "246551",
+            "246552",
+            "251543",
+            "253749"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "225",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "4594"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Intro Relational Database/SQL",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*230": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*230",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*230 Applied Artificial Intelligenc",
+        "HasSections": true,
+        "Id": "11035",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:",
+        "MatchingSectionIds": [
+            "250928"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "230",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Applied Artificial Intelligenc",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*250": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Complete CSCI*135 or CSCI*140/L, with a grade of C or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "8001"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*250",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: a grade of C or better in CSCI*135 or CSCI*140/L) This course covers the key aspects of information management including the acquisition, classification, storage, analysis, presentation, and archival of information. Privacy and security of information are also addressed. The course connects theoretical concepts with practice through experiential learning activities that are designed to provide students with real-world experiences related to the life cycle of information. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*250 Information Management",
+        "HasSections": true,
+        "Id": "9198",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:",
+        "MatchingSectionIds": [
+            "248582",
+            "254383"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "250",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "8001"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Information Management",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*270": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*270",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits) Fundamentals of data communications, including hardware, basic components of communications, configurations, networks and applications, protocols, security, and software are discussed. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*270 Data Comms Systems and Network",
+        "HasSections": true,
+        "Id": "7223",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CSCC",
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal Science Center, Coastal - Main:",
+        "MatchingSectionIds": [
+            "246553",
+            "246554",
+            "251544",
+            "251545",
+            "253750"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "270",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Data Comms Systems and Network",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*271": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*271",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*271 Intro to Quantum Information",
+        "HasSections": true,
+        "Id": "11213",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:",
+        "MatchingSectionIds": [
+            "260289"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "271",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Intro to Quantum Information",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*303": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Take CSCI 145 or CSCI*150/L with a C or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "7506"
+            },
+            {
+                "DisplayText": "Students must have completed CSCI*120, CSCI*225, and CSCI*270 with a grade of 'C' or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "7517"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*303",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*145 or CSCI*150/L; and CSCI*120, CSCI*225, and CSCI*270) A thorough introduction to development and deployment of web-based applications. Topics include middleware programming concepts, client server architecture, database access, state management, and application security. Students are expected to already have proficiency with introductory computer programming, HTML, CSS, Javascript, and SQL or other database query framework. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*303 Intro Server-Side Web App Devo",
+        "HasSections": true,
+        "Id": "7220",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CSCC",
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal Science Center, Coastal - Main:",
+        "MatchingSectionIds": [
+            "246555",
+            "255812",
+            "251546",
+            "257102"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "303",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "7506"
+            },
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "7517"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Intro Server-Side Web App Devo",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*310": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI*145 or CSCI*150/L, and CSCI*210, and MATH*174 with a grade of 'C' or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3707"
+            },
+            {
+                "DisplayText": "Students must have completed CSCI*145 or CSCI*150/L, and CSCI*210, and MATH*174 with a grade of 'C' or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "8515"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*310",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*145 or CSCI*150/L, and CSCI*210, and MATH*174) An introduction to the fundamental aspects of a computer system's structure and behavior; binary arithmetic, combinational logic, circuit design, instruction sets, register operations and flip-flops, control system functions, memories, interrupt structures, processors, and performance measures will be covered. S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*310 Intro to Computer Architecture",
+        "HasSections": false,
+        "Id": "CSCI_310",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "310",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "3707"
+            },
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "8515"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "SP",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Spring",
+        "Title": "Intro to Computer Architecture",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*311": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Students must have complete CSCI*211, CSCI*216, and MATH*174 with a grade of C or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "7892"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*311",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*211, CSCI*216, and MATH*174) Introduction to the high-level architecture of computer systems and the hardware-software interface. major design features of hardware components are discussed. Topics include instruction set architectures, processor designs, memory components, power, storage devices, device drivers, kernels, bootloaders, firmware, and partition tables. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*311 System Architecture",
+        "HasSections": true,
+        "Id": "8746",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:",
+        "MatchingSectionIds": [
+            "246556",
+            "251547"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "311",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "7892"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "System Architecture",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*316": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Students must have completed CSCI*216 with a grade of C or  better",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "7822"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*316",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: a grade of C or better in CSCI*216) A continuation of Linux Fundamentals I. Topics covered include file systems, disk partitioning, accessing network storage, SELinux, schedule tasks, firewalls, and troubleshooting. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*316 Linux Fundamentals II",
+        "HasSections": true,
+        "Id": "8292",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:",
+        "MatchingSectionIds": [
+            "246557",
+            "251548"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "316",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "7822"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Linux Fundamentals II",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*330": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have received a grade of 'C' or better in CSCI*204, CSCI*207, CSCI*208, CSCI*209, or CSCI*220.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3202"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*330",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*204, CSCI*220, CSCI*207, CSCI*208, or CSCI*209) An introduction to modern systems analysis and software engineering practices. Major topics include software development methodologies, the software development cycle, and software architectures. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*330 System Analysis/Software Engin",
+        "HasSections": true,
+        "Id": "3578",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246558",
+            "251549"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "330",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "3202"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "System Analysis/Software Engin",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*335": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Take 12 hours of CSCI courses numbered 120 or above with a minumum grade of C",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "4671"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*335",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: 12 hours of CSCI courses numbered 120 or above, all with a grade of C or better) This course will cover techniques in project management based on the Project Management Body of Knowledge from the Project Management Institute. F,S.",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*335 Project Management",
+        "HasSections": true,
+        "Id": "1394",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "249230",
+            "251550"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "335",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "4671"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Project Management",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*343": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Students must have received a grade of 'C' or better in CSCI*145 or CSCI*150/L.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "7195"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*343",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*145 or CSCI*150/L) Course presents a thorough introduction to the design and development of applciations for mobile devices. Topics include Navigation, Notifications, Graphics, User Interface Design, User Interface Development, Storage, Messaging, and Testing. Offered as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*343 Intro Mobile App Development",
+        "HasSections": true,
+        "Id": "6367",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CSCC",
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal Science Center, Coastal - Main:",
+        "MatchingSectionIds": [
+            "249257"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "343",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "7195"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Intro Mobile App Development",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*350": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI*204, CSCI*220, CSCI*207, CSCI*208, or CSCI*209 with grade of C or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3057"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*350",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*204, CSCI*220, CSCI*207, CSCI*208, or CSCI*209) Exploration of programming languages, programming paradigms, and advanced programming language concepts. F",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*350 Organization of Prog Languages",
+        "HasSections": true,
+        "Id": "4046",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246561",
+            "251551"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "350",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "3057"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FA",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall",
+        "Title": "Organization of Prog Languages",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*356": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI 220 with a grade of C or above.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "4168"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*356",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*220) Basic concepts and terminology of operating systems, I/0 and interrupt structures, system structures, processor scheduling, processes and process synchronization, deadlocks, memory management, and other concepts. F",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*356 Operating Systems",
+        "HasSections": true,
+        "Id": "4794",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CSCC",
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal Science Center, Coastal - Main:",
+        "MatchingSectionIds": [
+            "246562",
+            "254384"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "356",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "4168"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FA",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall",
+        "Title": "Operating Systems",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*375": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have taken CSCI 120 with grade of C or better",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3797"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*375",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: CSCI 120 with a grade of C or better) Concepts of multimedia applications are introduced with a focus on multimedia representation, processing, storage, and implementation. Topic areas include audio, image, video, animation, compression technologies, and standards. Tools and techniques for appropriate design and implementation of multimedia applications will be explored. F.",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*375 Intro to Multimedia Apps",
+        "HasSections": true,
+        "Id": "5210",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246564"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "375",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "3797"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FA",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall",
+        "Title": "Intro to Multimedia Apps",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*380": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI 220 and MATH 160, or MATH*160B, with a minimum grade of C.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3999"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*380",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*220 and MATH*160 or MATH*160B) An introductory course in the analysis of algorithms, with emphasis on computational complexity including practical applications and the analysis of specific problems and algorithms; course investigates most commonly used algorithms design techniques and also introduces the notion of \"hard\" problems and approximate solutions. F.",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*380 Intro Analysis of Algorithms",
+        "HasSections": true,
+        "Id": "CSCI_380",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246565",
+            "251552"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "380",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "3999"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FA",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall",
+        "Title": "Intro Analysis of Algorithms",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*385": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI*270 minumum grade of C.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "4201"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*385",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*270) Comprehensive survey of security policies, models and mechanisms for confidentiality, integrity, management and legal and ethical issues. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*385 Intro Info Systems Security",
+        "HasSections": true,
+        "Id": "491",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246566",
+            "246567",
+            "251553",
+            "251554"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "385",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "4201"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Intro Info Systems Security",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*386": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Take CSCI*385; Minimum grade C;",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "7821"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*386",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of \"C\" or better in CSCI 385) Covers offensive security topics including: ethical hacking, penetration testing, threats and vulnerabilities, security tools, and the phases of an attack. F.",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*386 Offensive Security",
+        "HasSections": true,
+        "Id": "8293",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:",
+        "MatchingSectionIds": [
+            "251555"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "386",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "7821"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FA",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall",
+        "Title": "Offensive Security",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*390": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI 220 with a grade of C or above.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3108"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*390",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*220) General models of computation, formal languages and automa theory and algorithmic unsolvability. S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*390 Theory of Computation",
+        "HasSections": true,
+        "Id": "754",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246568",
+            "251556"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "390",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "3108"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "SP",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Spring",
+        "Title": "Theory of Computation",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*399": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*399",
+        "CreditsCeusDisplay": "1 to 3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(1-3 credits)(Prereq: Consent of instructor and approved contract) Directed study and/or research on specific topics.",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*399 Independent Study",
+        "HasSections": true,
+        "Id": "CSCI_399",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": true,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "255104",
+            "255105",
+            "255106",
+            "255107",
+            "255108",
+            "255584",
+            "255585",
+            "255586",
+            "255656",
+            "255761",
+            "255830",
+            "251557",
+            "251558",
+            "251559",
+            "251560",
+            "251561",
+            "257026",
+            "257027",
+            "257028"
+        ],
+        "MaximumCredits": 3,
+        "MinimumCredits": 1,
+        "Number": "399",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FSS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring/Summer",
+        "Title": "Independent Study",
+        "VariableCreditIncrement": 1,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*400": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*400",
+        "CreditsCeusDisplay": "0",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(0)(Prereq: Senior status and permission of the instructor) This course provides various resources to graduating seniors including strategies for job searching and/or entry to graduate school. Students will complete all final assessments required to maintain currency and quality of the program. It is intended for majors to take in their last semester prior to graduation. Pass/Fail grading only. Grading is S or U.",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*400 Senior Assessment",
+        "HasSections": true,
+        "Id": "3322",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "255440"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 0,
+        "Number": "400",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Senior Assessment",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*401": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*401",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: CSCI major with senior level status or permission of the instructor) This course examines ethical and professional issues in the computing disciplines. Topics include the ACM Code of Ethics, general moral responsibilities, privacy, security, intellectual property, career preparation, job search strategies, and methods of evaluating salary and benefit offers. Students complete all necessary curriculum assessments required to maintain the currency and quality of academic programs offered by the Department of Computing Sciences. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*401 Ethics & Professional Issues",
+        "HasSections": true,
+        "Id": "10014",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:",
+        "MatchingSectionIds": [
+            "246569",
+            "246570",
+            "251562",
+            "251563"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "401",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Ethics & Professional Issues",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*409": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI 225 and CSCI 303 with a minimum grade of C.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3207"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*409",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3)(Prereq: CSCI 225 and CSCI 303 with a grade of C or better) Advanced topics in the development and deployment of web-based applications. Topics include advanced middleware programming concepts and development of dynamic websites. Students will write a full-scale web application as their final project. S.",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*409 Advanced Web App Development",
+        "HasSections": true,
+        "Id": "3579",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "251564"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "409",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "3207"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "SP",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Spring",
+        "Title": "Advanced Web App Development",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*415": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have taken CSCI 211 with a grade of C or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "7387"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*415",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*211) Topics in systems administration include application server management, deployment of websites, domain name service, web services, security, backup and recovery, and e-mail management. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*415 Windows System Administration",
+        "HasSections": true,
+        "Id": "6767",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246571",
+            "251565"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "415",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "7387"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Windows System Administration",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*416": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Students must have completed CSCI 316 with a minimum grade of C or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3070"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*416",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*316) This course provides an introduction to Linux system administration, including open-source software applications. Topics include managing software installations, configuring hardware drivers, implementing authentication and authorization systems, automating management tasks, and configuring services. Students gain hands-on experience managing Linux systems. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*416 Linux System Administration",
+        "HasSections": true,
+        "Id": "5055",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CSCC",
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal Science Center, Coastal - Main:",
+        "MatchingSectionIds": [
+            "246572",
+            "251566"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "416",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "3070"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Linux System Administration",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*425": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI 225 with a minimum grade of C.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "4197"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*425",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(Prereq: Grade of C or better in CSCI 225) An exploration of advanced database topics will be covered. Topics may include the efficiency of advanced queries, indexing structures, database and SQL optimizations, backup and recovery, NoSQL ang big data concepts. F",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*425 Database Systems Design",
+        "HasSections": true,
+        "Id": "CSCI_425",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246573",
+            "256780"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "425",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "4197"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FA",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall",
+        "Title": "Database Systems Design",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*427": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Students must have completed CSCI*270 and CSCI*316 with a grade of 'C' or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "7520"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*427",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI 270 and CSCI*316) Introduction to, and practice of, designing and integrating, large-scale information processing systems, with a focus on selecting and implementing hardware and softwre systems to develop an appropriate IT solution. Topics include systems provisioning, software integration, hardware management, availability, scalability, and disaster recovery capability. Students will design an integrated information system to implement a solution to a case study problem. S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*427 Systems Integration",
+        "HasSections": true,
+        "Id": "5260",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246574",
+            "246575",
+            "251567"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "427",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "7520"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Systems Integration",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*434": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*434",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: Students must be enrolled in at least 60 hours prior to registration) This course introduces students to the collection, preservation, presentation and preparation of computer-based evidence for the purposes of criminal law enforcement or civil litigation. These activities define the central roles of computer forensic practitioners involved in investigating computer crime scenes and torts involving computers. Students prepare to assist in the formulation and implementation of organizational computer forensics preparedness policies, to determine the necessity for future procedures, extend governance processes to allow for proper future forensic investigations, and to be contributing members of computer forensic investigation teams. F",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*434 Digital Forensics",
+        "HasSections": true,
+        "Id": "4534",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CSCC",
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal Science Center, Coastal - Main:",
+        "MatchingSectionIds": [
+            "246576",
+            "255613"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "434",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FA",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall",
+        "Title": "Digital Forensics",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*435": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*435",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: Junior standing) This course complements CSCI*434 - Digital Forensics by focusing on techniques to reduce the amount of information collected and stored by computer systems, with an emphasis on protecting the system and user from fraud and identity theft resulting from a compromised or stolen system. Concepts related to privacy in the digital world are discussed. Vulnerabilities in digital devices are explored in the context of a dystopian society in which citizens are under perpetual surveillance. S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*435 Anti Forensics/Digital Privacy",
+        "HasSections": false,
+        "Id": "8576",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:",
+        "MatchingSectionIds": [],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "435",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "SP",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Spring",
+        "Title": "Anti Forensics/Digital Privacy",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*440": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI 220.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "4264"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*440",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3)(Prereq: a grade of C or better in CSCI 220) An  overview of the elements of 2D and 3D graphics,  includes topics on raster graphics, geometrical  transformations, parallel and perspective  projections for 3D viewing, interaction  techniques, representation of curves and  surfaces, solid modeling and topics on visual  realism. F or S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*440 Intro to Computer Graphics",
+        "HasSections": true,
+        "Id": "CSCI_440",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:",
+        "MatchingSectionIds": [
+            "246577"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "440",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "4264"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Intro to Computer Graphics",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*444": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Take 12 hours of CSCI courses numbered 120 or above with a minimum grade of C.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "4000"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*444",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3)(Prereq: 12 hours of CSCI courses numbered 120 or above, all with a grade C or better) A large percentage of the world's software is devoted to the interface between computers and their users, and usability is one of the key factors deciding whether a software project succeeds or fails. This course explores the requirements analysis, design and evaluation of the User Interface in the context of Software Engineering Processes. Specific methods and design problems will be illustrated with real world examples in information technology, the internet, communications, mobility, multimedia and speech technologies. F.",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*444 Human Computer Interaction",
+        "HasSections": true,
+        "Id": "5261",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246578",
+            "251569"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "444",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "4000"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FA",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall",
+        "Title": "Human Computer Interaction",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*445": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Students must have taken CSCI*145 or CSCI*150/L and MATH*160 or MATH*160B, or MATH*242/L with a grade of 'C' or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "4051"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*445",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*145 or CSCI*150/L, and MATH*160 or MATH*160B, or MATH*242/L) This course introduces the theoretical foundations and methodologies of digital image processing and analysis. Topics include intensity transformations, contrast enhancement, filtering in the spatial and frequency domains, restoration and reconstruction, edge detection, feature extraction, morphological operations, image segmentation, object recognition, and color image processing. F or S, as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*445 Image Processing and Analysis",
+        "HasSections": true,
+        "Id": "4770",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CSCC",
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal Science Center, Coastal - Main:",
+        "MatchingSectionIds": [
+            "251570"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "445",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "4051"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Image Processing and Analysis",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*455": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Students must have completed 12 credit hours of CSCI courses 120 or above, all with a grade of C or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "7587"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*455",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: 12 credit hours of CSCI courses 120 or above, all with a grade of C or better) This course deals with the data science and analytics for information systems and technology applications. This course also introduces data management process for data science and analytics. How the data relate and aggregate in analytic databases and how they are used by analytical tools will be explored through case studies and projects. Offered as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*455 Data Science & Analytics",
+        "HasSections": false,
+        "Id": "7229",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal Science Center",
+        "MatchingSectionIds": [],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "455",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "7587"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Data Science & Analytics",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*473": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI*210, CSCI*220, CSCI*270, CSCI*330, CSCI*356 and MATH*160 or MATH*160B all with a minimum grade of C or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3401"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*473",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: a grade of 'C' or better in CSCI*210, CSCI*220, CSCI*270, CSCI*330, CSCI*356, and MATH*160 or MATH*160B) This course introduces parallel computer architectures and their programming. It includes an introduction to MPI and OpenMP and a number of engineering problems, including numerical simulations. It also provides an introduction to performance evaluation and modeling as well as scalability analysis. F,S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*473 Intro to Parallel Systems",
+        "HasSections": true,
+        "Id": "4118",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246579",
+            "246580",
+            "253397"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "473",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": false,
+                "IsRequired": true,
+                "RequirementCode": "3401"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Intro to Parallel Systems",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*475": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Students must have taken CSCI 225 and CSCI 330 with a grade of C or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "4464"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*475",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(Prereq: CSCI 225 or CSCI 330 with a grade of C or better) A study of decision support systems. Topics include computerized decision support and business intelligence systems, modeling, and methodologies. Course will cover data and web mining concepts, knowledge management technologies, collaboration techniques, and intelligent systems. Offered as needed. S",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*475 Decision Support Systems",
+        "HasSections": false,
+        "Id": "4872",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal Science Center",
+        "MatchingSectionIds": [],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "475",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "4464"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Decision Support Systems",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*480": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI 220 with a grade of 'C' or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "4401"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*480",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*220) Covers the fundamentals of Artificial Intelligence (AI); topics and techniques for analyzing and developing intelligent systems; programming in an AI language. Coverage may include applications in areas such as expert systems, neural networks, fuzzy logic, robotics, etc. F or S, as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*480 Intro Artificial Intelligence",
+        "HasSections": true,
+        "Id": "CSCI_480",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "256741"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "480",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "4401"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Intro Artificial Intelligence",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*484": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Students must have completed CSCI 220 and MATH 160, or MATH 160B, or MATH 242/L all with a minimum grade of C.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "7422"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*484",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI 220 and MATH 160, or MATH 160B, or MATH 242/L) This course provides an introduction to pattern recognition and machine learning. Topics may include probabilistic learning, linear discriminants, neural networks, unsupervised learning, decision trees, Bayesian networks, support vector machines, and reinforcement learning. F or S, as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*484 Machine Learning",
+        "HasSections": true,
+        "Id": "6935",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CSCC",
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal Science Center, Coastal - Main:",
+        "MatchingSectionIds": [
+            "253398"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "484",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "7422"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Machine Learning",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*485": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI 220 with a grade of 'C' or better.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3185"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*485",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*220) An introduction to the fundamentals of mobile robotics including robot hardware, sensors, obstacle avoidance, navigation, mapping, path planning and robot architectures. F or S, as needed",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*485 Introduction to Robotics",
+        "HasSections": false,
+        "Id": "265",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "485",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "3185"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Introduction to Robotics",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*490": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI 330 with a grade of C or above.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "4451"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*490",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(Prereq: CSCI 330 with a grade of C or better) This course is a continuation of the software engineering design principles introduced in Computer Science 330. Topics include project requirements, design specification, testing, project management and group dynamics. Students will design, code, test, and implement an information system as part of a team project. F",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*490 Software Engineering II",
+        "HasSections": true,
+        "Id": "CSCI_490",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "249231"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "490",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "4451"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FA",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall",
+        "Title": "Software Engineering II",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*495": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Student must have completed CSCI 330 and CSCI 225 with a minimum grade of C.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "3333"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*495",
+        "CreditsCeusDisplay": "3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(3 credits)(Prereq: A grade of 'C' or better in CSCI*225 and CSCI*330) This senior capstone course integrates and synthesizes the material covered in the field of Information SYstems, including Systems Analysis, Project Management, System Development and Deployment, and Security. Students develop a practical solution to an information systems problem. Presentation is both oral and written. Lecture topics may vary from semester to semester. F or S, as needed.",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*495 Information Systems Capstone",
+        "HasSections": true,
+        "Id": "3602",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": false,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [
+            "246582",
+            "251571"
+        ],
+        "MaximumCredits": null,
+        "MinimumCredits": 3,
+        "Number": "495",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "3333"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FS",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring",
+        "Title": "Information Systems Capstone",
+        "VariableCreditIncrement": null,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    },
+    "CSCI*497": {
+        "Ceus": null,
+        "CourseRequisites": [
+            {
+                "DisplayText": "Students must be Junior standing or higher, minimum overall GPA of 2.5, and one of the following courses with a grade of C or better: CSCI 220, CSCI 330, CSCI 415, CSCI 416.",
+                "DisplayTextExtension": "- Must be completed prior to taking this course.",
+                "IsRequired": true,
+                "ReferencesInvalidCourseOrSection": false,
+                "RequisiteId": "4475"
+            }
+        ],
+        "CourseTitleDisplay": "CSCI*497",
+        "CreditsCeusDisplay": "1 to 3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "(1-3)(Prereq: Junior standing or higher, minimum overall GPA of 2.5, and one of the following courses with a grade of C or better: CSCI*220, CSCI*330, CSCI*415, or CSCI*416) Supervised work experience of at least 150 hours. Program format is approved by the area director. A written final paper is required. F,S,Su.",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*497 Computer Science Internship",
+        "HasSections": true,
+        "Id": "CSCI_497",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": true,
+        "LocationCodes": [
+            "CCU"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:",
+        "MatchingSectionIds": [
+            "246583"
+        ],
+        "MaximumCredits": 3,
+        "MinimumCredits": 1,
+        "Number": "497",
+        "Requisites": [
+            {
+                "CompletionOrder": "Previous",
+                "CorequisiteCourseId": null,
+                "IsProtected": true,
+                "IsRequired": true,
+                "RequirementCode": "4475"
+            }
+        ],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "FSS",
+        "TermYearlyCycle": "ALL",
+        "TermsAndSections": [],
+        "TermsOffered": "Fall/Spring/Summer",
+        "Title": "Computer Science Internship",
+        "VariableCreditIncrement": 1,
+        "VerifyGrades": null,
+        "YearsOffered": "All Years"
+    },
+    "CSCI*499": {
+        "Ceus": null,
+        "CourseRequisites": [],
+        "CourseTitleDisplay": "CSCI*499",
+        "CreditsCeusDisplay": "1 to 3",
+        "CreditsDisplayLabel": "Credits",
+        "Description": "Special projects and recent developments in Computer Science  selected to meet current faculty and student interest.",
+        "EquatedCourseIds": null,
+        "FullTitleDisplay": "CSCI*499 Topics in Computer Science",
+        "HasSections": false,
+        "Id": "CSCI_499",
+        "IsPseudoCourse": false,
+        "IsVariableCredit": true,
+        "LocationCodes": [
+            "CCU",
+            "CSCC"
+        ],
+        "LocationCycleRestrictionDescriptions": [],
+        "LocationCycleRestrictions": [],
+        "LocationsDisplay": "Coastal - Main:, Coastal Science Center",
+        "MatchingSectionIds": [],
+        "MaximumCredits": 3,
+        "MinimumCredits": 1,
+        "Number": "499",
+        "Requisites": [],
+        "ShowDropRoster": false,
+        "SubjectCode": "CSCI",
+        "TermSessionCycle": "",
+        "TermYearlyCycle": "",
+        "TermsAndSections": [],
+        "TermsOffered": null,
+        "Title": "Topics in Computer Science",
+        "VariableCreditIncrement": 1,
+        "VerifyGrades": null,
+        "YearsOffered": null
+    }
+}
