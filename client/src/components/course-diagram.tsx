@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import ReactFlow, {
     Background,
     Controls,
@@ -398,13 +398,68 @@ export function CourseDiagram({ onNodeClick, courses, selectedSubject: propSelec
         return { nodes, edges };
     }, [filteredCourses]);
 
+    // local focus state for dimming
+    const [focusedNodeId, setFocusedNodeId] = useState<string | null>(null);
+
+    // derive dimmed/normal styles based on focusedNodeId
+    const { styledNodes, styledEdges } = useMemo(() => {
+        if (!focusedNodeId) return { styledNodes: nodes, styledEdges: edges };
+
+        // build adjacency from edges to find immediate neighbors
+        const neighbors = new Set<string>();
+        edges.forEach(e => {
+            if (e.source === focusedNodeId) neighbors.add(e.target as string);
+            if (e.target === focusedNodeId) neighbors.add(e.source as string);
+        });
+
+        const visibleNodeIds = new Set<string>([focusedNodeId, ...Array.from(neighbors)]);
+
+        const dimOpacity = 0.12;
+
+        const sNodes = nodes.map(n => {
+            const isVisible = visibleNodeIds.has(n.id);
+            const mergedStyle = { ...(n.style || {}), opacity: isVisible ? 1 : dimOpacity, transition: 'opacity 150ms' };
+            return { ...n, style: mergedStyle };
+        });
+
+        const sEdges = edges.map(e => {
+            const isVisible = (e.source === focusedNodeId) || (e.target === focusedNodeId);
+            const mergedStyle = { ...(e.style || {}), opacity: isVisible ? 1 : dimOpacity, transition: 'opacity 150ms' };
+            return { ...e, style: mergedStyle };
+        });
+
+        return { styledNodes: sNodes, styledEdges: sEdges };
+    }, [nodes, edges, focusedNodeId]);
+
+    // clear focus on Escape
+    useEffect(() => {
+        const onKey = (ev: KeyboardEvent) => { if (ev.key === 'Escape') setFocusedNodeId(null); };
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, []);
+
     const handleNodeClick = (_: React.MouseEvent, node: Node<any>) => {
+        // toggle focus on node
+        setFocusedNodeId(prev => (prev === node.id ? null : node.id));
         onNodeClick(node.data);
     };
 
     return (
         <div className="h-full w-full bg-background">
-            <ReactFlow nodes={nodes} edges={edges} onNodeClick={handleNodeClick} nodeTypes={nodeTypes} fitView zoomOnScroll panOnDrag panOnScroll={false} zoomOnDoubleClick={false} className="react-flow-course-diagram" proOptions={{ hideAttribution: true }}>
+            <ReactFlow
+                nodes={styledNodes}
+                edges={styledEdges}
+                onNodeClick={handleNodeClick}
+                onPaneClick={() => setFocusedNodeId(null)}
+                nodeTypes={nodeTypes}
+                fitView
+                zoomOnScroll
+                panOnDrag
+                panOnScroll={false}
+                zoomOnDoubleClick={false}
+                className="react-flow-course-diagram"
+                proOptions={{ hideAttribution: true }}
+            >
                 <Controls />
                 <MiniMap nodeStrokeWidth={3} zoomable pannable />
                 <Background variant={BackgroundVariant.Dots} gap={24} size={1} />
