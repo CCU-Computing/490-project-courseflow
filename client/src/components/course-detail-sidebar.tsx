@@ -1,10 +1,9 @@
 import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { X, BookOpen, Star, ChevronsRight } from 'lucide-react';
+import { X, BookOpen, Star } from 'lucide-react';
 import { getRawCourse, buildPrereqTree, PrereqNode, getPrereqIds, parsePrereqDisplay } from '@/lib/course-utils';
-import { cn } from '@/lib/utils';
 
 interface CourseDetailSidebarProps {
     // Accept either the app's Course object or a string id like 'ACCT*330'

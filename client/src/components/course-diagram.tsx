@@ -12,7 +12,6 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import CustomNode from './custom-node';
-// Use the pre-built course JSON dataset
 import rawCourseData from '../../data/course_data_full.json';
 
 type JSONCourse = {

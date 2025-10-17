@@ -2,7 +2,7 @@
 
 import type { FC } from "react";
 import { Handle, Position, type NodeProps } from "reactflow";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 // Local minimal node data shape
 type NodeData = {
     code?: string;
