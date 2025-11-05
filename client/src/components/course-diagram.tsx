@@ -457,6 +457,7 @@ export function CourseDiagram({ onNodeClick, courses, selectedSubject: propSelec
                 panOnDrag
                 panOnScroll={false}
                 zoomOnDoubleClick={false}
+                nodesDraggable={false}
                 className="react-flow-course-diagram"
                 proOptions={{ hideAttribution: true }}
             >
