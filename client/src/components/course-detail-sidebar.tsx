@@ -104,7 +104,7 @@ function AddCourseDialog({
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent>
+      <DialogContent className="[&>button]:hidden">
         <DialogHeader>
           <DialogTitle>Select Semester</DialogTitle>
         </DialogHeader>
