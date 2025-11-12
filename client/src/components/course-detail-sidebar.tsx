@@ -4,12 +4,21 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { X, BookOpen, Star } from 'lucide-react';
 import { getRawCourse, buildPrereqTree, PrereqNode, getPrereqIds, parsePrereqDisplay } from '@/lib/course-utils';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { useState } from "react";
 
 interface CourseDetailSidebarProps {
     // Accept either the app's Course object or a string id like 'ACCT*330'
     course: any | null;
     allCourses?: any[];
     onClose: () => void;
+    onAddCourse: (courseCode: string, term:string) => void;
 }
 
 const PrerequisiteChip: React.FC<{ id: string }> = ({ id }) => {
@@ -80,9 +89,63 @@ const PrerequisiteView: React.FC<{ prerequisites: any; allCourses?: any[] }> = (
     return <p className="text-muted-foreground italic p-3 rounded-md bg-muted/50 text-center">No prerequisites available.</p>;
 };
 
+// --- Add this ABOVE CourseDetailSidebar ---
 
-export function CourseDetailSidebar({ course, allCourses, onClose }: CourseDetailSidebarProps) {
+function AddCourseDialog({
+  open,
+  onClose,
+  onConfirm,
+}: {
+  open: boolean;
+  onClose: () => void;
+  onConfirm: (term: string) => void;
+}) {
+  const [term, setTerm] = useState("");
+
+  return (
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Select Semester</DialogTitle>
+        </DialogHeader>
+        <select
+          className="border rounded p-2 w-full"
+          value={term}
+          onChange={(e) => setTerm(e.target.value)}
+        >
+          <option value="">Select term</option>
+          <option>Fall 2025</option>
+          <option>Spring 2026</option>
+          <option>Summer 2026</option>
+          <option>Fall 2026</option>
+        </select>
+
+        <DialogFooter>
+          <Button variant="outline" onClick={onClose}>
+            Cancel
+          </Button>
+          <Button
+            onClick={() => {
+              if (term) {
+                onConfirm(term);
+                onClose();
+              }
+            }}
+            className="bg-primary text-white hover:bg-primary/90"
+          >
+            Add
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+
+
+export function CourseDetailSidebar({ course, allCourses, onClose, onAddCourse }: CourseDetailSidebarProps) {
     // Course may be a Course object, or a string key like 'ACCT*330', or null
+    const [dialogOpen, setDialogOpen] = useState(false);
     let raw: any | null = null;
     if (!course) {
         return (
@@ -189,6 +252,20 @@ export function CourseDetailSidebar({ course, allCourses, onClose }: CourseDetai
                         <h4 className="font-semibold text-lg mb-2 font-headline">Semesters Offered</h4>
                         <div className="text-muted-foreground">{raw.TermsOffered || raw.TermsAndSections || 'All Years'}</div>
                     </div>
+                    
+                    <Button
+                    className="mt-3 bg-primary text-white hover:bg-primary/90"
+                    onClick={() => setDialogOpen(true)}
+                    >
+                    Add Course
+                    </Button>
+
+                    <AddCourseDialog
+                    open={dialogOpen}
+                    onClose={() => setDialogOpen(false)}
+                    onConfirm={(term) => onAddCourse(course.code, term)}
+                    />
+
                 </div>
             </CardContent>
         </div>
