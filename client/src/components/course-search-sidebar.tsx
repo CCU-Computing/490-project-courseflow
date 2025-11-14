@@ -1,9 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { X, Search } from 'lucide-react';
+import { X, Search, Filter, ChevronDown, ChevronUp, Plus } from 'lucide-react';
 import { CourseSearchbar } from '@/components/course-searchbar';
 import type { Course } from '@/lib/mock-data';
+import { cn } from '@/lib/utils'
 
 interface CourseSearchSidebarProps {
     onClose: () => void;
@@ -11,41 +12,138 @@ interface CourseSearchSidebarProps {
     courses: Course[];
 }
 
+interface FilterState {
+    credits: number[];
+    subjects: string[];
+    level: string[];
+    sortBy: 'code' | 'title' | 'credits';
+    sortOrder: 'asc' | 'desc';
+}
+
+interface FilterOption {
+    type: 'credits' | 'subject' | 'level';
+    value: string | number;
+    label: string;
+}
+
 export function CourseSearchSidebar({ onClose, onCourseSelect, courses }: CourseSearchSidebarProps) {
     const [searchQuery, setSearchQuery] = useState('');
+    const [showFilters, setShowFilters] = useState(false);
+    const [activeFilters, setActiveFilters] = useState<FilterOption[]>([]);
+
+    // Extract available filter options from courses
+    const availableFilters = useMemo(() => {
+        const subjects = Array.from(new Set(courses.map(course => {
+            const match = course.code.match(/^([A-Z]+)/);
+            return match ? match[1] : '';
+        }))).filter(Boolean).sort();
+
+        const credits = Array.from(new Set(courses.map(course => course.credits))).sort((a, b) => a - b);
+
+        const levels = Array.from(new Set(courses.map(course => {
+            const match = course.code.match(/\d+/);
+            if (match) {
+                const num = parseInt(match[0]);
+                // Get the hundred level (100, 200, 300, etc.)
+                const level = Math.floor(num / 100) * 100;
+                return level.toString();
+            }
+            return 'Other';
+        }))).filter(level => level !== 'Other').sort((a, b) => parseInt(a) - parseInt(b));
+
+        return {
+            subjects: subjects.map(subject => ({
+                type: 'subject' as const,
+                value: subject,
+                label: subject
+            })),
+            credits: credits.map(credit => ({
+                type: 'credits' as const,
+                value: credit,
+                label: `${credit} credit${credit !== 1 ? 's' : ''}`
+            })),
+            levels: levels.map(level => ({
+                type: 'level' as const,
+                value: level,
+                label: `${level} Level`
+            }))
+        };
+    }, [courses]);
 
     const filteredCourses = useMemo(() => {
-        if (!searchQuery.trim()) {
-            return [];
+        let result = courses;
+
+        // Apply search filter
+        if (searchQuery.trim()) {
+            const query = searchQuery.toLowerCase().trim();
+            
+            result = result.filter(course => {
+                const normalizedCode = course.code.toLowerCase().replace('*', ' ').replace(/\s+/g, ' ').trim();
+                const normalizedTitle = course.title.toLowerCase();
+                
+                const codeMatch = normalizedCode.includes(query) || 
+                                course.code.toLowerCase().includes(query) ||
+                                course.code.toLowerCase().replace('*', '').includes(query.replace(/\s/g, '')) ||
+                                course.code.toLowerCase().includes(query.replace(/\s/g, ''));
+
+                const titleMatch = normalizedTitle.includes(query);
+                
+                return codeMatch || titleMatch;
+            });
         }
 
-        const query = searchQuery.toLowerCase().trim();
-        
-        return courses.filter(course => {
-            // Normalize the course code for searching
-            const normalizedCode = course.code.toLowerCase().replace('*', ' ').replace(/\s+/g, ' ').trim();
-            const normalizedTitle = course.title.toLowerCase();
-            
-            // Check if query matches code (with different formatting)
-            const codeMatch = normalizedCode.includes(query) || 
-                            course.code.toLowerCase().includes(query) ||
-                            // Handle "MATH 130A" vs "MATH*130A"
-                            course.code.toLowerCase().replace('*', '').includes(query.replace(/\s/g, '')) ||
-                            // Handle "math130a" without spaces
-                            course.code.toLowerCase().replace('*', '').includes(query.replace(/\s/g, '')) ||
-                            // Handle partial matches like "math130"
-                            course.code.toLowerCase().includes(query.replace(/\s/g, ''));
+        // Apply active filters
+        if (activeFilters.length > 0) {
+            result = result.filter(course => {
+                return activeFilters.every(filter => {
+                    switch (filter.type) {
+                        case 'subject':
+                            return course.code.startsWith(filter.value as string);
+                        case 'credits':
+                            return course.credits === filter.value;
+                        case 'level':
+                            const match = course.code.match(/\d+/);
+                            if (match) {
+                                const num = parseInt(match[0]);
+                                const courseLevel = Math.floor(num / 100) * 100;
+                                return courseLevel.toString() === filter.value;
+                            }
+                            return false;
+                        default:
+                            return true;
+                    }
+                });
+            });
+        }
 
-            // Check if query matches title
-            const titleMatch = normalizedTitle.includes(query);
-            
-            return codeMatch || titleMatch;
-        });
-    }, [searchQuery, courses]);
+        return result;
+    }, [searchQuery, courses, activeFilters]);
 
     const handleCourseClick = (course: Course) => {
         onCourseSelect?.(course);
     };
+
+    const handleAddFilter = (filter: FilterOption) => {
+        if (!activeFilters.some(f => f.type === filter.type && f.value === filter.value)) {
+            setActiveFilters(prev => [...prev, filter]);
+        }
+    };
+
+    const handleRemoveFilter = (filterToRemove: FilterOption) => {
+        setActiveFilters(prev => prev.filter(filter => 
+            !(filter.type === filterToRemove.type && filter.value === filterToRemove.value)
+        ));
+    };
+
+    const handleClearFilters = () => {
+        setActiveFilters([]);
+    };
+
+    const handleApplyFilters = () => {
+        setShowFilters(false);
+    };
+
+    const displayCourses = searchQuery.trim() || activeFilters.length > 0 ? filteredCourses : [];
 
     return (
         <div className="flex flex-col h-full bg-card">
@@ -68,54 +166,202 @@ export function CourseSearchSidebar({ onClose, onCourseSelect, courses }: Course
             </CardHeader>
 
             <CardContent className="flex-grow p-6 overflow-hidden flex flex-col">
-                <div className="space-y-6">
-                    <CourseSearchbar 
-                        placeholder="Search by course code or name..."
-                        value={searchQuery}
-                        onChange={setSearchQuery}
-                    />
-                </div>
+                <div className="space-y-4">
+                    <div className="flex gap-2">
+                        <div className="flex-1">
+                            <CourseSearchbar 
+                                placeholder="Search by course code or name..."
+                                value={searchQuery}
+                                onChange={setSearchQuery}
+                            />
+                        </div>
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() => setShowFilters(!showFilters)}
+                            className={cn(
+                                "h-10 w-10 flex-shrink-0",
+                                activeFilters.length > 0 && "bg-primary/10 border-primary/20"
+                            )}
+                            aria-label="Open filters"
+                        >
+                            <Filter className="h-4 w-4" />
+                        </Button>
+                    </div>
 
-                {/* Search Results */}
-                <div className="flex-1 overflow-y-auto mt-6">
-                    {searchQuery.trim() && filteredCourses.length === 0 ? (
-                        <div className="text-center text-muted-foreground py-8">
-                            <Search className="h-12 w-12 mx-auto mb-4 opacity-50"/>
-                            <p>No courses found for "{searchQuery}"</p>
-                            <p className="text-sm mt-2">Try searching with just the subject or number</p>
-                        </div>
-                    ) : filteredCourses.length > 0 ? (
-                        <div className="space-y-3">
-                            <h3 className="font-semibold text-sm text-muted-foreground">
-                                Found {filteredCourses.length} course{filteredCourses.length !== 1 ? 's' : ''}
-                            </h3>
-                            {filteredCourses.map((course) => (
-                                <Card 
-                                    key={course.id} 
-                                    className="cursor-pointer hover:bg-accent/50 transition-colors"
-                                    onClick={() => handleCourseClick(course)}
+                    {/* Active Filters */}
+                    {activeFilters.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                            {activeFilters.map((filter, index) => (
+                                <div
+                                    key={`${filter.type}-${filter.value}`}
+                                    className="flex items-center gap-1 bg-primary/10 text-primary px-2 py-1 rounded-md text-sm"
                                 >
-                                    <CardContent className="p-4">
-                                        <div className="flex justify-between items-start">
-                                            <div>
-                                                <h4 className="font-semibold text-primary">{course.code}</h4>
-                                                <p className="text-sm font-medium">{course.title}</p>
-                                            </div>
-                                            <div className="flex flex-col items-end text-xs text-muted-foreground">
-                                                <span>{course.credits} credit{course.credits !== 1 ? 's' : ''}</span>
-                                            </div>
-                                        </div>
-                                    </CardContent>
-                                </Card>
+                                    <span>{filter.label}</span>
+                                    <Button
+                                        variant="ghost"
+                                        size="icon"
+                                        className="h-4 w-4 hover:bg-primary/20"
+                                        onClick={() => handleRemoveFilter(filter)}
+                                        aria-label={`Remove ${filter.label} filter`}
+                                    >
+                                        <X className="h-3 w-3" />
+                                    </Button>
+                                </div>
                             ))}
-                        </div>
-                    ) : (
-                        <div className="text-center text-muted-foreground py-8">
-                            <Search className="h-12 w-12 mx-auto mb-4 opacity-50"/>
-                            <p>Enter a course code or name to search</p>
+                            <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={handleClearFilters}
+                                className="text-sm h-auto py-1"
+                            >
+                                Clear All
+                            </Button>
                         </div>
                     )}
                 </div>
+
+                {/* Filter Panel */}
+                {showFilters && (
+                    <Card className="mt-4 border-l-2 border-l-primary">
+                        <CardHeader className="pb-3">
+                            <CardTitle className="text-lg flex items-center gap-2">
+                                <Filter className="h-4 w-4" />
+                                Add Filters
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-6 max-h-96 overflow-y-auto">
+                            {/* Subject Filters */}
+                            <div>
+                                <h4 className="font-semibold text-sm mb-3">Subject</h4>
+                                <div className="space-y-2 max-h-32 overflow-y-auto">
+                                    {availableFilters.subjects.map(subject => (
+                                        <Button
+                                            key={subject.value}
+                                            variant="ghost"
+                                            size="sm"
+                                            className="w-full justify-start text-sm font-normal"
+                                            onClick={() => handleAddFilter(subject)}
+                                        >
+                                            <Plus className="h-3 w-3 mr-2" />
+                                            {subject.label}
+                                        </Button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Credit Filters */}
+                            <div>
+                                <h4 className="font-semibold text-sm mb-3">Credits</h4>
+                                <div className="space-y-2 max-h-32 overflow-y-auto">
+                                    {availableFilters.credits.map(credit => (
+                                        <Button
+                                            key={credit.value}
+                                            variant="ghost"
+                                            size="sm"
+                                            className="w-full justify-start text-sm font-normal"
+                                            onClick={() => handleAddFilter(credit)}
+                                        >
+                                            <Plus className="h-3 w-3 mr-2" />
+                                            {credit.label}
+                                        </Button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Level Filters */}
+                            <div>
+                                <h4 className="font-semibold text-sm mb-3">Level</h4>
+                                <div className="space-y-2 max-h-32 overflow-y-auto">
+                                    {availableFilters.levels.map(level => (
+                                        <Button
+                                            key={level.value}
+                                            variant="ghost"
+                                            size="sm"
+                                            className="w-full justify-start text-sm font-normal"
+                                            onClick={() => handleAddFilter(level)}
+                                        >
+                                            <Plus className="h-3 w-3 mr-2" />
+                                            {level.label}
+                                        </Button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Filter Actions */}
+                            <div className="flex gap-2 pt-4 border-t">
+                                <Button
+                                    variant="default"
+                                    size="sm"
+                                    onClick={handleApplyFilters}
+                                    className="flex-1"
+                                >
+                                    Apply Filters
+                                </Button>
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={handleClearFilters}
+                                    className="flex-1"
+                                >
+                                    Clear Filters
+                                </Button>
+                            </div>
+                        </CardContent>
+                    </Card>
+                )}
+
+                {/* Search Results - Only show when filter panel is closed */}
+                {!showFilters && (
+                    <div className="flex-1 overflow-y-auto mt-6">
+                        {displayCourses.length === 0 ? (
+                            <div className="text-center text-muted-foreground py-8">
+                                <Search className="h-12 w-12 mx-auto mb-4 opacity-50"/>
+                                {searchQuery.trim() || activeFilters.length > 0 ? (
+                                    <>
+                                        <p>No courses found</p>
+                                        <p className="text-sm mt-2">
+                                            {searchQuery.trim() 
+                                                ? `for "${searchQuery}"${activeFilters.length > 0 ? ' with current filters' : ''}`
+                                                : 'with current filters'
+                                            }
+                                        </p>
+                                    </>
+                                ) : (
+                                    <>
+                                        <p>Enter a course code or name to search</p>
+                                        <p className="text-sm mt-2">Or add filters to browse courses</p>
+                                    </>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="space-y-3">
+                                <h3 className="font-semibold text-sm text-muted-foreground">
+                                    Found {displayCourses.length} course{displayCourses.length !== 1 ? 's' : ''}
+                                </h3>
+                                {displayCourses.map((course) => (
+                                    <Card 
+                                        key={course.id} 
+                                        className="cursor-pointer hover:bg-accent/50 transition-colors"
+                                        onClick={() => handleCourseClick(course)}
+                                    >
+                                        <CardContent className="p-4">
+                                            <div className="flex justify-between items-start">
+                                                <div>
+                                                    <h4 className="font-semibold text-primary">{course.code}</h4>
+                                                    <p className="text-sm font-medium">{course.title}</p>
+                                                </div>
+                                                <div className="flex flex-col items-end text-xs text-muted-foreground">
+                                                    <span>{course.credits} credit{course.credits !== 1 ? 's' : ''}</span>
+                                                </div>
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                )}
             </CardContent>
         </div>
     );
