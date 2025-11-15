@@ -31,11 +31,6 @@ export default function Home() {
   const [selectedCourse, setSelectedCourse] = useState<any | null>(null);
   const [sidebarMode, setSidebarMode] = useState<SidebarMode>("details");
   const [selectedSubject, setSelectedSubject] = useState<string>("");
-
-  // Filtering by Course level and Course credits 
-  const [selectedLevel, setSelectedLevel] = useState<string>("");    
-  const [selectedCredits, setSelectedCredits] = useState<string>(""); 
-
   const isMobile = useIsMobile();
   const { courses, isLoading } = useCourses();
   const [plannerOpen, setPlannerOpen] = useState(false);
@@ -53,47 +48,11 @@ export default function Home() {
   // state to check if sidebar is currently visible
   const isSidebarVisible = sidebarMode !== "closed";
 
-  // filter the courses based on level & credits of that course
-  const filteredCourses: Course[] = useMemo(() => {
-    if (!courses) return [];
-
-    return courses.filter((course) => {
-      // Course level filtering by 100, 200, 300, 400
-      if (selectedLevel) {
-        // Format of course code looks like CSCI*130
-        const [, numberPart = ""] = course.code.split("*");
-        const trimmed = numberPart.trim();
-
-        if (!trimmed) return false;
-
-        // Extracts the first number from the course to know what level the course is
-        const firstDigit = trimmed[0]; 
-        //These values represent the course level "1", "2", "3", "4"
-        const selectedFirstDigit = selectedLevel[0];
-
-        if (firstDigit !== selectedFirstDigit) {
-          return false;
-        }
-      }
-
-      //  Credits filter
-      if (selectedCredits) {
-        const creditsNumber = Number(selectedCredits);
-        // Course.credits is a number in your Course type
-        if (course.credits !== creditsNumber) {
-          return false;
-        }
-      }
-
-      return true;
-    });
-  }, [courses, selectedLevel, selectedCredits]);
-
   // Convert courses to match the JSONCourse format expected by the diagram
   const diagramCourses = useMemo(() => {
-    if (!filteredCourses || filteredCourses.length === 0) return undefined;
+    if (!courses || courses.length === 0) return undefined;
 
-    return filteredCourses.map((course) => {
+    return courses.map((course) => {
       const [subject = "", number = ""] = course.code.split("*");
 
       // Handle prerequisites - safely convert to string for diagram display
@@ -130,7 +89,7 @@ export default function Home() {
         requisitesDisplay,
       } as DiagramCourse;
     });
-  }, [filteredCourses]);
+  }, [courses]);
 
   useEffect(() => {
     if (isMobile) {
@@ -189,8 +148,7 @@ export default function Home() {
         <CourseSearchSidebar
           onClose={handleCloseSidebar}
           onCourseSelect={handleCourseSelectFromSearch}
-          // IMPORTANT: use filteredCourses so search respects level/credits filters
-          courses={filteredCourses}
+          courses={courses}
         />
       )}
     </>
@@ -217,7 +175,6 @@ export default function Home() {
             </h1>
           </div>
           <div className="flex items-center gap-3">
-            {/* Subject Filter */}
             <label className="text-sm text-muted-foreground">Subject:</label>
             <select
               value={selectedSubject}
@@ -235,36 +192,6 @@ export default function Home() {
                   </option>
                 ))}
             </select>
-
-            {/* Level Filter for Courses dropdown */}
-            <label className="text-sm text-muted-foreground">Level:</label>
-            <select
-              value={selectedLevel}
-              onChange={(e) => setSelectedLevel(e.target.value)}
-              className="select select-sm bg-input text-foreground border-border"
-            >
-              <option value="">All levels</option>
-              <option value="100">100-level</option>
-              <option value="200">200-level</option>
-              <option value="300">300-level</option>
-              <option value="400">400-level</option>
-            </select>
-
-            {/* Credits Filter for courses dropdown */}
-            <label className="text-sm text-muted-foreground">Credits:</label>
-            <select
-              value={selectedCredits}
-              onChange={(e) => setSelectedCredits(e.target.value)}
-              className="select select-sm bg-input text-foreground border-border"
-            >
-              <option value="">All credits</option>
-              <option value="1">1 credit</option>
-              <option value="2">2 credits</option>
-              <option value="3">3 credits</option>
-              <option value="4">4 credits</option>
-            </select>
-
-            {/* Planner Toggle Button */}
             <Button
               variant="outline"
               size="sm"
@@ -282,7 +209,6 @@ export default function Home() {
           </div>
         </div>
       </header>
-
       <main className="flex-1 relative h-full">
         <CourseDiagram
           onNodeClick={handleNodeClick}
@@ -389,9 +315,7 @@ export default function Home() {
           </div>
         </aside>
       )}
-
-      {/* Course Planner Bottom Drawer */}
-      <div
+            <div
         className={cn(
           "fixed bottom-0 left-0 w-full bg-background border-t shadow-lg transition-transform duration-300 ease-in-out",
           plannerOpen ? "translate-y-0" : "translate-y-full"
@@ -403,41 +327,39 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-4 gap-4 p-4 overflow-x-auto h-[calc(35vh-60px)]">
-          {["Fall 2025", "Spring 2026", "Summer 2026", "Fall 2026"].map(
-            (term) => (
+          {["Fall 2025", "Spring 2026", "Summer 2026", "Fall 2026"].map((term) => (
+            <div
+              key={term}
+              className={cn(
+                "border rounded-lg p-3 flex flex-col bg-card transition-colors",
+                activeTerm === term &&
+                  "border-blue-500 bg-blue-50 dark:bg-blue-900/30"
+              )}
+            >
+              <h3 className="font-medium mb-2 text-center">{term}</h3>
               <div
-                key={term}
-                className={cn(
-                  "border rounded-lg p-3 flex flex-col bg-card transition-colors",
-                  activeTerm === term &&
-                    "border-blue-500 bg-blue-50 dark:bg-blue-900/30"
-                )}
+                className="flex-1 overflow-auto"
+                id={`term-${term.replace(" ", "-")}`}
               >
-                <h3 className="font-medium mb-2 text-center">{term}</h3>
-                <div
-                  className="flex-1 overflow-auto"
-                  id={`term-${term.replace(" ", "-")}`}
-                >
-                  {plannerCourses[term].length === 0 ? (
-                    <p className="text-muted-foreground text-xs text-center mt-2">
-                      No courses yet
-                    </p>
-                  ) : (
-                    plannerCourses[term].map((code) => (
-                      <div
-                        key={code}
-                        className="p-1 bg-blue-100 dark:bg-blue-900/40 rounded text-center text-xs font-medium"
-                      >
-                        {code}
-                      </div>
-                    ))
-                  )}
-                </div>
+                {plannerCourses[term].length === 0 ? (
+                  <p className="text-muted-foreground text-xs text-center mt-2">
+                    No courses yet
+                  </p>
+                ) : (
+                  plannerCourses[term].map((code) => (
+                    <div
+                      key={code}
+                      className="p-1 bg-blue-100 dark:bg-blue-900/40 rounded text-center text-xs font-medium"
+                    >
+                      {code}
+                    </div>
+                  ))
+                )}
               </div>
-            )
-          )}
-        </div>
-      </div>
-    </div>
+            </div>
+          ))}
+        </div> 
+      </div> 
+    </div> 
   );
 } // closes function
