@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { X, Search, Filter, ChevronDown, ChevronUp, Plus } from 'lucide-react';
+import { X, Search, Filter, Plus } from 'lucide-react';
 import { CourseSearchbar } from '@/components/course-searchbar';
 import type { Course } from '@/lib/mock-data';
 import { cn } from '@/lib/utils'
@@ -21,9 +21,34 @@ interface FilterState {
 }
 
 interface FilterOption {
-    type: 'credits' | 'subject' | 'level';
+    type: 'credits' | 'subject' | 'level' | 'semester';
     value: string | number;
     label: string;
+}
+
+// Helper: read semester info from Course
+function getCourseSemesters(course: Course): string[] {
+    const c: any = course;
+
+    // your real field
+    if (Array.isArray(c.semesters_offered)) return c.semesters_offered;
+
+    // fallbacks
+    if (Array.isArray(c.semesters)) return c.semesters;
+    if (typeof c.semesters === 'string') return [c.semesters];
+
+    if (Array.isArray(c.semester)) return c.semester;
+    if (typeof c.semester === 'string') return [c.semester];
+
+    if (Array.isArray(c.semesterOffered)) return c.semesterOffered;
+    if (typeof c.semesterOffered === 'string') return [c.semesterOffered];
+
+    if (Array.isArray(c.terms)) return c.terms;
+    if (typeof c.terms === 'string') return [c.terms];
+
+    if (typeof c.term === 'string') return [c.term];
+
+    return [];
 }
 
 export function CourseSearchSidebar({ onClose, onCourseSelect, courses }: CourseSearchSidebarProps) {
@@ -44,12 +69,23 @@ export function CourseSearchSidebar({ onClose, onCourseSelect, courses }: Course
             const match = course.code.match(/\d+/);
             if (match) {
                 const num = parseInt(match[0]);
-                // Get the hundred level (100, 200, 300, etc.)
                 const level = Math.floor(num / 100) * 100;
                 return level.toString();
             }
             return 'Other';
         }))).filter(level => level !== 'Other').sort((a, b) => parseInt(a) - parseInt(b));
+
+        // 🔹 Collect semesters from data AND always include Fall/Spring/Summer/Winter
+        const baseSemesters = ['Fall', 'Spring', 'Summer', 'Winter'];
+
+        const semesters = Array.from(
+            new Set([
+                ...baseSemesters,
+                ...courses.flatMap(course => getCourseSemesters(course))
+            ])
+        )
+            .filter(Boolean)
+            .sort();
 
         return {
             subjects: subjects.map(subject => ({
@@ -66,6 +102,11 @@ export function CourseSearchSidebar({ onClose, onCourseSelect, courses }: Course
                 type: 'level' as const,
                 value: level,
                 label: `${level} Level`
+            })),
+            semesters: semesters.map(semester => ({
+                type: 'semester' as const,
+                value: semester,
+                label: semester
             }))
         };
     }, [courses]);
@@ -99,9 +140,11 @@ export function CourseSearchSidebar({ onClose, onCourseSelect, courses }: Course
                     switch (filter.type) {
                         case 'subject':
                             return course.code.startsWith(filter.value as string);
+
                         case 'credits':
                             return course.credits === filter.value;
-                        case 'level':
+
+                        case 'level': {
                             const match = course.code.match(/\d+/);
                             if (match) {
                                 const num = parseInt(match[0]);
@@ -109,6 +152,13 @@ export function CourseSearchSidebar({ onClose, onCourseSelect, courses }: Course
                                 return courseLevel.toString() === filter.value;
                             }
                             return false;
+                        }
+
+                        case 'semester': {
+                            const semesters = getCourseSemesters(course);
+                            return semesters.includes(filter.value as string);
+                        }
+
                         default:
                             return true;
                     }
@@ -192,7 +242,7 @@ export function CourseSearchSidebar({ onClose, onCourseSelect, courses }: Course
                     {/* Active Filters */}
                     {activeFilters.length > 0 && (
                         <div className="flex flex-wrap gap-2">
-                            {activeFilters.map((filter, index) => (
+                            {activeFilters.map((filter) => (
                                 <div
                                     key={`${filter.type}-${filter.value}`}
                                     className="flex items-center gap-1 bg-primary/10 text-primary px-2 py-1 rounded-md text-sm"
@@ -283,6 +333,25 @@ export function CourseSearchSidebar({ onClose, onCourseSelect, courses }: Course
                                         >
                                             <Plus className="h-3 w-3 mr-2" />
                                             {level.label}
+                                        </Button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Semester Filters */}
+                            <div>
+                                <h4 className="font-semibold text-sm mb-3">Semester</h4>
+                                <div className="space-y-2 max-h-32 overflow-y-auto">
+                                    {availableFilters.semesters?.map(semester => (
+                                        <Button
+                                            key={semester.value}
+                                            variant="ghost"
+                                            size="sm"
+                                            className="w-full justify-start text-sm font-normal"
+                                            onClick={() => handleAddFilter(semester)}
+                                        >
+                                            <Plus className="h-3 w-3 mr-2" />
+                                            {semester.label}
                                         </Button>
                                     ))}
                                 </div>
