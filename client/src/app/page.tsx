@@ -128,6 +128,15 @@ export default function Home() {
     setSelectedCourse(null);
   };
 
+const handleAddCourse = (courseCode: string, term: string) => {
+  if (!term) return;
+  setPlannerCourses((prev) => {
+    if (prev[term].includes(courseCode)) return prev;
+    return { ...prev, [term]: [...prev[term], courseCode] };
+  });
+};
+
+
   const handleCourseSelectFromSearch = (course: Course) => {
     // Pass the course code as string ID to match course_data_full.json keys
     setSelectedCourse(course.code || course.id);
@@ -142,6 +151,7 @@ export default function Home() {
           course={selectedCourse}
           allCourses={courses}
           onClose={handleCloseSidebar}
+          onAddCourse={handleAddCourse}
         />
       )}
       {sidebarMode === "search" && (
@@ -301,7 +311,7 @@ export default function Home() {
       ) : (
         <aside
           className={cn(
-            "h-full flex-shrink-0 bg-card border-l transition-all duration-300 ease-in-out relative",
+            "h-full flex-shrink-0 bg-card border-l transition-all duration-300 ease-in-out relative z-50",
             isSidebarVisible ? "w-96" : "w-0 border-l-0"
           )}
         >
@@ -316,12 +326,16 @@ export default function Home() {
         </aside>
       )}
             <div
-        className={cn(
-          "fixed bottom-0 left-0 w-full bg-background border-t shadow-lg transition-transform duration-300 ease-in-out",
-          plannerOpen ? "translate-y-0" : "translate-y-full"
-        )}
-        style={{ height: "35vh" }}
-      >
+              className={cn(
+                "fixed bottom-0 left-0 bg-background border-t shadow-lg transition-transform duration-300 ease-in-out",
+                plannerOpen ? "translate-y-0" : "translate-y-full"
+              )}
+              style={{
+                height: "35vh",
+                width: isSidebarVisible ? "calc(100% - 24rem)" : "100%",
+              }}
+            >
+
         <div className="p-4 flex items-center justify-start gap-3 border-b">
           <h2 className="text-lg font-semibold">Course Planner</h2>
         </div>
@@ -349,7 +363,7 @@ export default function Home() {
                   plannerCourses[term].map((code) => (
                     <div
                       key={code}
-                      className="p-1 bg-blue-100 dark:bg-blue-900/40 rounded text-center text-xs font-medium"
+                      className="p-2 rounded-md border border-primary/20 bg-primary/5 text-sm text-foreground hover:bg-primary/10 transition-colors"
                     >
                       {code}
                     </div>
