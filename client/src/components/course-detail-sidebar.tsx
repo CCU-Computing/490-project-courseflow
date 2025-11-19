@@ -89,16 +89,18 @@ const PrerequisiteView: React.FC<{ prerequisites: any; allCourses?: any[] }> = (
     return <p className="text-muted-foreground italic p-3 rounded-md bg-muted/50 text-center">No prerequisites available.</p>;
 };
 
-// --- Add this ABOVE CourseDetailSidebar ---
+
 
 function AddCourseDialog({
   open,
   onClose,
   onConfirm,
+  allowedTerms
 }: {
   open: boolean;
   onClose: () => void;
   onConfirm: (term: string) => void;
+  allowedTerms: string[];
 }) {
   const [term, setTerm] = useState("");
 
@@ -113,11 +115,22 @@ function AddCourseDialog({
           value={term}
           onChange={(e) => setTerm(e.target.value)}
         >
-          <option value="">Select term</option>
-          <option>Fall 2025</option>
-          <option>Spring 2026</option>
-          <option>Summer 2026</option>
-          <option>Fall 2026</option>
+        <option value="">Select term</option>
+        <option value="Fall 2025" disabled={!allowedTerms.includes("Fall")}>
+            Fall 2025
+        </option>
+
+        <option value="Spring 2026" disabled={!allowedTerms.includes("Spring")}>
+            Spring 2026
+        </option>
+
+        <option value="Summer 2026" disabled={!allowedTerms.includes("Summer")}>
+            Summer 2026
+        </option>
+
+        <option value="Fall 2026" disabled={!allowedTerms.includes("Fall")}>
+            Fall 2026
+        </option>
         </select>
 
         <DialogFooter>
@@ -126,10 +139,19 @@ function AddCourseDialog({
           </Button>
           <Button
             onClick={() => {
-              if (term) {
+                if (!term) return;
+                
+                // Prevent adding invalid terms
+                const normalized = term.toLowerCase();
+                const valid = allowedTerms.some(t => normalized.includes(t.toLowerCase()));
+
+                if (!valid) {
+                alert("This course is not offered in that term.");
+                return;
+                }
+
                 onConfirm(term);
                 onClose();
-              }
             }}
             className="bg-primary text-white hover:bg-primary/90"
           >
@@ -139,6 +161,23 @@ function AddCourseDialog({
       </DialogContent>
     </Dialog>
   );
+}
+
+function parseOfferedTerms(termsOffered: string | null | undefined): string[] {
+  if (!termsOffered) return [];
+
+  const lower = termsOffered.toLowerCase();
+
+  if (lower.includes("all years")) {
+    return ["Fall", "Spring", "Summer"];
+  }
+
+  const terms: string[] = [];
+  if (lower.includes("fall")) terms.push("Fall");
+  if (lower.includes("spring")) terms.push("Spring");
+  if (lower.includes("summer")) terms.push("Summer");
+
+  return terms;
 }
 
 
@@ -177,6 +216,8 @@ export function CourseDetailSidebar({ course, allCourses, onClose, onAddCourse }
             </div>
         );
     }
+
+    const allowedTerms = parseOfferedTerms(raw.TermsOffered);
 
     // Prefer raw display text for prerequisites (so we can parse AND/OR correctly), otherwise build tree
     const displayTexts: string[] = Array.isArray(raw.CourseRequisites)
@@ -263,6 +304,7 @@ export function CourseDetailSidebar({ course, allCourses, onClose, onAddCourse }
                     <AddCourseDialog
                     open={dialogOpen}
                     onClose={() => setDialogOpen(false)}
+                    allowedTerms={allowedTerms}
                     onConfirm={(term) => onAddCourse(course.code, term)}
                     />
 
