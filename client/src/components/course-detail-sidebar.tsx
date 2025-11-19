@@ -218,6 +218,11 @@ export function CourseDetailSidebar({ course, allCourses, onClose, onAddCourse }
     }
 
     const allowedTerms = parseOfferedTerms(raw.TermsOffered);
+    const courseId =
+        typeof course === "string"
+            ? course
+            : course.code || course.id;
+
 
     // Prefer raw display text for prerequisites (so we can parse AND/OR correctly), otherwise build tree
     const displayTexts: string[] = Array.isArray(raw.CourseRequisites)
@@ -305,7 +310,7 @@ export function CourseDetailSidebar({ course, allCourses, onClose, onAddCourse }
                     open={dialogOpen}
                     onClose={() => setDialogOpen(false)}
                     allowedTerms={allowedTerms}
-                    onConfirm={(term) => onAddCourse(course.code, term)}
+                    onConfirm={(term) => onAddCourse(courseId, term)}
                     />
 
                 </div>
