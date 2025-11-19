@@ -136,6 +136,14 @@ const handleAddCourse = (courseCode: string, term: string) => {
   });
 };
 
+const handleRemoveCourse = (term: string, courseCode: string) => {
+  setPlannerCourses(prev => ({
+    ...prev,
+    [term]: prev[term].filter(code => code !== courseCode)
+  }));
+};
+
+
 
   const handleCourseSelectFromSearch = (course: Course) => {
     // Pass the course code as string ID to match course_data_full.json keys
@@ -363,9 +371,15 @@ const handleAddCourse = (courseCode: string, term: string) => {
                   plannerCourses[term].map((code) => (
                     <div
                       key={code}
-                      className="p-2 rounded-md border border-primary/20 bg-primary/5 text-sm text-foreground hover:bg-primary/10 transition-colors"
+                      className="p-2 rounded-md border border-primary/20 bg-primary/5 text-sm text-foreground hover:bg-primary/10 transition-colors flex items-center justify-between w-full"
                     >
-                      {code}
+                      <span>{code}</span>
+                      <button
+                        onClick={() => handleRemoveCourse(term, code)}
+                        className="text-red-500 hover:text-red-700 ml-2"
+                      >
+                        x
+                      </button>
                     </div>
                   ))
                 )}

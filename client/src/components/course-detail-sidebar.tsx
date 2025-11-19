@@ -63,7 +63,7 @@ const PrerequisiteGroupView: React.FC<{ group: any; allCourses?: any[]; level?: 
                     </div>
                 )) : null}
             </div>
-        </div>
+        </div> 
     );
 };
 
