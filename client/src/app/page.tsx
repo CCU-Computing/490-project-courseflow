@@ -8,10 +8,11 @@ import type { Course } from "@/lib/mock-data";
 import { useCourses } from "@/hooks/use-courses";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { PanelLeft, PanelRight, Search, BookOpen } from "lucide-react";
+import { PanelLeft, PanelRight, Search, BookOpen, Pin } from "lucide-react";
 import ThemeToggle from "@/components/ui/theme-toggle";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
 
 // Define the possible states for the sidebar
 type SidebarMode = "details" | "search" | "closed";
@@ -31,9 +32,11 @@ export default function Home() {
   const [selectedCourse, setSelectedCourse] = useState<any | null>(null);
   const [sidebarMode, setSidebarMode] = useState<SidebarMode>("details");
   const [selectedSubject, setSelectedSubject] = useState<string>("");
+  const [savedDefaultSubject, setSavedDefaultSubject] = useState<string>("");
   const isMobile = useIsMobile();
   const { courses, isLoading } = useCourses();
   const [plannerOpen, setPlannerOpen] = useState(false);
+  const { toast } = useToast();
   const [plannerCourses, setPlannerCourses] = useState<
     Record<string, string[]>
   >({
@@ -98,6 +101,36 @@ export default function Home() {
       setSidebarMode("details");
     }
   }, [isMobile]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("courseflow-default-subject");
+    if (saved) {
+      setSelectedSubject(saved);
+      setSavedDefaultSubject(saved); // Sync state
+    }
+  }, []);
+
+  const handleSetDefaultSubject = () => {
+    if (selectedSubject) {
+      // Save the new default
+      localStorage.setItem("courseflow-default-subject", selectedSubject);
+      setSavedDefaultSubject(selectedSubject); // Update state to trigger highlight
+      
+      toast({
+        title: "Default Subject Set",
+        description: `${selectedSubject} will now load by default.`,
+      });
+    } else {
+      // Clear the default
+      localStorage.removeItem("courseflow-default-subject");
+      setSavedDefaultSubject(""); // Clear state
+      
+      toast({
+        title: "Default Subject Cleared",
+        description: "Application will load with 'All subjects'.",
+      });
+    }
+  };
 
   const handleNodeClick = (course: any) => {
     setSelectedCourse(course);
@@ -210,6 +243,31 @@ const handleRemoveCourse = (term: string, courseCode: string) => {
                   </option>
                 ))}
             </select>
+            <Button
+              variant="ghost"
+              size="icon"
+              className={cn(
+                "h-8 w-8 transition-colors",
+                // If current subject matches saved default (and isn't empty), highlight it
+                selectedSubject && selectedSubject === savedDefaultSubject
+                  ? "text-primary" 
+                  : "text-muted-foreground hover:text-primary"
+              )}
+              onClick={handleSetDefaultSubject}
+              title={
+                selectedSubject === savedDefaultSubject
+                  ? "This is your default subject"
+                  : "Set current subject as default"
+              }
+            >
+              <Pin 
+                className={cn(
+                  "h-4 w-4",
+                  // Solid fill if it matches the saved default
+                  selectedSubject && selectedSubject === savedDefaultSubject && "fill-current"
+                )} 
+              />
+            </Button>
             <Button
               variant="outline"
               size="sm"
