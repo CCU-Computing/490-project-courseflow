@@ -63,3 +63,162 @@ In the project directory, you can run the following commands:
 -   [TypeScript](https://www.typescriptlang.org/) - Typed JavaScript
 -   [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 -   [ShadCN/UI](https://ui.shadcn.com/) - UI Components
+
+
+## Test Plan
+
+1. Testing Strategy
+
+We use a combination of manual testing, scenario-based testing, and component-level checks to verify core functionality.
+Since CourseFlow is a client-side React/Next.js application with no backend API, testing focuses on:
+
+UI interaction behavior
+
+Course data correctness
+
+Prerequisite logic
+
+Course planner behavior
+
+Error handling and edge cases
+
+All tests simulate real user behavior and typical application workflows.
+
+2. Core Functional Areas to Test
+
+A. Course Search
+
+Search by course code
+
+Search by course title
+
+Apply filters (semester, level, department)
+
+Verify that results update dynamically
+
+B. Course Detail Sidebar
+
+Sidebar opens when a course is selected
+
+Course description, credits, and prerequisites display correctly
+
+Semesters offered display correctly
+
+“Add Course” button opens selection dialog
+
+C. Add-to-Planner Functionality
+
+Add course to correct semester
+
+Prevent adding courses to an invalid semester
+
+Planner column updates immediately
+
+D. Visual / UI & UX
+
+Sidebar transitions and dialog animations
+
+Colors and typography remain consistent
+
+Course cards appear with proper layout and style
+
+3. Test Cases
+Test Case 1 — Search Returns Correct Results
+
+Steps:
+
+Type “CSCI” in search bar
+
+Filter by “Fall”
+
+Expected Outcome:
+Only CSCI courses offered in the Fall appear.
+
+Test Case 2 — View Course Details
+
+Steps:
+
+Select a course from search or diagram
+
+Sidebar opens
+
+Expected Outcome:
+Course description, credits, prerequisites, and semesters offered all display correctly.
+
+Test Case 3 — Add Course (Valid Semester)
+
+Steps:
+
+Open course detail sidebar
+
+Click Add Course
+
+Select a semester that the course is offered in
+
+Click Add
+
+Expected Outcome:
+Course appears in the selected semester column.
+
+Test Case 4 — Add Course (Invalid Semester)
+
+Steps:
+
+Try and select a semester that the course is not offered in
+
+Expected Outcome:
+The invalid semester is "grayed out' in the select semester dopdown options and can not be selected.
+
+Course is not added.
+
+Test Case 5 — Prevent Duplicate Courses
+
+Steps:
+
+Add a course to a semester
+
+Attempt to add the same course again
+
+Expected Outcome:
+Course is not added again and the semester only shows the already added course from before.
+
+Test Case 6 — Prerequisite Rendering
+
+Steps:
+
+Open a course with AND/OR prerequisites
+
+Inspect prerequisite chips
+
+Expected Outcome:
+
+AND groups appear correctly
+
+OR groups display multiple alternatives
+
+Course IDs and titles match dataset
+
+Test Case 7 — Delete/Remove Course
+
+Steps:
+
+Add a course
+
+Click the red x button next to it
+
+Expected Outcome:
+Course disappears instantly from the planner.
+
+## Description of limitations and known issues/bugs
+
+Some courses do not include “Terms Offered,” so fallbacks treat them as unavailable every semester.
+
+Parsing of courses struggles at times, with some courses not really having any information from CCU to be displayed.
+
+When choosing the Music major, the program crashes and is unusable.
+
+Program does not have a user's class history so this limits how far it can work with prerequisites and the how the course planner handles them.
+
+The years of the semesters are currently hardcoded in and would have to be manually be changed as new school years begin.
+
+Program was only tested and developed on desktop, so performance on other kinds of devices has not been explored.
