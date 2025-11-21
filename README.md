@@ -6,7 +6,8 @@ CourseFlow is an interactive course catalog application built with Next.js, Reac
 https://github.com/CCU-Computing/490-project-courseflow
 
 # Link to our video
-https://coastal54-my.sharepoint.com/:v:/r/personal/akreyes_coastal_edu/Documents/490CourseFlowFinalVideo.mp4?csf=1&web=1&e=8ueVOK&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+https://coastal54-my.sharepoint.com/:v:/r/personal/akreyes_coastal_edu/Documents/490CourseFlowFinalVideo.mp4?csf=1&web=1&e=v3bmWG&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+
 
 # Group Members:
 Adrian Reyes,
