@@ -2,6 +2,27 @@
 
 CourseFlow is an interactive course catalog application built with Next.js, React, and ReactFlow. It allows users to visualize course dependencies for a degree program in a top-down tree diagram and view details for each course.
 
+# Link to our codebase:
+https://github.com/CCU-Computing/490-project-courseflow
+
+# Link to our video
+https://coastal54-my.sharepoint.com/:v:/r/personal/akreyes_coastal_edu/Documents/490CourseFlowFinalVideo.mp4?csf=1&web=1&e=8ueVOK&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+
+# Group Members:
+Adrian Reyes
+Mike Szklarzewski
+Sophia McKanna
+Gavin Cartwright
+Will Mewborn
+Rodney Gilliyard
+
+# Roles:
+Architect – Mike
+Project Organizer – Gavin
+User Interface Designer – Sophia
+Quality Assurance Lead - Adrian
+
+
 ## Core Features:
 
 - **Interactive Course Diagram**: Visualize courses and their prerequisite relationships.
