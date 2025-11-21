@@ -21,7 +21,9 @@ Rodney Gilliyard
 Architect – Mike,
 Project Organizer – Gavin,
 User Interface Designer – Sophia,
-Quality Assurance Lead - Adrian
+Quality Assurance Lead - Adrian,
+Developer - Will Mewborn,
+Developer - Rodney Gilliyard
 
 
 ## Core Features:
@@ -135,6 +137,7 @@ The following user stories are implemented in the current codebase and were deve
 - As a student, I want to filter classes by subject/major so that I can quickly look through courses for my major. — Sophia
 - As a student, I want to filter courses by credits so that I can properly plan my course load for the semester. — Sophia
 - As a student, I want to filter courses by level so that I can quickly find courses pertaining to a specific level of study. — Sophia
+- As a student, I want to search for a course by name or code so that I can quickly find details about that class. - Sophia 
 - As a student, I want to add a course to my course planner, so that I can organize my schedule and plan my degree progression. — Adrian
 - As a student, I want to select which semester I am adding a course to, so that I can plan my academic timeline accurately. — Adrian
 - As a student, I want the system to prevent me from adding a course to a semester it is not offered in, so that I don’t accidentally plan for an impossible schedule. — Adrian
