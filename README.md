@@ -9,17 +9,17 @@ https://github.com/CCU-Computing/490-project-courseflow
 https://coastal54-my.sharepoint.com/:v:/r/personal/akreyes_coastal_edu/Documents/490CourseFlowFinalVideo.mp4?csf=1&web=1&e=8ueVOK&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
 
 # Group Members:
-Adrian Reyes
-Mike Szklarzewski
-Sophia McKanna
-Gavin Cartwright
-Will Mewborn
+Adrian Reyes,
+Mike Szklarzewski,
+Sophia McKanna,
+Gavin Cartwright,
+Will Mewborn,
 Rodney Gilliyard
 
 # Roles:
-Architect – Mike
-Project Organizer – Gavin
-User Interface Designer – Sophia
+Architect – Mike,
+Project Organizer – Gavin,
+User Interface Designer – Sophia,
 Quality Assurance Lead - Adrian
 
 
